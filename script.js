@@ -12,5 +12,5 @@ function loadHTML(id, file) {
 }
 
 // Always load from root directory
-loadHTML("header", "/header.html");
-loadHTML("footer", "/footer.html");
+loadHTML("header", "header.html");
+loadHTML("footer", "footer.html");
