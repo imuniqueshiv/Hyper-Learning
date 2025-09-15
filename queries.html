@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Queries | Hyper Learning</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <!-- Header Placeholder -->
+ <header class="header">
+  <div class="container">
+    <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
+      <img src="images/HL hd logo.png" alt="Hyper Learning Logo" width="90" height="70" />
+      <span>Hyper Learning</span>
+    </a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="queries.html">Queries</a>
+    </nav>
+  </div>
+</header>
+
+  <section class="hero">
+    <h2>QUESTIONS? GET IN TOUCH</h2>
+  </section>
+
+  <section class="subjects" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+    <form class="query-form" action="https://formsubmit.co/hyperlearning4rgpv@gmail.com" method="post"
+      style="width: 100%; max-width: 90%; background: rgba(255, 255, 255, 0.9); padding: 30px; border-radius: 10px;">  
+      
+  <!-- Hidden field to disable captcha -->
+  <input type="hidden" name="_captcha" value="false">
+       <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 20px;">
+        <input type="text" name="name" placeholder="Your Name" required style="flex: 1 1 30%; padding: 10px; border-radius: 6px; border: 1px solid #ccc;" />
+        <input type="email" name="email" placeholder="Your Email" required style="flex: 1 1 30%; padding: 10px; border-radius: 6px; border: 1px solid #ccc;" />
+        <input type="text" name="subject" placeholder="Subject" required style="flex: 1 1 30%; padding: 10px; border-radius: 6px; border: 1px solid #ccc;" />
+      </div>
+      <textarea name="message" rows="6" placeholder="Your Message.." required style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #ccc; resize: vertical;"></textarea>
+      <div style="text-align: right; margin-top: 20px;">
+        <button type="submit" class="cta-button">EMAIL US</button>
+      </div>
+    </form>
+  </section>
+
+  
+<!-- Footer Placeholder -->
+<div id="footer"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

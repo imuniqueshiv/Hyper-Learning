@@ -1,0 +1,20 @@
+<footer class="footer">
+  <p>&copy; <span id="year"></span> Hyper Learning. Built to help Students.</p>
+  <p class="disclaimer">Disclaimer: Some content may contain errors. Please cross-check and share corrections via our feedback section.</p>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+<style>
+  .footer {
+    text-align: center;
+    padding: 10px;
+  }
+  .footer .disclaimer {
+    font-size: 0.8em; /* smaller than normal text */
+    color: #666;      /* lighter color for subtle look */
+    margin-top: 5px;
+  }
+</style>
