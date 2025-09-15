@@ -132,6 +132,16 @@ html, body {
   border-top: 1px solid #1c1d1d;
 }
 
+ .footer {
+    text-align: center;
+    padding: 10px;
+  }
+  .footer .disclaimer {
+    font-size: 0.8em; /* smaller than normal text */
+    color: #666;      /* lighter color for subtle look */
+    margin-top: 5px;
+  }
+
 /* Responsive */
 @media (max-width: 640px) {
   .container {
