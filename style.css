@@ -159,6 +159,10 @@ html, body {
   .subjects {
     padding: 2rem 1rem;
   }
+.subjects p {
+    font-size: 0.8rem;
+  }
+
 }
 .questions-list {
   max-width: 800px;
