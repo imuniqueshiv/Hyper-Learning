@@ -1,0 +1,10 @@
+# Ignore all backup files
+*.bak
+
+# Ignore backup folders
+papers_backup/
+subjects_backup/
+
+# Ignore any papers_backup folders with date suffix
+papers_backup_*
+subjects_backup_*

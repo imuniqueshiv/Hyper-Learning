@@ -1,0 +1,34 @@
+# Handle line endings consistently across all OS
+* text=auto eol=lf
+
+# Source code files (force LF)
+*.html text eol=lf
+*.css  text eol=lf
+*.js   text eol=lf
+*.json text eol=lf
+*.md   text eol=lf
+
+# Server-side files (if any)
+*.py   text eol=lf
+*.php  text eol=lf
+
+# Config files
+*.yml  text eol=lf
+*.yaml text eol=lf
+*.sh   text eol=lf
+*.bat  text eol=crlf
+
+# Binary files (no conversion)
+*.jpg  binary
+*.jpeg binary
+*.png  binary
+*.gif  binary
+*.ico  binary
+*.pdf  binary
+*.zip  binary
+*.tar  binary
+*.gz   binary
+*.mp4  binary
+*.mp3  binary
+
+
