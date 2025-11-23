@@ -136,6 +136,24 @@ body {
   transform: translateY(-3px);
 }
 
+/* --- NEW LAYOUT: Vertical List (Like Image 2) --- */
+/* This does not affect .subject-grid */
+
+.vertical-stack {
+  display: flex;
+  flex-direction: column; /* Stacks items vertically */
+  align-items: center;    /* Centers them in the middle */
+  gap: 1.2rem;            /* Space between bars */
+  margin-top: 1rem;
+}
+
+/* We make the card wider when it is inside a vertical stack */
+.vertical-stack .subject-card {
+  width: 100%;
+  max-width: 700px;       /* Makes it look like a wide bar, not a small box */
+  padding: 1.2rem;
+}
+
 /* Footer */
 .footer {
   background-color: #00008B;

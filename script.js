@@ -5,7 +5,8 @@ const LOCAL_CACHE_KEY = 'rgpv_universal_answers_v1';
 const CACHE_TTL_DAYS = 30;
 const REGENERATE_LIMIT = 7;
 
-// Complete subject mapping for all 10 subjects
+// Complete subject mapping
+// NOTE: You can add your 30+ subjects here. The system matches based on the prefix (e.g., "BT-101").
 const SUBJECT_MAP = {
   'BT-101': { name: 'Engineering Chemistry', type: 'CHEMISTRY' },
   'BT-102': { name: 'Mathematics-I', type: 'MATH' },
@@ -16,7 +17,11 @@ const SUBJECT_MAP = {
   'BT-202': { name: 'Mathematics-II', type: 'MATH' },
   'BT-203': { name: 'Basic Mechanical Engineering', type: 'MECHANICAL' },
   'BT-204': { name: 'Basic Civil Engineering & Mechanics', type: 'CIVIL' },
-  'BT-205': { name: 'Basic Computer Engineering', type: 'COMPUTER' }
+  'BT-205': { name: 'Basic Computer Engineering', type: 'COMPUTER' },
+  // Add your other subjects below...
+  'AD-301': { name: 'Technical Communication', type: 'ENGLISH' },
+  'AD-303': { name: 'Data Structure', type: 'COMPUTER' },
+  'AI-302': { name: 'Probability and Statistics', type: 'MATH' }
 };
 
 // -------------------- Global Cache API Functions --------------------
@@ -100,20 +105,24 @@ function saveLocalCache(cache) {
 }
 
 function getSubjectInfo(questionId) {
-  const subjectCode = questionId?.split('_')[0];
-  return SUBJECT_MAP[subjectCode] || { name: 'General', type: 'GENERAL' };
+  // Matches prefix like "BT-101" or "AD-303" even if ID is complex
+  for (const key in SUBJECT_MAP) {
+      if (questionId.startsWith(key) || questionId.includes(key)) {
+          return SUBJECT_MAP[key];
+      }
+  }
+  return { name: 'General Engineering', type: 'GENERAL' };
 }
 
 function generateQuestionId(questionContainer) {
-  // Generate unique ID from page and question structure
   const pageTitle = document.title;
-  const subjectCode = pageTitle.match(/BT-\d+/)?.[0] || 'GENERAL';
+  const subjectCode = pageTitle.match(/([A-Z]{2,}-\d{3})/)?.[0] || 'GENERAL';
   const examDate = pageTitle.match(/\w+ \d{4}/)?.[0]?.replace(' ', '_').toLowerCase() || 'unknown';
   
   const summary = questionContainer.querySelector('summary');
   const questionNumber = summary?.textContent.match(/Q\.?\s*(\d+)/)?.[1] || '0';
   
-  // Check if it has parts (a/b)
+  // Check if it has parts (a/b) - Rough check for ID generation
   const allAnswerPs = questionContainer.querySelectorAll('p[style*="margin-left"]');
   const hasMultipleParts = allAnswerPs.length > 1 || summary?.innerHTML.includes('<hr>');
   
@@ -124,69 +133,114 @@ function generateQuestionId(questionContainer) {
   }
 }
 
+// -------------------- NEW: ROBUST TEXT EXTRACTION --------------------
 function extractQuestionText(questionContainer, partIndex = 0) {
     const summary = questionContainer.querySelector('summary');
     if (!summary) return '';
 
-    // Get ALL paragraphs within the summary
-    const allPs = Array.from(summary.querySelectorAll('p'));
-    
-    // Find the "main" paragraphs (those that likely start with a), b), etc.)
-    // We can identify these as paragraphs that are NOT indented.
-    const mainPartPs = allPs.filter(p => !p.style.marginLeft);
+    // Helper: Convert HTML Table to Markdown Text for AI
+    function tableToMarkdown(table) {
+        let md = '\n\n';
+        const rows = Array.from(table.querySelectorAll('tr'));
+        
+        rows.forEach((row, index) => {
+            const cells = Array.from(row.querySelectorAll('th, td'));
+            // Build row string
+            const rowText = '| ' + cells.map(c => c.textContent.trim().replace(/\n/g, ' ')).join(' | ') + ' |';
+            md += rowText + '\n';
 
-    // Check if the requested part index is valid
-    if (partIndex >= mainPartPs.length) {
-        return ''; // No such part found
+            // Add Markdown separator after header (assuming first row is header)
+            if (index === 0) {
+                const separator = '| ' + cells.map(() => '---').join(' | ') + ' |';
+                md += separator + '\n';
+            }
+        });
+        return md + '\n';
     }
 
-    // This is the starting paragraph for our section (e.g., the line with "b)...")
-    const startP = mainPartPs[partIndex];
-    let combinedText = [startP.textContent.trim()];
+    // Helper: Extract Alt text from Images
+    function extractImages(element) {
+        const images = element.querySelectorAll('img');
+        let imgText = '';
+        images.forEach(img => {
+            const alt = img.getAttribute('alt');
+            if (alt && alt.trim().length > 0) {
+                imgText += `\n[Image Context: ${alt}]\n`;
+            }
+        });
+        return imgText;
+    }
 
-    // Find where the next main section begins, which is our stopping point
-    const endP = (partIndex + 1 < mainPartPs.length) ? mainPartPs[partIndex + 1] : null;
+    // 1. Split summary children by <hr> tags to separate parts (Part A / Part B)
+    const children = Array.from(summary.children);
+    let parts = [];
+    let currentBuffer = [];
 
-    // Find the position of our starting paragraph in the list of ALL paragraphs
-    let currentIndex = allPs.indexOf(startP) + 1;
-
-    // Keep reading subsequent paragraphs...
-    while (currentIndex < allPs.length) {
-        const currentP = allPs[currentIndex];
-
-        // ...until we hit the next main part.
-        if (currentP === endP) {
-            break;
-        }
-
-        // Add the text from indented sub-questions
-        if (currentP.style.marginLeft) {
-            combinedText.push(currentP.textContent.trim());
+    children.forEach(child => {
+        if (child.tagName === 'HR') {
+            parts.push(currentBuffer);
+            currentBuffer = [];
         } else {
-            // If we hit another non-indented paragraph that wasn't our target, stop.
-            break;
+            currentBuffer.push(child);
         }
-        currentIndex++;
+    });
+    if (currentBuffer.length > 0) parts.push(currentBuffer);
+
+    // 2. Select the specific part (0 for 'a', 1 for 'b')
+    const targetNodes = parts[partIndex];
+    
+    if (!targetNodes || targetNodes.length === 0) {
+        // Fallback: If structure is simple (no HRs), return text of the specific index if possible
+        if (parts.length === 0 && partIndex === 0) return summary.textContent; 
+        return '';
     }
 
-    // Join all the collected lines together
-    return combinedText.join('\n');
+    // 3. Build the final text string from the nodes
+    let fullText = '';
+    
+    targetNodes.forEach(node => {
+        // Handle Tables directly
+        if (node.tagName === 'TABLE') {
+            fullText += tableToMarkdown(node);
+        } 
+        // Handle Tables wrapped in Divs (responsive wrappers)
+        else if (node.tagName === 'DIV' && node.querySelector('table')) {
+            const table = node.querySelector('table');
+            fullText += tableToMarkdown(table);
+        }
+        // Handle Direct Images
+        else if (node.tagName === 'IMG') {
+            const alt = node.getAttribute('alt');
+            if (alt) fullText += `\n[Image Context: ${alt}]\n`;
+        }
+        // Handle Paragraphs/Text
+        else {
+            // Add text content
+            fullText += node.textContent.trim() + '\n';
+            // Scan for nested images inside the paragraph
+            fullText += extractImages(node);
+        }
+    });
+
+    return fullText.trim();
 }
 
+// -------------------- UPDATED PROMPTS --------------------
 function createSubjectPrompt(subjectInfo, questionText) {
   const prompts = {
-    'MATH': 'You are an expert mathematics tutor for RGPV B.Tech students. Provide detailed step-by-step solutions with proper LaTeX formatting ($ for inline, $$ for display). Show all mathematical steps clearly: ',
-    'ENGLISH': 'You are an expert English communication tutor for RGPV B.Tech students. Provide comprehensive answers with proper grammar explanations, examples, and clear formatting: ',
-    'GRAPHICS': 'You are an expert engineering graphics tutor for RGPV B.Tech students. Provide detailed explanations of drawing principles, projection methods, and construction steps: ',
-    'COMPUTER': 'You are an expert computer engineering tutor for RGPV B.Tech students. Provide detailed technical explanations with code examples, algorithms, and programming concepts: ',
-    'PHYSICS': 'You are an expert physics tutor for RGPV B.Tech students. Provide detailed solutions with proper physics concepts, formulas, and diagrams where needed: ',
-    'CHEMISTRY': 'You are an expert chemistry tutor for RGPV B.Tech students. Provide detailed answers with chemical equations, reactions, and scientific explanations: ',
-    'ELECTRICAL': 'You are an expert electrical engineering tutor for RGPV B.Tech students. Provide detailed technical answers with circuit analysis and engineering principles: ',
-    'MECHANICAL': 'You are an expert mechanical engineering tutor for RGPV B.Tech students. Provide detailed answers with engineering principles and practical applications: ',
-    'CIVIL': 'You are an expert civil engineering tutor for RGPV B.Tech students. Provide detailed answers with engineering concepts and calculations: ',
+    'MATH': 'You are an expert mathematics tutor. Provide detailed step-by-step solutions. Use LaTeX for math equations ($...$ or $$...$$). If data is provided in a table format (Markdown), use that specific data for calculations: ',
+    'ENGLISH': 'You are an expert communication tutor. Provide comprehensive answers with grammar explanations: ',
+    'GRAPHICS': 'You are an expert engineering graphics tutor. Explain drawing principles. If an image description is provided in brackets [Image Context: ...], use that to describe the geometry: ',
+    'COMPUTER': 'You are an expert computer engineering tutor. Provide code examples and algorithms: ',
+    'PHYSICS': 'You are an expert physics tutor. Provide solutions with formulas: ',
+    'CHEMISTRY': 'You are an expert chemistry tutor. Provide chemical equations: ',
+    'ELECTRICAL': 'You are an expert electrical engineering tutor: ',
+    'MECHANICAL': 'You are an expert mechanical engineering tutor: ',
+    'CIVIL': 'You are an expert civil engineering tutor. If an image description is provided [Image Context: ...], use it to solve the problem (e.g. Moment of Inertia): ',
+    'GENERAL': 'You are an expert engineering tutor: '
   };
   
-  return prompts[subjectInfo.type] + questionText;
+  return (prompts[subjectInfo.type] || prompts['GENERAL']) + questionText;
 }
 
 function formatAnswerAsHtml(str) {
@@ -302,7 +356,6 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
         </div>
       `;
       
-      // Save to local cache as well
       const localCache = loadLocalCache();
       localCache[questionId] = {
         answer: globalCache.answer,
@@ -320,7 +373,7 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
     }
   }
 
-  // Show loading - FIXED: Better layout for mobile
+  // Show loading
   const subjectInfo = getSubjectInfo(questionId);
   const abortController = new AbortController();
   
@@ -337,7 +390,6 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
     </div>
   `;
 
-  // Set up cancel function
   window[`cancelGeneration_${questionId.replace(/[^a-zA-Z0-9]/g, '_')}`] = () => {
     abortController.abort();
     targetElement.innerHTML = '<p style="color: #dc2626; padding: 1rem;">Generation cancelled</p>';
@@ -354,7 +406,6 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
       if (meta.done && chunk === '') {
         finalBackendCached = !!meta.backendCached;
         
-        // Save to global cache
         setGlobalCache(questionId, streamed, {
           subject: subjectInfo.name,
           questionText: questionText,
@@ -365,7 +416,6 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
           const finalRegenRemaining = REGENERATE_LIMIT - finalRegenCount;
           const isFinalLimitReached = finalRegenCount >= REGENERATE_LIMIT;
           
-          // Final display
           targetElement.innerHTML = `
             <div style="margin: 1rem 0; padding: 1rem; border-radius: 8px; background: #f8f9fa; border-left: 4px solid #0ea5e9; max-width: 100%; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word;">
               <div style="margin-bottom: 0.5rem;">
@@ -376,7 +426,6 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
               ${formatAnswerAsHtml(streamed)}
               <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e5e7eb; display: flex; gap: 0.5rem; flex-wrap: wrap;">
                 <button onclick="copyText('${questionId}')" style="padding: 0.4rem 0.6rem; border-radius: 6px; border: 1px solid #ccc; background: #f9f9f9; cursor: pointer;">Copy</button>
-                <button onclick="downloadText('${questionId}')" style="padding: 0.4rem 0.6rem; border-radius: 6px; border: 1px solid #ccc; background: #f9f9f9; cursor: pointer;">Download</button>
                 <button onclick="regenerateAnswer('${questionId}', \`${questionText.replace(/`/g, '\\`')}\`, this)" 
                         ${isFinalLimitReached ? 'disabled' : ''} 
                         style="padding: 0.4rem 0.6rem; border-radius: 6px; border: 1px solid #ccc; background: #f9f9f9; cursor: ${isFinalLimitReached ? 'not-allowed' : 'pointer'}; opacity: ${isFinalLimitReached ? '0.5' : '1'};"
@@ -387,7 +436,6 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
             </div>
           `;
           
-          // Save to local cache
           const localCache = loadLocalCache();
           localCache[questionId] = { 
             answer: streamed, 
@@ -411,50 +459,48 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
       }
 
       if (meta.done) {
-        // Handle immediate completion
-        finalBackendCached = !!meta.backendCached;
-        
-        // Save to global cache
-        setGlobalCache(questionId, streamed, {
-          subject: subjectInfo.name,
-          questionText: questionText,
-          backendCached: finalBackendCached
-        });
-        
-        getGlobalRegenerateCount(questionId).then(immRegenCount => {
-          const immRegenRemaining = REGENERATE_LIMIT - immRegenCount;
-          const isImmLimitReached = immRegenCount >= REGENERATE_LIMIT;
-          
-          targetElement.innerHTML = `
-            <div style="margin: 1rem 0; padding: 1rem; border-radius: 8px; background: #f8f9fa; border-left: 4px solid #0ea5e9; max-width: 100%; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word;">
-              ${formatAnswerAsHtml(streamed)}
-              <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e5e7eb; display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                <button onclick="copyText('${questionId}')" style="padding: 0.4rem 0.6rem; border-radius: 6px; border: 1px solid #ccc; background: #f9f9f9; cursor: pointer;">Copy</button>
-                <button onclick="downloadText('${questionId}')" style="padding: 0.4rem 0.6rem; border-radius: 6px; border: 1px solid #ccc; background: #f9f9f9; cursor: pointer;">Download</button>
-                <button onclick="regenerateAnswer('${questionId}', \`${questionText.replace(/`/g, '\\`')}\`, this)" 
-                        ${isImmLimitReached ? 'disabled' : ''} 
-                        style="padding: 0.4rem 0.6rem; border-radius: 6px; border: 1px solid #ccc; background: #f9f9f9; cursor: ${isImmLimitReached ? 'not-allowed' : 'pointer'}; opacity: ${isImmLimitReached ? '0.5' : '1'};"
-                        title="${isImmLimitReached ? 'Regenerate limit reached (7/7)' : `Regenerations used: ${immRegenCount}/${REGENERATE_LIMIT}`}">
-                  ${isImmLimitReached ? 'Limit Reached' : `Regenerate (${immRegenRemaining} left)`}
-                </button>
-              </div>
-            </div>
-          `;
-          
-          const localCache = loadLocalCache();
-          localCache[questionId] = { 
-            answer: streamed, 
-            ts: Date.now(), 
-            backendCached: finalBackendCached,
-            subject: subjectInfo.name,
-            questionText: questionText
-          };
-          saveLocalCache(localCache);
-          
-          if (window.MathJax && window.MathJax.typesetPromise) {
-            MathJax.typesetPromise([targetElement]).catch(console.warn);
-          }
-        });
+         // Handle immediate completion logic (same as above block)
+         finalBackendCached = !!meta.backendCached;
+         setGlobalCache(questionId, streamed, { 
+             subject: subjectInfo.name, 
+             questionText: questionText, 
+             backendCached: finalBackendCached 
+         });
+         
+         getGlobalRegenerateCount(questionId).then(immRegenCount => {
+             const immRegenRemaining = REGENERATE_LIMIT - immRegenCount;
+             const isImmLimitReached = immRegenCount >= REGENERATE_LIMIT;
+             
+             targetElement.innerHTML = `
+                <div style="margin: 1rem 0; padding: 1rem; border-radius: 8px; background: #f8f9fa; border-left: 4px solid #0ea5e9; max-width: 100%; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word;">
+                  ${formatAnswerAsHtml(streamed)}
+                  <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e5e7eb; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    <button onclick="copyText('${questionId}')" style="padding: 0.4rem 0.6rem; border-radius: 6px; border: 1px solid #ccc; background: #f9f9f9; cursor: pointer;">Copy</button>
+                    <button onclick="downloadText('${questionId}')" style="padding: 0.4rem 0.6rem; border-radius: 6px; border: 1px solid #ccc; background: #f9f9f9; cursor: pointer;">Download</button>
+                    <button onclick="regenerateAnswer('${questionId}', \`${questionText.replace(/`/g, '\\`')}\`, this)" 
+                            ${isImmLimitReached ? 'disabled' : ''} 
+                            style="padding: 0.4rem 0.6rem; border-radius: 6px; border: 1px solid #ccc; background: #f9f9f9; cursor: ${isImmLimitReached ? 'not-allowed' : 'pointer'}; opacity: ${isImmLimitReached ? '0.5' : '1'};"
+                            title="${isImmLimitReached ? 'Regenerate limit reached (7/7)' : `Regenerations used: ${immRegenCount}/${REGENERATE_LIMIT}`}">
+                      ${isImmLimitReached ? 'Limit Reached' : `Regenerate (${immRegenRemaining} left)`}
+                    </button>
+                  </div>
+                </div>
+             `;
+             
+             const localCache = loadLocalCache();
+             localCache[questionId] = { 
+                answer: streamed, 
+                ts: Date.now(), 
+                backendCached: finalBackendCached,
+                subject: subjectInfo.name,
+                questionText: questionText
+             };
+             saveLocalCache(localCache);
+             
+             if (window.MathJax && window.MathJax.typesetPromise) {
+                MathJax.typesetPromise([targetElement]).catch(console.warn);
+             }
+         });
       }
     }, abortController.signal);
     
@@ -477,24 +523,21 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
 
 // -------------------- Universal Main Functions --------------------
 
-// FOR STRUCTURE WITH EXISTING data-question ATTRIBUTES (BT-202, etc.)
+// FOR STRUCTURE WITH EXISTING data-question ATTRIBUTES
 async function showAnswer(button, questionId, opts = { forceRefresh: false }) {
   const answerBox = button.nextElementSibling;
   if (!answerBox) return;
 
   const questionContainer = button.closest('.question');
-
   const partChar = questionId.slice(-1); 
-  
-  const partIndex = (partChar >= 'a' && partChar <= 'z') 
-                      ? partChar.charCodeAt(0) - 'a'.charCodeAt(0) 
-                      : 0;
+  const partIndex = (partChar >= 'a' && partChar <= 'z') ? partChar.charCodeAt(0) - 'a'.charCodeAt(0) : 0;
 
   const questionText = extractQuestionText(questionContainer, partIndex);
 
   if (!questionText) {
     console.error("Could not extract question text for ID:", questionId);
-    answerBox.innerHTML = "<p>Error: Could not find the question text.</p>";
+    answerBox.innerHTML = "<p style='color:red'>Error: Could not find the question text. Please refresh the page.</p>";
+    answerBox.style.display = 'block';
     return;
   }
   
@@ -502,7 +545,7 @@ async function showAnswer(button, questionId, opts = { forceRefresh: false }) {
   await displayAnswer(answerBox, questionId, questionText, opts);
 }
 
-// For structures without data-question (BT-103, BT-105, BT-205)
+// For structures without data-question
 function enableQuestionAnswering() {
   const style = document.createElement('style');
   style.textContent = `
@@ -570,21 +613,21 @@ window.regenerateAnswer = async function(questionId, questionText, button) {
   const currentCount = await getGlobalRegenerateCount(questionId);
   
   if (currentCount >= REGENERATE_LIMIT) {
-    alert(`Regenerate limit reached for this question (${REGENERATE_LIMIT}/${REGENERATE_LIMIT}). The cached answer is optimized for your exam preparation. If you need additional help, please contact support.`);
+    alert(`Regenerate limit reached for this question (${REGENERATE_LIMIT}/${REGENERATE_LIMIT}). The cached answer is optimized for your exam preparation.`);
     return;
   }
   
   const remaining = REGENERATE_LIMIT - currentCount;
-  const confirmMsg = `Regenerate this answer?\n\n• Global regenerations used: ${currentCount}/${REGENERATE_LIMIT}\n• Remaining: ${remaining}\n\nNote: This will use one regeneration attempt globally for all users.`;
+  const confirmMsg = `Regenerate this answer?\n\n• Global regenerations used: ${currentCount}/${REGENERATE_LIMIT}\n• Remaining: ${remaining}`;
   
   if (!confirm(confirmMsg)) {
     return;
   }
   
   // Increment global regenerate count
-  const newCount = await incrementGlobalRegenerateCount(questionId);
+  await incrementGlobalRegenerateCount(questionId);
   
-  // Clear both local and trigger global cache refresh
+  // Clear local cache and force global refresh
   const localCache = loadLocalCache();
   delete localCache[questionId];
   saveLocalCache(localCache);
@@ -612,7 +655,7 @@ document.addEventListener('DOMContentLoaded', function() {
   console.log('RGPV Universal System Ready - Global Cache Enabled');
 });
 
-// Debug utilities (Developer only)
+// Debug utilities
 window.RGPVSystem = {
   clearLocalCache: () => {
     localStorage.removeItem(LOCAL_CACHE_KEY);
@@ -626,44 +669,8 @@ window.RGPVSystem = {
       console.log(`${key}: ${item.subject} (${timeAgo(item.ts)} ago)`);
     });
   },
-  async showGlobalCacheStats() {
-    console.log('Fetching global cache statistics...');
-    console.log('Note: Global cache is managed server-side');
-  },
-  async checkGlobalCache(questionId) {
-    const cached = await getGlobalCache(questionId);
-    if (cached) {
-      console.log(`Question ${questionId} is globally cached`);
-      console.log('Metadata:', cached.metadata);
-    } else {
-      console.log(`Question ${questionId} is NOT in global cache`);
-    }
-  },
   async checkGlobalRegenerateCount(questionId) {
     const count = await getGlobalRegenerateCount(questionId);
     console.log(`Question ${questionId}: ${count}/${REGENERATE_LIMIT} regenerations used globally`);
-  },
-  developerNote: () => {
-    console.log(`
-=== RGPV System - Global Cache Implementation ===
-
-Features:
-1. Global Cache: All answers cached server-side
-2. Global Regeneration Tracking: Shared across all users
-3. Mobile-Responsive Loading UI
-
-Developer Controls:
-- Only accessible via source code modifications
-- Global cache resets must be done server-side
-- Regeneration limits enforced globally
-
-API Endpoints Required:
-- GET ${CACHE_API_URL}?questionId=XXX
-- POST ${CACHE_API_URL} (body: {questionId, answer, metadata})
-- GET ${CACHE_API_URL}/regenerate?questionId=XXX
-- POST ${CACHE_API_URL}/regenerate (body: {questionId})
-
-Note: Ensure backend implements these endpoints for full functionality.
-    `);
   }
 };
