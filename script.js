@@ -1,73 +1,83 @@
-// -------------------- Universal RGPV Question System --------------------
+// ==================== Universal RGPV Question System - Student Edition ====================
 const BACKEND_URL = 'https://hyper-learning-backend.vercel.app/api/ask';
-const CACHE_API_URL = 'https://hyper-learning-backend.vercel.app/api/cache'; // Global cache endpoint
+const CACHE_API_URL = 'https://hyper-learning-backend.vercel.app/api/cache';
 const LOCAL_CACHE_KEY = 'rgpv_universal_answers_v1';
 const CACHE_TTL_DAYS = 30;
 const REGENERATE_LIMIT = 7;
 
-// Complete subject mapping
-// NOTE: You can add your 30+ subjects here. The system matches based on the prefix (e.g., "BT-101").
+// Complete subject mapping for all 30+ subjects
 const SUBJECT_MAP = {
-  'BT-101': { name: 'Engineering Chemistry', type: 'CHEMISTRY' },
-  'BT-102': { name: 'Mathematics-I', type: 'MATH' },
-  'BT-103': { name: 'English for Communication', type: 'ENGLISH' },
-  'BT-104': { name: 'Basic Electrical & Electronics Engineering', type: 'ELECTRICAL' },
-  'BT-105': { name: 'Engineering Graphics', type: 'GRAPHICS' },
-  'BT-201': { name: 'Engineering Physics', type: 'PHYSICS' },
-  'BT-202': { name: 'Mathematics-II', type: 'MATH' },
-  'BT-203': { name: 'Basic Mechanical Engineering', type: 'MECHANICAL' },
-  'BT-204': { name: 'Basic Civil Engineering & Mechanics', type: 'CIVIL' },
-  'BT-205': { name: 'Basic Computer Engineering', type: 'COMPUTER' },
-  // Add your other subjects below...
-  'AD-301': { name: 'Technical Communication', type: 'ENGLISH' },
-  'AD-303': { name: 'Data Structure', type: 'COMPUTER' },
-  'AI-302': { name: 'Probability and Statistics', type: 'MATH' }
+  // --- 1st Year Subjects ---
+  'BT-101': { name: 'Engineering Chemistry', type: 'CHEMISTRY', emoji: '⚗️', color: '#00008B' },
+  'BT-102': { name: 'Mathematics-I', type: 'MATH', emoji: '📐', color: '#3b82f6' },
+  'BT-103': { name: 'English for Communication', type: 'ENGLISH', emoji: '📝', color: '#8b5cf6' },
+  'BT-104': { name: 'Basic Electrical & Electronics Engineering', type: 'ELECTRICAL', emoji: '⚡', color: '#00008B' },
+  'BT-105': { name: 'Engineering Graphics', type: 'GRAPHICS', emoji: '📊', color: '#06b6d4' },
+  'BT-201': { name: 'Engineering Physics', type: 'PHYSICS', emoji: '🔬', color: '#6366f1' },
+  'BT-202': { name: 'Mathematics-II', type: 'MATH', emoji: '📐', color: '#3b82f6' },
+  'BT-203': { name: 'Basic Mechanical Engineering', type: 'MECHANICAL', emoji: '⚙️', color: '#64748b' },
+  'BT-204': { name: 'Basic Civil Engineering & Mechanics', type: 'CIVIL', emoji: '🏗️', color: '#78716c' },
+  'BT-205': { name: 'Basic Computer Engineering', type: 'COMPUTER', emoji: '💻', color: '#00008B' },
+
+  // --- 3rd Semester Subjects (AIML) ---
+  'AL-301': { name: 'Technical Communication', type: 'ENGLISH', emoji: '📝', color: '#8b5cf6' },
+  'AL-302': { name: 'Probability and Statistics', type: 'MATH', emoji: '📊', color: '#3b82f6' },
+  'AL-303': { name: 'Data Structure', type: 'COMPUTER', emoji: '🗂️', color: '#00008B' },
+  'AL-304': { name: 'Artificial Intelligence', type: 'COMPUTER', emoji: '🤖', color: '#a855f7' },
+  'AL-305': { name: 'Object Oriented Programming & Methodology', type: 'COMPUTER', emoji: '💻', color: '#00008B' },
+
+  // --- 3rd Semester Subjects (CSIT) ---
+  'ES-301': { name: 'Energy & Environmental Engineering', type: 'GENERAL', emoji: '🌱', color: '#00008B' },
+  'CSIT-302': { name: 'Discrete Structure', type: 'MATH', emoji: '🔢', color: '#3b82f6' },
+  'CSIT-303': { name: 'Data Structure', type: 'COMPUTER', emoji: '🗂️', color: '#00008B' },
+  'CSIT-304': { name: 'Digital Circuits & System', type: 'ELECTRICAL', emoji: '⚡', color: '#00008B' },
+  'CSIT-305': { name: 'Object Oriented Programming & Methodology', type: 'COMPUTER', emoji: '💻', color: '#00008B' },
+
+  // --- 3rd Semester Subjects (CSE) ---
+  'CS-302': { name: 'Discrete Structure', type: 'MATH', emoji: '🔢', color: '#3b82f6' },
+  'CS-303': { name: 'Data Structure', type: 'COMPUTER', emoji: '🗂️', color: '#00008B' },
+  'CS-304': { name: 'Digital Systems', type: 'ELECTRICAL', emoji: '⚡', color: '#00008B' },
+  'CS-305': { name: 'Object Oriented Programming & Methodology', type: 'COMPUTER', emoji: '💻', color: '#00008B' },
+
+  // --- 4th Semester Subjects (AIML) ---
+  'AL-401': { name: 'Intro to Discrete Structure & Linear Algebra', type: 'MATH', emoji: '📐', color: '#3b82f6' },
+  'AL-402': { name: 'Analysis & Design of Algorithms', type: 'COMPUTER', emoji: '🧮', color: '#00008B' },
+  'AL-403': { name: 'Software Engineering', type: 'COMPUTER', emoji: '🛠️', color: '#8b5cf6' },
+  'AL-404': { name: 'Computer Org & Architecture', type: 'COMPUTER', emoji: '🖥️', color: '#64748b' },
+  'AL-405': { name: 'Machine Learning', type: 'COMPUTER', emoji: '🤖', color: '#a855f7' },
+
+  // --- 4th Semester Subjects (CSIT) ---
+  'BT-401': { name: 'Mathematics-III', type: 'MATH', emoji: '📐', color: '#3b82f6' },
+  'CSIT-402': { name: 'Analog & Digital Communication', type: 'ELECTRICAL', emoji: '📡', color: '#00008B' },
+  'CSIT-403': { name: 'Analysis & Design of Algorithm', type: 'COMPUTER', emoji: '🧮', color: '#00008B' },
+  'CSIT-404': { name: 'Computer Org & Architecture', type: 'COMPUTER', emoji: '🖥️', color: '#64748b' },
+  'CSIT-405': { name: 'Database Management System', type: 'COMPUTER', emoji: '🗄️', color: '#06b6d4' },
+
+  // --- 4th Semester Subjects (CSE) ---
+  'CS-402': { name: 'Analysis Design of Algorithm', type: 'COMPUTER', emoji: '🧮', color: '#00008B' },
+  'CS-403': { name: 'Software Engineering', type: 'COMPUTER', emoji: '🛠️', color: '#8b5cf6' },
+  'CS-404': { name: 'Computer Org. & Architecture', type: 'COMPUTER', emoji: '🖥️', color: '#64748b' },
+  'CS-405': { name: 'Operating Systems', type: 'COMPUTER', emoji: '💿', color: '#00008B' },
+  
+  // AD Subjects (Aliases)
+  'AD-301': { name: 'Technical Communication', type: 'ENGLISH', emoji: '📝', color: '#8b5cf6' },
+  'AD-303': { name: 'Data Structure', type: 'COMPUTER', emoji: '🗂️', color: '#00008B' },
+  'AD-305': { name: 'Object Oriented Programming & Methodology', type: 'COMPUTER', emoji: '💻', color: '#00008B' },
+  'AI-302': { name: 'Probability and Statistics', type: 'MATH', emoji: '📊', color: '#3b82f6' }
 };
 
-// -------------------- Global Cache API Functions --------------------
+// ==================== Global Cache API Functions ====================
 async function getGlobalCache(questionId) {
-  try {
-    const response = await fetch(`${CACHE_API_URL}?questionId=${encodeURIComponent(questionId)}`);
-    if (response.ok) {
-      const data = await response.json();
-      return data.cached ? data : null;
-    }
-  } catch (e) {
-    console.warn('Global cache fetch failed', e);
-  }
-  return null;
+    return null; // Force the code to call /api/ask, which handles the cache properly
 }
 
-async function setGlobalCache(questionId, answer, metadata) {
-  try {
-    await fetch(CACHE_API_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        questionId,
-        answer,
-        metadata: {
-          ...metadata,
-          timestamp: Date.now()
-        }
-      })
-    });
-  } catch (e) {
-    console.warn('Global cache save failed', e);
-  }
+async function setGlobalCache(questionId, answer) {
+    console.log("Backend already saved this. Skipping frontend save.");
+    return; // Stops the CORS/404 error immediately
 }
 
 async function getGlobalRegenerateCount(questionId) {
-  try {
-    const response = await fetch(`${CACHE_API_URL}/regenerate?questionId=${encodeURIComponent(questionId)}`);
-    if (response.ok) {
-      const data = await response.json();
-      return data.count || 0;
-    }
-  } catch (e) {
-    console.warn('Failed to fetch regenerate count', e);
-  }
-  return 0;
+    return 0; // Assume 0 so the UI doesn't break
 }
 
 async function incrementGlobalRegenerateCount(questionId) {
@@ -87,7 +97,7 @@ async function incrementGlobalRegenerateCount(questionId) {
   return 1;
 }
 
-// -------------------- Core Utilities --------------------
+// ==================== Core Utilities ====================
 function loadLocalCache() {
   try {
     return JSON.parse(localStorage.getItem(LOCAL_CACHE_KEY) || '{}');
@@ -105,13 +115,12 @@ function saveLocalCache(cache) {
 }
 
 function getSubjectInfo(questionId) {
-  // Matches prefix like "BT-101" or "AD-303" even if ID is complex
   for (const key in SUBJECT_MAP) {
       if (questionId.startsWith(key) || questionId.includes(key)) {
           return SUBJECT_MAP[key];
       }
   }
-  return { name: 'General Engineering', type: 'GENERAL' };
+  return { name: 'General Engineering', type: 'GENERAL', emoji: '📚', color: '#6b7280' };
 }
 
 function generateQuestionId(questionContainer) {
@@ -122,7 +131,6 @@ function generateQuestionId(questionContainer) {
   const summary = questionContainer.querySelector('summary');
   const questionNumber = summary?.textContent.match(/Q\.?\s*(\d+)/)?.[1] || '0';
   
-  // Check if it has parts (a/b) - Rough check for ID generation
   const allAnswerPs = questionContainer.querySelectorAll('p[style*="margin-left"]');
   const hasMultipleParts = allAnswerPs.length > 1 || summary?.innerHTML.includes('<hr>');
   
@@ -133,23 +141,20 @@ function generateQuestionId(questionContainer) {
   }
 }
 
-// -------------------- NEW: ROBUST TEXT EXTRACTION --------------------
+// ==================== ROBUST TEXT EXTRACTION ====================
 function extractQuestionText(questionContainer, partIndex = 0) {
     const summary = questionContainer.querySelector('summary');
     if (!summary) return '';
 
-    // Helper: Convert HTML Table to Markdown Text for AI
     function tableToMarkdown(table) {
         let md = '\n\n';
         const rows = Array.from(table.querySelectorAll('tr'));
         
         rows.forEach((row, index) => {
             const cells = Array.from(row.querySelectorAll('th, td'));
-            // Build row string
             const rowText = '| ' + cells.map(c => c.textContent.trim().replace(/\n/g, ' ')).join(' | ') + ' |';
             md += rowText + '\n';
 
-            // Add Markdown separator after header (assuming first row is header)
             if (index === 0) {
                 const separator = '| ' + cells.map(() => '---').join(' | ') + ' |';
                 md += separator + '\n';
@@ -158,7 +163,6 @@ function extractQuestionText(questionContainer, partIndex = 0) {
         return md + '\n';
     }
 
-    // Helper: Extract Alt text from Images
     function extractImages(element) {
         const images = element.querySelectorAll('img');
         let imgText = '';
@@ -171,7 +175,6 @@ function extractQuestionText(questionContainer, partIndex = 0) {
         return imgText;
     }
 
-    // 1. Split summary children by <hr> tags to separate parts (Part A / Part B)
     const children = Array.from(summary.children);
     let parts = [];
     let currentBuffer = [];
@@ -186,38 +189,29 @@ function extractQuestionText(questionContainer, partIndex = 0) {
     });
     if (currentBuffer.length > 0) parts.push(currentBuffer);
 
-    // 2. Select the specific part (0 for 'a', 1 for 'b')
     const targetNodes = parts[partIndex];
     
     if (!targetNodes || targetNodes.length === 0) {
-        // Fallback: If structure is simple (no HRs), return text of the specific index if possible
         if (parts.length === 0 && partIndex === 0) return summary.textContent; 
         return '';
     }
 
-    // 3. Build the final text string from the nodes
     let fullText = '';
     
     targetNodes.forEach(node => {
-        // Handle Tables directly
         if (node.tagName === 'TABLE') {
             fullText += tableToMarkdown(node);
         } 
-        // Handle Tables wrapped in Divs (responsive wrappers)
         else if (node.tagName === 'DIV' && node.querySelector('table')) {
             const table = node.querySelector('table');
             fullText += tableToMarkdown(table);
         }
-        // Handle Direct Images
         else if (node.tagName === 'IMG') {
             const alt = node.getAttribute('alt');
             if (alt) fullText += `\n[Image Context: ${alt}]\n`;
         }
-        // Handle Paragraphs/Text
         else {
-            // Add text content
             fullText += node.textContent.trim() + '\n';
-            // Scan for nested images inside the paragraph
             fullText += extractImages(node);
         }
     });
@@ -225,24 +219,38 @@ function extractQuestionText(questionContainer, partIndex = 0) {
     return fullText.trim();
 }
 
-// -------------------- UPDATED PROMPTS --------------------
+// ==================== UPDATED PROMPTS ====================
 function createSubjectPrompt(subjectInfo, questionText) {
-  const prompts = {
-    'MATH': 'You are an expert mathematics tutor. Provide detailed step-by-step solutions. Use LaTeX for math equations ($...$ or $$...$$). If data is provided in a table format (Markdown), use that specific data for calculations: ',
-    'ENGLISH': 'You are an expert communication tutor. Provide comprehensive answers with grammar explanations: ',
-    'GRAPHICS': 'You are an expert engineering graphics tutor. Explain drawing principles. If an image description is provided in brackets [Image Context: ...], use that to describe the geometry: ',
-    'COMPUTER': 'You are an expert computer engineering tutor. Provide code examples and algorithms: ',
-    'PHYSICS': 'You are an expert physics tutor. Provide solutions with formulas: ',
-    'CHEMISTRY': 'You are an expert chemistry tutor. Provide chemical equations: ',
-    'ELECTRICAL': 'You are an expert electrical engineering tutor: ',
-    'MECHANICAL': 'You are an expert mechanical engineering tutor: ',
-    'CIVIL': 'You are an expert civil engineering tutor. If an image description is provided [Image Context: ...], use it to solve the problem (e.g. Moment of Inertia): ',
-    'GENERAL': 'You are an expert engineering tutor: '
+  const intro = `You are an expert tutor for RGPV B.Tech students in ${subjectInfo.name}. `;
+
+  const typeInstructions = {
+    'MATH': 'Provide detailed step-by-step mathematical solutions. Use LaTeX for equations ($...$ or $$...$$). For Probability/Statistics, explain the logic clearly. For Discrete Structures, use proper set theory/logic notation: ',
+    
+    'ENGLISH': 'Provide comprehensive answers with proper grammar, communication theories, and professional writing formats (letters/reports): ',
+    
+    'GRAPHICS': 'Explain engineering drawing principles (Projections, Isometric, Scales). If an image description is provided [Image Context: ...], use it to describe the geometry construction: ',
+    
+    'COMPUTER': 'Provide detailed technical explanations. For coding (DS/OOPM/ML), use C++, Java, or Python with comments. For theoretical subjects (SE, DBMS, COA), use algorithms, schemas, and architectural diagrams descriptions: ',
+    
+    'PHYSICS': 'Provide physics derivations, formulas, and conceptual explanations with standard units: ',
+    
+    'CHEMISTRY': 'Provide chemical reactions, equations, and molecular explanations: ',
+    
+    'ELECTRICAL': 'Provide circuit analysis, boolean algebra (for Digital Systems), and signal processing explanations: ',
+    
+    'MECHANICAL': 'Provide engineering mechanics solutions, thermodynamics principles, and practical applications: ',
+    
+    'CIVIL': 'Provide structural analysis and mechanics solutions. If an image description is provided [Image Context: ...], use it to solve the problem (e.g. Moment of Inertia): ',
+    
+    'GENERAL': 'Provide detailed engineering explanations with clear examples: '
   };
   
-  return (prompts[subjectInfo.type] || prompts['GENERAL']) + questionText;
+  const instructions = typeInstructions[subjectInfo.type] || typeInstructions['GENERAL'];
+  
+  return intro + instructions + questionText;
 }
 
+// ==================== ENHANCED HTML FORMATTING (Student-Friendly) ====================
 function formatAnswerAsHtml(str) {
   if (!str) return '';
   
@@ -252,21 +260,21 @@ function formatAnswerAsHtml(str) {
     .replace(/>/g, '&gt;');
 
   let formatted = escaped
-    .replace(/^### (.*$)/gim, '<h3 style="font-size: 1.1rem; margin: 1rem 0 0.5rem;">$1</h3>')
-    .replace(/^## (.*$)/gim, '<h2 style="font-size: 1.25rem; margin: 1rem 0 0.5rem;">$1</h2>')
-    .replace(/^# (.*$)/gim, '<h1 style="font-size: 1.4rem; margin: 1rem 0 0.5rem;">$1</h1>')
-    .replace(/\*\*\*(.*?)\*\*\*/g, '<strong><em>$1</em></strong>')
-    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.*?)\*/g, '<em>$1</em>')
-    .replace(/```([^`]+)```/g, '<pre style="background:#f3f4f6;padding:0.75rem;border-radius:6px;overflow-x:auto;font-size:0.85rem;max-width:100%;"><code>$1</code></pre>')
-    .replace(/`([^`]+)`/g, '<code style="background:#f3f4f6;padding:2px 4px;border-radius:3px;font-size:0.9em;">$1</code>')
-    .replace(/^\* (.*$)/gim, '<li style="margin-bottom: 0.5rem;">$1</li>')
-    .replace(/^(\d+)\. (.*$)/gim, '<li style="margin-bottom: 0.5rem;">$2</li>')
-    .replace(/\n\n/g, '</p><p style="margin-bottom: 0.75rem; line-height: 1.6; font-size: 0.95rem;">')
+    .replace(/^### (.*$)/gim, '<h3 style="font-size: 1.15rem; margin: 1.5rem 0 0.75rem; color: #1e293b; font-weight: 700; padding-left: 12px; border-left: 3px solid #3b82f6;">$1</h3>')
+    .replace(/^## (.*$)/gim, '<h2 style="font-size: 1.3rem; margin: 1.75rem 0 0.85rem; color: #0f172a; font-weight: 700; padding: 8px 12px; background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%); border-radius: 6px;">$1</h2>')
+    .replace(/^# (.*$)/gim, '<h1 style="font-size: 1.5rem; margin: 2rem 0 1rem; color: #0c4a6e; font-weight: 800; padding: 12px 16px; background: linear-gradient(135deg, #bfdbfe 0%, #ddd6fe 100%); border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">$1</h1>')
+    .replace(/\*\*\*(.*?)\*\*\*/g, '<strong style="color: #7c3aed; background: #f3e8ff; padding: 2px 6px; border-radius: 4px;"><em>$1</em></strong>')
+    .replace(/\*\*(.*?)\*\*/g, '<strong style="color: #0369a1; font-weight: 700;">$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em style="color: #6366f1;">$1</em>')
+    .replace(/```([^`]+)```/g, '<pre style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.9rem; max-width: 100%; border: 1px solid #cbd5e1; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);"><code style="font-family: \'Fira Code\', \'Consolas\', monospace; color: #1e293b;">$1</code></pre>')
+    .replace(/`([^`]+)`/g, '<code style="background: #fef3c7; color: #92400e; padding: 3px 6px; border-radius: 4px; font-size: 0.9em; font-weight: 600; font-family: \'Fira Code\', monospace;">$1</code>')
+    .replace(/^\* (.*$)/gim, '<li style="margin-bottom: 0.65rem; padding-left: 0.5rem; line-height: 1.7; position: relative;"><span style="position: absolute; left: -1.2rem; color: #3b82f6; font-weight: bold;">•</span>$1</li>')
+    .replace(/^(\d+)\. (.*$)/gim, '<li style="margin-bottom: 0.65rem; padding-left: 0.5rem; line-height: 1.7; list-style-position: inside; color: #334155;">$2</li>')
+    .replace(/\n\n/g, '</p><p style="margin-bottom: 1rem; line-height: 1.75; font-size: 1rem; color: #334155; text-align: justify;">')
     .replace(/\n/g, '<br>');
 
   if (!formatted.includes('<p>') && !formatted.includes('<h')) {
-    formatted = '<p style="margin-bottom: 0.75rem; line-height: 1.6; font-size: 0.95rem;">' + formatted + '</p>';
+    formatted = '<p style="margin-bottom: 1rem; line-height: 1.75; font-size: 1rem; color: #334155; text-align: justify;">' + formatted + '</p>';
   }
 
   return formatted;
@@ -276,14 +284,14 @@ function timeAgo(ts) {
   const diff = Date.now() - ts;
   const mins = Math.floor(diff / 60000);
   if (mins < 1) return 'just now';
-  if (mins < 60) return `${mins}m`;
+  if (mins < 60) return `${mins}m ago`;
   const hours = Math.floor(mins / 60);
-  if (hours < 24) return `${hours}h`;
+  if (hours < 24) return `${hours}h ago`;
   const days = Math.floor(hours / 24);
-  return `${days}d`;
+  return `${days}d ago`;
 }
 
-// -------------------- API Functions --------------------
+// ==================== API Functions ====================
 const controllers = new WeakMap();
 
 async function fetchAnswerStream(question, onChunk, signal) {
@@ -319,7 +327,7 @@ async function fetchAnswerStream(question, onChunk, signal) {
   return { fullText: text, backendCached: resp.headers.get('x-cached') === 'true' };
 }
 
-// -------------------- Universal Answer Display Function --------------------
+// ==================== ENHANCED ANSWER DISPLAY (Beautiful UI) ====================
 async function displayAnswer(targetElement, questionId, questionText, opts = { forceRefresh: false }) {
   const TTL = CACHE_TTL_DAYS * 24 * 60 * 60 * 1000;
   const regenCount = await getGlobalRegenerateCount(questionId);
@@ -333,24 +341,33 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
       const isLimitReached = regenCount >= REGENERATE_LIMIT;
       
       targetElement.innerHTML = `
-       <div style="margin: 1rem 0; padding: 1rem; border-radius: 8px; background: #f8f9fa; border-left: 4px solid #0ea5e9; max-width: 100%; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word;">
-          <div style="margin-bottom: 0.5rem;">
-            <span style="font-size: 12px; background: #dcfce7; color: #15803d; padding: 4px 8px; border-radius: 999px;">
-              Global cached (${subjectInfo.name})
-            </span>
-            <span style="font-size: 12px; color: #6b7280; margin-left: 8px;">
-              Saved ${timeAgo(globalCache.metadata?.timestamp || Date.now())}
-            </span>
+       <div style="margin: 1.5rem 0; padding: 1.5rem; border-radius: 12px; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); border: 2px solid #e2e8f0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); max-width: 100%; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word;">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; flex-wrap: wrap;">
+            <span style="font-size: 1.5rem;">${subjectInfo.emoji}</span>
+            <div style="flex: 1; min-width: 0;">
+              <div style="font-size: 0.75rem; font-weight: 600; color: ${subjectInfo.color}; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px;">${subjectInfo.name}</div>
+              <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                <span style="font-size: 11px; background: linear-gradient(135deg, #dcfce7 0%, #d1fae5 100%); color: #15803d; padding: 4px 10px; border-radius: 12px; font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                  ✓ Cached Answer
+                </span>
+                <span style="font-size: 11px; color: #64748b; font-weight: 500;">
+                  📅 Saved ${timeAgo(globalCache.metadata?.timestamp || Date.now())}
+                </span>
+              </div>
+            </div>
           </div>
-          ${formatAnswerAsHtml(globalCache.answer)}
-          <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e5e7eb; display: flex; gap: 0.5rem; flex-wrap: wrap;">
-            <button onclick="copyText('${questionId}')" style="padding: 0.4rem 0.6rem; border-radius: 6px; border: 1px solid #ccc; background: #f9f9f9; cursor: pointer;">Copy</button>
-            <button onclick="downloadText('${questionId}')" style="padding: 0.4rem 0.6rem; border-radius: 6px; border: 1px solid #ccc; background: #f9f9f9; cursor: pointer;">Download</button>
+          <div style="padding: 1rem; background: #ffffff; border-radius: 8px; border-left: 4px solid ${subjectInfo.color};">
+            ${formatAnswerAsHtml(globalCache.answer)}
+          </div>
+          <div style="margin-top: 1.25rem; padding-top: 1.25rem; border-top: 2px solid #f1f5f9; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <button onclick="copyText('${questionId}')" style="flex: 1; min-width: 100px; padding: 0.6rem 1rem; border-radius: 8px; border: 2px solid #e2e8f0; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); cursor: pointer; font-weight: 600; color: #475569; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.05);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.05)';">📋 Copy</button>
+            <button onclick="downloadText('${questionId}')" style="flex: 1; min-width: 100px; padding: 0.6rem 1rem; border-radius: 8px; border: 2px solid #e2e8f0; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); cursor: pointer; font-weight: 600; color: #475569; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.05);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.05)';">💾 Download</button>
             <button onclick="regenerateAnswer('${questionId}', \`${questionText.replace(/`/g, '\\`')}\`, this)" 
                     ${isLimitReached ? 'disabled' : ''} 
-                    style="padding: 0.4rem 0.6rem; border-radius: 6px; border: 1px solid #ccc; background: #f9f9f9; cursor: ${isLimitReached ? 'not-allowed' : 'pointer'}; opacity: ${isLimitReached ? '0.5' : '1'};"
-                    title="${isLimitReached ? 'Regenerate limit reached (7/7)' : `Regenerations used: ${regenCount}/${REGENERATE_LIMIT}`}">
-              ${isLimitReached ? 'Limit Reached' : `Regenerate (${regenRemaining} left)`}
+                    style="flex: 1; min-width: 120px; padding: 0.6rem 1rem; border-radius: 8px; border: 2px solid ${isLimitReached ? '#e2e8f0' : '#3b82f6'}; background: ${isLimitReached ? '#f1f5f9' : 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)'}; cursor: ${isLimitReached ? 'not-allowed' : 'pointer'}; font-weight: 600; color: ${isLimitReached ? '#94a3b8' : '#ffffff'}; opacity: ${isLimitReached ? '0.6' : '1'}; transition: all 0.2s; box-shadow: ${isLimitReached ? 'none' : '0 2px 4px rgba(59,130,246,0.3)'};"
+                    title="${isLimitReached ? 'Regenerate limit reached (7/7)' : `Regenerations used: ${regenCount}/${REGENERATE_LIMIT}`}"
+                    ${!isLimitReached ? `onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(59,130,246,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(59,130,246,0.3)';"` : ''}>
+              ${isLimitReached ? '🚫 Limit Reached' : `🔄 Regenerate (${regenRemaining} left)`}
             </button>
           </div>
         </div>
@@ -373,26 +390,42 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
     }
   }
 
-  // Show loading
+  // Show loading with beautiful animation
   const subjectInfo = getSubjectInfo(questionId);
   const abortController = new AbortController();
   
   targetElement.innerHTML = `
-    <div style="margin: 1rem 0; padding: 1rem; border-radius: 8px; background: #f0f9ff; border-left: 4px solid #0ea5e9;">
-      <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
-        <div style="display: flex; align-items: center; gap: 0.5rem; flex: 1; min-width: 0;">
-          <div style="width: 16px; height: 16px; border: 2px solid #e5e7eb; border-top-color: #0ea5e9; border-radius: 50%; animation: spin 0.8s linear infinite; flex-shrink: 0;"></div>
-          <span style="font-size: 0.9rem; overflow: hidden; text-overflow: ellipsis;">Generating ${subjectInfo.name} solution...</span>
+    <div style="margin: 1.5rem 0; padding: 1.5rem; border-radius: 12px; background: linear-gradient(135deg, #eff6ff 0%, #e0f2fe 100%); border: 2px solid #bae6fd; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);">
+      <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0;">
+          <div style="width: 20px; height: 20px; border: 3px solid #e0f2fe; border-top-color: #0284c7; border-radius: 50%; animation: spin 0.8s linear infinite; flex-shrink: 0;"></div>
+          <div style="flex: 1; min-width: 0;">
+            <div style="font-size: 1rem; font-weight: 700; color: #0c4a6e; overflow: hidden; text-overflow: ellipsis;">
+              ${subjectInfo.emoji} Generating ${subjectInfo.name} Solution...
+            </div>
+            <div style="font-size: 0.8rem; color: #0369a1; margin-top: 4px; font-weight: 500;">
+              ✨ AI is preparing your personalized answer
+            </div>
+          </div>
         </div>
-        <button onclick="window.cancelGeneration_${questionId.replace(/[^a-zA-Z0-9]/g, '_')}()" style="padding: 0.3rem 0.6rem; border-radius: 4px; border: 1px solid #ccc; background: #fff; cursor: pointer; flex-shrink: 0; font-size: 0.85rem;">Cancel</button>
-      </div>
-      <div id="streaming-${questionId}" style="margin-top: 1rem;"></div>
+        <button onclick="window.cancelGeneration_${questionId.replace(/[^a-zA-Z0-9]/g, '_')}()" style="padding: 0.5rem 1rem; border-radius: 8px; border: 2px solid #dc2626; background: #ffffff; cursor: pointer; flex-shrink: 0; font-size: 0.9rem; font-weight: 600; color: #141111ff; transition: all 0.2s; box-shadow: 0 2px 4px rgba(220, 38, 38, 0.2);" onmouseover="this.style.background='#dc2626'; this.style.color='#ffffff';" onmouseout="this.style.background='#ffffff'; this.style.color='#265adcff';">❌ Cancel</button></div>
+      <div id="streaming-${questionId}" style="margin-top: 1.25rem; padding: 1rem; background: #ffffff; border-radius: 8px; min-height: 50px;"></div>
     </div>
   `;
 
   window[`cancelGeneration_${questionId.replace(/[^a-zA-Z0-9]/g, '_')}`] = () => {
     abortController.abort();
-    targetElement.innerHTML = '<p style="color: #dc2626; padding: 1rem;">Generation cancelled</p>';
+    targetElement.innerHTML = `
+      <div style="margin: 1.5rem 0; padding: 1.5rem; border-radius: 12px; background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%); border: 2px solid #fecaca; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="font-size: 2rem;">⚠️</span>
+          <div>
+            <div style="font-size: 1.1rem; font-weight: 700; color: #991b1b; margin-bottom: 4px;">Generation Cancelled</div>
+            <div style="font-size: 0.9rem; color: #dc2626;">You stopped the AI generation process</div>
+          </div>
+        </div>
+      </div>
+    `;
   };
 
   const streamingDiv = document.getElementById(`streaming-${questionId}`);
@@ -417,20 +450,33 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
           const isFinalLimitReached = finalRegenCount >= REGENERATE_LIMIT;
           
           targetElement.innerHTML = `
-            <div style="margin: 1rem 0; padding: 1rem; border-radius: 8px; background: #f8f9fa; border-left: 4px solid #0ea5e9; max-width: 100%; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word;">
-              <div style="margin-bottom: 0.5rem;">
-                <span style="font-size: 12px; background: ${finalBackendCached ? '#dcfce7' : '#eef2ff'}; color: ${finalBackendCached ? '#15803d' : '#4338ca'}; padding: 4px 8px; border-radius: 999px;">
-                  ${finalBackendCached ? 'Server cached' : 'Fresh answer'} (${subjectInfo.name})
-                </span>
+            <div style="margin: 1.5rem 0; padding: 1.5rem; border-radius: 12px; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); border: 2px solid #e2e8f0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); max-width: 100%; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word;">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; flex-wrap: wrap;">
+                <span style="font-size: 1.5rem;">${subjectInfo.emoji}</span>
+                <div style="flex: 1; min-width: 0;">
+                  <div style="font-size: 0.75rem; font-weight: 600; color: ${subjectInfo.color}; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px;">${subjectInfo.name}</div>
+                  <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                    <span style="font-size: 11px; background: linear-gradient(135deg, ${finalBackendCached ? '#dcfce7' : '#eef2ff'} 0%, ${finalBackendCached ? '#d1fae5' : '#e0e7ff'} 100%); color: ${finalBackendCached ? '#15803d' : '#4338ca'}; padding: 4px 10px; border-radius: 12px; font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                      ${finalBackendCached ? '✓ Server Cached' : '✨ Fresh Answer'}
+                    </span>
+                    <span style="font-size: 11px; color: #64748b; font-weight: 500;">
+                      ⚡ Just now
+                    </span>
+                  </div>
+                </div>
               </div>
-              ${formatAnswerAsHtml(streamed)}
-              <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e5e7eb; display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                <button onclick="copyText('${questionId}')" style="padding: 0.4rem 0.6rem; border-radius: 6px; border: 1px solid #ccc; background: #f9f9f9; cursor: pointer;">Copy</button>
+              <div style="padding: 1rem; background: #ffffff; border-radius: 8px; border-left: 4px solid ${subjectInfo.color};">
+                ${formatAnswerAsHtml(streamed)}
+              </div>
+              <div style="margin-top: 1.25rem; padding-top: 1.25rem; border-top: 2px solid #f1f5f9; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                <button onclick="copyText('${questionId}')" style="flex: 1; min-width: 100px; padding: 0.6rem 1rem; border-radius: 8px; border: 2px solid #e2e8f0; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); cursor: pointer; font-weight: 600; color: #475569; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.05);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.05)';">📋 Copy</button>
+                <button onclick="downloadText('${questionId}')" style="flex: 1; min-width: 100px; padding: 0.6rem 1rem; border-radius: 8px; border: 2px solid #e2e8f0; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); cursor: pointer; font-weight: 600; color: #475569; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.05);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.05)';">💾 Download</button>
                 <button onclick="regenerateAnswer('${questionId}', \`${questionText.replace(/`/g, '\\`')}\`, this)" 
                         ${isFinalLimitReached ? 'disabled' : ''} 
-                        style="padding: 0.4rem 0.6rem; border-radius: 6px; border: 1px solid #ccc; background: #f9f9f9; cursor: ${isFinalLimitReached ? 'not-allowed' : 'pointer'}; opacity: ${isFinalLimitReached ? '0.5' : '1'};"
-                        title="${isFinalLimitReached ? 'Regenerate limit reached (7/7)' : `Regenerations used: ${finalRegenCount}/${REGENERATE_LIMIT}`}">
-                  ${isFinalLimitReached ? 'Limit Reached' : `Regenerate (${finalRegenRemaining} left)`}
+                        style="flex: 1; min-width: 120px; padding: 0.6rem 1rem; border-radius: 8px; border: 2px solid ${isFinalLimitReached ? '#e2e8f0' : '#3b82f6'}; background: ${isFinalLimitReached ? '#f1f5f9' : 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)'}; cursor: ${isFinalLimitReached ? 'not-allowed' : 'pointer'}; font-weight: 600; color: ${isFinalLimitReached ? '#94a3b8' : '#ffffff'}; opacity: ${isFinalLimitReached ? '0.6' : '1'}; transition: all 0.2s; box-shadow: ${isFinalLimitReached ? 'none' : '0 2px 4px rgba(59,130,246,0.3)'};"
+                        title="${isFinalLimitReached ? 'Regenerate limit reached (7/7)' : `Regenerations used: ${finalRegenCount}/${REGENERATE_LIMIT}`}"
+                        ${!isFinalLimitReached ? `onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(59,130,246,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(59,130,246,0.3)';"` : ''}>
+                  ${isFinalLimitReached ? '🚫 Limit Reached' : `🔄 Regenerate (${finalRegenRemaining} left)`}
                 </button>
               </div>
             </div>
@@ -455,11 +501,10 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
 
       streamed += chunk;
       if (streamingDiv) {
-        streamingDiv.innerHTML = formatAnswerAsHtml(streamed) + '<span style="display: inline-block; width: 8px; background: #111; margin-left: 2px; height: 1em; animation: blink 1s steps(2) infinite;">|</span>';
+        streamingDiv.innerHTML = formatAnswerAsHtml(streamed) + '<span style="display: inline-block; width: 2px; background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%); margin-left: 4px; height: 1.2em; animation: blink 1s steps(2) infinite; border-radius: 1px;">|</span>';
       }
 
       if (meta.done) {
-         // Handle immediate completion logic (same as above block)
          finalBackendCached = !!meta.backendCached;
          setGlobalCache(questionId, streamed, { 
              subject: subjectInfo.name, 
@@ -472,16 +517,19 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
              const isImmLimitReached = immRegenCount >= REGENERATE_LIMIT;
              
              targetElement.innerHTML = `
-                <div style="margin: 1rem 0; padding: 1rem; border-radius: 8px; background: #f8f9fa; border-left: 4px solid #0ea5e9; max-width: 100%; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word;">
-                  ${formatAnswerAsHtml(streamed)}
-                  <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e5e7eb; display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                    <button onclick="copyText('${questionId}')" style="padding: 0.4rem 0.6rem; border-radius: 6px; border: 1px solid #ccc; background: #f9f9f9; cursor: pointer;">Copy</button>
-                    <button onclick="downloadText('${questionId}')" style="padding: 0.4rem 0.6rem; border-radius: 6px; border: 1px solid #ccc; background: #f9f9f9; cursor: pointer;">Download</button>
+                <div style="margin: 1.5rem 0; padding: 1.5rem; border-radius: 12px; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); border: 2px solid #e2e8f0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); max-width: 100%; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word;">
+                  <div style="padding: 1rem; background: #ffffff; border-radius: 8px; border-left: 4px solid ${subjectInfo.color};">
+                    ${formatAnswerAsHtml(streamed)}
+                  </div>
+                  <div style="margin-top: 1.25rem; padding-top: 1.25rem; border-top: 2px solid #f1f5f9; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                    <button onclick="copyText('${questionId}')" style="flex: 1; min-width: 100px; padding: 0.6rem 1rem; border-radius: 8px; border: 2px solid #e2e8f0; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); cursor: pointer; font-weight: 600; color: #475569; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.05);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.05)';">📋 Copy</button>
+                    <button onclick="downloadText('${questionId}')" style="flex: 1; min-width: 100px; padding: 0.6rem 1rem; border-radius: 8px; border: 2px solid #e2e8f0; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); cursor: pointer; font-weight: 600; color: #475569; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.05);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.05)';">💾 Download</button>
                     <button onclick="regenerateAnswer('${questionId}', \`${questionText.replace(/`/g, '\\`')}\`, this)" 
                             ${isImmLimitReached ? 'disabled' : ''} 
-                            style="padding: 0.4rem 0.6rem; border-radius: 6px; border: 1px solid #ccc; background: #f9f9f9; cursor: ${isImmLimitReached ? 'not-allowed' : 'pointer'}; opacity: ${isImmLimitReached ? '0.5' : '1'};"
-                            title="${isImmLimitReached ? 'Regenerate limit reached (7/7)' : `Regenerations used: ${immRegenCount}/${REGENERATE_LIMIT}`}">
-                      ${isImmLimitReached ? 'Limit Reached' : `Regenerate (${immRegenRemaining} left)`}
+                            style="flex: 1; min-width: 120px; padding: 0.6rem 1rem; border-radius: 8px; border: 2px solid ${isImmLimitReached ? '#e2e8f0' : '#3b82f6'}; background: ${isImmLimitReached ? '#f1f5f9' : 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)'}; cursor: ${isImmLimitReached ? 'not-allowed' : 'pointer'}; font-weight: 600; color: ${isImmLimitReached ? '#94a3b8' : '#ffffff'}; opacity: ${isImmLimitReached ? '0.6' : '1'}; transition: all 0.2s; box-shadow: ${isImmLimitReached ? 'none' : '0 2px 4px rgba(59,130,246,0.3)'};"
+                            title="${isImmLimitReached ? 'Regenerate limit reached (7/7)' : `Regenerations used: ${immRegenCount}/${REGENERATE_LIMIT}`}"
+                            ${!isImmLimitReached ? `onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(59,130,246,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(59,130,246,0.3)';"` : ''}>
+                      ${isImmLimitReached ? '🚫 Limit Reached' : `🔄 Regenerate (${immRegenRemaining} left)`}
                     </button>
                   </div>
                 </div>
@@ -507,23 +555,34 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
   } catch (err) {
     if (err.name === 'AbortError') {
       targetElement.innerHTML = `
-        <div style="margin: 1rem 0; padding: 1rem; border-radius: 8px; background: #fef2f2; border-left: 4px solid #f59e0b;">
-          <p style="color: #d97706; margin: 0;">Generation cancelled</p>
+        <div style="margin: 1.5rem 0; padding: 1.5rem; border-radius: 12px; background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); border: 2px solid #fde68a; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span style="font-size: 2rem;">⚠️</span>
+            <div>
+              <div style="font-size: 1.1rem; font-weight: 700; color: #92400e; margin-bottom: 4px;">Generation Cancelled</div>
+              <div style="font-size: 0.9rem; color: #b45309;">The AI generation was stopped by you</div>
+            </div>
+          </div>
         </div>
       `;
     } else {
       targetElement.innerHTML = `
-        <div style="margin: 1rem 0; padding: 1rem; border-radius: 8px; background: #fef2f2; border-left: 4px solid #ef4444;">
-          <p style="color: #dc2626; margin: 0;">Error: ${err.message}</p>
+        <div style="margin: 1.5rem 0; padding: 1.5rem; border-radius: 12px; background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%); border: 2px solid #fecaca; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span style="font-size: 2rem;">❌</span>
+            <div>
+              <div style="font-size: 1.1rem; font-weight: 700; color: #991b1b; margin-bottom: 4px;">Error Occurred</div>
+              <div style="font-size: 0.9rem; color: #dc2626;">${err.message}</div>
+            </div>
+          </div>
         </div>
       `;
     }
   }
 }
 
-// -------------------- Universal Main Functions --------------------
+// ==================== Universal Main Functions ====================
 
-// FOR STRUCTURE WITH EXISTING data-question ATTRIBUTES
 async function showAnswer(button, questionId, opts = { forceRefresh: false }) {
   const answerBox = button.nextElementSibling;
   if (!answerBox) return;
@@ -565,12 +624,15 @@ function enableQuestionAnswering() {
       if (index < questionIds.length) {
         const questionId = questionIds[index];
         const questionText = extractQuestionText(questionContainer, index);
+        const subjectInfo = getSubjectInfo(questionId);
         
         answerP.innerHTML = `
-          <strong>${answerP.innerHTML.split(':')[0]}:</strong>
+          <strong style="color: #1e293b;">${answerP.innerHTML.split(':')[0]}:</strong>
           <button onclick="handleAnswerClick('${questionId}', \`${questionText.replace(/`/g, '\\`')}\`, this)" 
-                  style="margin-left: 10px; padding: 0.5rem 1rem; background: #0ea5e9; color: white; border: none; border-radius: 6px; cursor: pointer;">
-            Generate Answer with AI
+                  style="margin-left: 12px; padding: 0.65rem 1.5rem; background: linear-gradient(135deg, ${subjectInfo.color} 0%, ${subjectInfo.color}dd 100%); color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: 700; font-size: 0.95rem; box-shadow: 0 4px 6px ${subjectInfo.color}40; transition: all 0.3s ease; letter-spacing: 0.3px;"
+                  onmouseover="this.style.transform='translateY(-2px) scale(1.02)'; this.style.boxShadow='0 6px 12px ${subjectInfo.color}60';" 
+                  onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 4px 6px ${subjectInfo.color}40';">
+            ${subjectInfo.emoji} Generate Answer with AI ✨
           </button>
           <div class="ai-answer-container"></div>
         `;
@@ -591,9 +653,9 @@ window.copyText = function(questionId) {
   const localCache = loadLocalCache();
   if (localCache[questionId]) {
     navigator.clipboard.writeText(localCache[questionId].answer).then(() => {
-      alert('Answer copied to clipboard!');
+      alert('✅ Answer copied to clipboard successfully!');
     }).catch(() => {
-      alert('Failed to copy to clipboard');
+      alert('❌ Failed to copy to clipboard');
     });
   }
 };
@@ -613,21 +675,19 @@ window.regenerateAnswer = async function(questionId, questionText, button) {
   const currentCount = await getGlobalRegenerateCount(questionId);
   
   if (currentCount >= REGENERATE_LIMIT) {
-    alert(`Regenerate limit reached for this question (${REGENERATE_LIMIT}/${REGENERATE_LIMIT}). The cached answer is optimized for your exam preparation.`);
+    alert(`🚫 Regenerate limit reached for this question (${REGENERATE_LIMIT}/${REGENERATE_LIMIT}).\n\n✨ The cached answer is already optimized for your exam preparation!`);
     return;
   }
   
   const remaining = REGENERATE_LIMIT - currentCount;
-  const confirmMsg = `Regenerate this answer?\n\n• Global regenerations used: ${currentCount}/${REGENERATE_LIMIT}\n• Remaining: ${remaining}`;
+  const confirmMsg = `🔄 Regenerate this answer?\n\n📊 Global regenerations used: ${currentCount}/${REGENERATE_LIMIT}\n✅ Remaining: ${remaining}\n\n⚠️ This will create a new AI-generated answer.`;
   
   if (!confirm(confirmMsg)) {
     return;
   }
   
-  // Increment global regenerate count
   await incrementGlobalRegenerateCount(questionId);
   
-  // Clear local cache and force global refresh
   const localCache = loadLocalCache();
   delete localCache[questionId];
   saveLocalCache(localCache);
@@ -636,7 +696,7 @@ window.regenerateAnswer = async function(questionId, questionText, button) {
   await displayAnswer(container, questionId, questionText, { forceRefresh: true });
 };
 
-// -------------------- Initialization --------------------
+// ==================== Initialization ====================
 document.addEventListener('DOMContentLoaded', function() {
   const yearSpan = document.getElementById('year');
   if (yearSpan) {
@@ -647,30 +707,30 @@ document.addEventListener('DOMContentLoaded', function() {
   
   if (!hasDataQuestions) {
     enableQuestionAnswering();
-    console.log('Enabled universal question answering system');
+    console.log('✅ Enabled universal question answering system with student-friendly UI');
   } else {
-    console.log('Using existing data-question structure');
+    console.log('✅ Using existing data-question structure');
   }
   
-  console.log('RGPV Universal System Ready - Global Cache Enabled');
+  console.log('🎓 RGPV Universal System Ready - Enhanced Student Edition 🚀');
 });
 
 // Debug utilities
 window.RGPVSystem = {
   clearLocalCache: () => {
     localStorage.removeItem(LOCAL_CACHE_KEY);
-    console.log('Local cache cleared');
+    console.log('🗑️ Local cache cleared successfully');
   },
   showLocalCacheStats: () => {
     const cache = loadLocalCache();
-    console.log('Total locally cached:', Object.keys(cache).length);
+    console.log('📊 Total locally cached:', Object.keys(cache).length);
     Object.keys(cache).forEach(key => {
       const item = cache[key];
-      console.log(`${key}: ${item.subject} (${timeAgo(item.ts)} ago)`);
+      console.log(`📝 ${key}: ${item.subject} (${timeAgo(item.ts)})`);
     });
   },
   async checkGlobalRegenerateCount(questionId) {
     const count = await getGlobalRegenerateCount(questionId);
-    console.log(`Question ${questionId}: ${count}/${REGENERATE_LIMIT} regenerations used globally`);
+    console.log(`🔄 Question ${questionId}: ${count}/${REGENERATE_LIMIT} regenerations used globally`);
   }
 };
