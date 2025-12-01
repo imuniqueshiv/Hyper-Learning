@@ -327,11 +327,20 @@ async function fetchAnswerStream(question, onChunk, signal) {
   return { fullText: text, backendCached: resp.headers.get('x-cached') === 'true' };
 }
 
-// ==================== ENHANCED ANSWER DISPLAY (Beautiful UI) ====================
+// ==================== ENHANCED ANSWER DISPLAY (Old Design + Mobile/Scroll Fix) ====================
 async function displayAnswer(targetElement, questionId, questionText, opts = { forceRefresh: false }) {
   const TTL = CACHE_TTL_DAYS * 24 * 60 * 60 * 1000;
   const regenCount = await getGlobalRegenerateCount(questionId);
   const regenRemaining = REGENERATE_LIMIT - regenCount;
+
+  // 1. Define Styles (Old Design colors, New Design sizing)
+  // "overflow-x: auto" fixes the chemistry/math width issue
+  const containerStyle = "margin: 1rem 0; padding: 1.25rem; border-radius: 12px; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); border: 2px solid #e2e8f0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); max-width: 100%; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word;";
+  const answerContentStyle = "padding: 1rem; background: #ffffff; border-radius: 8px; border-left: 4px solid #COLOR#; font-size: 0.92rem; line-height: 1.6; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch;";
+  const buttonGroupStyle = "margin-top: 1rem; padding-top: 1rem; border-top: 2px solid #f1f5f9; display: flex; gap: 0.6rem; flex-wrap: wrap;";
+  
+  // Smaller button style for mobile (from New Code)
+  const buttonBaseStyle = "flex: 1; min-width: 90px; padding: 0.6rem 0.8rem; border-radius: 8px; border: 2px solid #e2e8f0; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); cursor: pointer; font-weight: 600; color: #475569; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.05); font-size: 0.85rem;";
 
   // Check global cache first
   if (!opts.forceRefresh) {
@@ -341,33 +350,35 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
       const isLimitReached = regenCount >= REGENERATE_LIMIT;
       
       targetElement.innerHTML = `
-       <div style="margin: 1.5rem 0; padding: 1.5rem; border-radius: 12px; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); border: 2px solid #e2e8f0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); max-width: 100%; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word;">
-          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; flex-wrap: wrap;">
-            <span style="font-size: 1.5rem;">${subjectInfo.emoji}</span>
+        <div style="${containerStyle}">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.8rem; flex-wrap: wrap;">
+            <span style="font-size: 1.35rem;">${subjectInfo.emoji}</span>
             <div style="flex: 1; min-width: 0;">
-              <div style="font-size: 0.75rem; font-weight: 600; color: ${subjectInfo.color}; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px;">${subjectInfo.name}</div>
+              <div style="font-size: 0.7rem; font-weight: 600; color: ${subjectInfo.color}; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px;">${subjectInfo.name}</div>
               <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-                <span style="font-size: 11px; background: linear-gradient(135deg, #dcfce7 0%, #d1fae5 100%); color: #15803d; padding: 4px 10px; border-radius: 12px; font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                <span style="font-size: 0.7rem; background: linear-gradient(135deg, #dcfce7 0%, #d1fae5 100%); color: #15803d; padding: 3px 8px; border-radius: 10px; font-weight: 600; box-shadow: 0 1px 2px rgba(0,0,0,0.1);">
                   ✓ Cached Answer
                 </span>
-                <span style="font-size: 11px; color: #64748b; font-weight: 500;">
-                  📅 Saved ${timeAgo(globalCache.metadata?.timestamp || Date.now())}
+                <span style="font-size: 0.7rem; color: #64748b; font-weight: 500;">
+                  📅 ${timeAgo(globalCache.metadata?.timestamp || Date.now())}
                 </span>
               </div>
             </div>
           </div>
-          <div style="padding: 1rem; background: #ffffff; border-radius: 8px; border-left: 4px solid ${subjectInfo.color};">
+
+          <div style="${answerContentStyle.replace('#COLOR#', subjectInfo.color)}">
             ${formatAnswerAsHtml(globalCache.answer)}
           </div>
-          <div style="margin-top: 1.25rem; padding-top: 1.25rem; border-top: 2px solid #f1f5f9; display: flex; gap: 0.75rem; flex-wrap: wrap;">
-            <button onclick="copyText('${questionId}')" style="flex: 1; min-width: 100px; padding: 0.6rem 1rem; border-radius: 8px; border: 2px solid #e2e8f0; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); cursor: pointer; font-weight: 600; color: #475569; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.05);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.05)';">📋 Copy</button>
-            <button onclick="downloadText('${questionId}')" style="flex: 1; min-width: 100px; padding: 0.6rem 1rem; border-radius: 8px; border: 2px solid #e2e8f0; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); cursor: pointer; font-weight: 600; color: #475569; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.05);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.05)';">💾 Download</button>
+
+          <div style="${buttonGroupStyle}">
+            <button onclick="copyText('${questionId}')" style="${buttonBaseStyle}" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.05)';">📋 Copy</button>
+            <button onclick="downloadText('${questionId}')" style="${buttonBaseStyle}" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.05)';">💾 Download</button>
             <button onclick="regenerateAnswer('${questionId}', \`${questionText.replace(/`/g, '\\`')}\`, this)" 
                     ${isLimitReached ? 'disabled' : ''} 
-                    style="flex: 1; min-width: 120px; padding: 0.6rem 1rem; border-radius: 8px; border: 2px solid ${isLimitReached ? '#e2e8f0' : '#3b82f6'}; background: ${isLimitReached ? '#f1f5f9' : 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)'}; cursor: ${isLimitReached ? 'not-allowed' : 'pointer'}; font-weight: 600; color: ${isLimitReached ? '#94a3b8' : '#ffffff'}; opacity: ${isLimitReached ? '0.6' : '1'}; transition: all 0.2s; box-shadow: ${isLimitReached ? 'none' : '0 2px 4px rgba(59,130,246,0.3)'};"
+                    style="${buttonBaseStyle} border: 2px solid ${isLimitReached ? '#e2e8f0' : '#3b82f6'}; background: ${isLimitReached ? '#f1f5f9' : 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)'}; color: ${isLimitReached ? '#94a3b8' : '#ffffff'}; opacity: ${isLimitReached ? '0.6' : '1'}; flex: 1.5; min-width: 120px;"
                     title="${isLimitReached ? 'Regenerate limit reached (7/7)' : `Regenerations used: ${regenCount}/${REGENERATE_LIMIT}`}"
                     ${!isLimitReached ? `onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(59,130,246,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(59,130,246,0.3)';"` : ''}>
-              ${isLimitReached ? '🚫 Limit Reached' : `🔄 Regenerate (${regenRemaining} left)`}
+              ${isLimitReached ? '🚫 Limit Reached' : `🔄 Regenerate (${regenRemaining})`}
             </button>
           </div>
         </div>
@@ -390,38 +401,38 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
     }
   }
 
-  // Show loading with beautiful animation
+  // Show loading with beautiful animation (Scaled down for mobile)
   const subjectInfo = getSubjectInfo(questionId);
   const abortController = new AbortController();
   
   targetElement.innerHTML = `
-    <div style="margin: 1.5rem 0; padding: 1.5rem; border-radius: 12px; background: linear-gradient(135deg, #eff6ff 0%, #e0f2fe 100%); border: 2px solid #bae6fd; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);">
-      <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-        <div style="display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0;">
-          <div style="width: 20px; height: 20px; border: 3px solid #e0f2fe; border-top-color: #0284c7; border-radius: 50%; animation: spin 0.8s linear infinite; flex-shrink: 0;"></div>
+    <div style="margin: 1rem 0; padding: 1.25rem; border-radius: 12px; background: linear-gradient(135deg, #eff6ff 0%, #e0f2fe 100%); border: 2px solid #bae6fd; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);">
+      <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0;">
+          <div style="width: 18px; height: 18px; border: 3px solid #e0f2fe; border-top-color: #0284c7; border-radius: 50%; animation: spin 0.8s linear infinite; flex-shrink: 0;"></div>
           <div style="flex: 1; min-width: 0;">
-            <div style="font-size: 1rem; font-weight: 700; color: #0c4a6e; overflow: hidden; text-overflow: ellipsis;">
-              ${subjectInfo.emoji} Generating ${subjectInfo.name} Solution...
+            <div style="font-size: 0.95rem; font-weight: 700; color: #0c4a6e; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+              ${subjectInfo.emoji} Generating...
             </div>
-            <div style="font-size: 0.8rem; color: #0369a1; margin-top: 4px; font-weight: 500;">
-              ✨ AI is preparing your personalized answer
+            <div style="font-size: 0.75rem; color: #0369a1; margin-top: 2px; font-weight: 500;">
+              ✨ AI is preparing answer
             </div>
           </div>
         </div>
-        <button onclick="window.cancelGeneration_${questionId.replace(/[^a-zA-Z0-9]/g, '_')}()" style="padding: 0.5rem 1rem; border-radius: 8px; border: 2px solid #dc2626; background: #ffffff; cursor: pointer; flex-shrink: 0; font-size: 0.9rem; font-weight: 600; color: #141111ff; transition: all 0.2s; box-shadow: 0 2px 4px rgba(220, 38, 38, 0.2);" onmouseover="this.style.background='#dc2626'; this.style.color='#ffffff';" onmouseout="this.style.background='#ffffff'; this.style.color='#265adcff';">❌ Cancel</button></div>
-      <div id="streaming-${questionId}" style="margin-top: 1.25rem; padding: 1rem; background: #ffffff; border-radius: 8px; min-height: 50px;"></div>
+        <button onclick="window.cancelGeneration_${questionId.replace(/[^a-zA-Z0-9]/g, '_')}()" style="padding: 0.5rem 0.8rem; border-radius: 8px; border: 2px solid #dc2626; background: #ffffff; cursor: pointer; flex-shrink: 0; font-size: 0.85rem; font-weight: 600; color: #141111ff; transition: all 0.2s;" onmouseover="this.style.background='#dc2626'; this.style.color='#ffffff';" onmouseout="this.style.background='#ffffff'; this.style.color='#265adcff';">❌ Cancel</button></div>
+      <div id="streaming-${questionId}" style="margin-top: 1rem; padding: 1rem; background: #ffffff; border-radius: 8px; min-height: 40px; font-size: 0.92rem; line-height: 1.6;"></div>
     </div>
   `;
 
   window[`cancelGeneration_${questionId.replace(/[^a-zA-Z0-9]/g, '_')}`] = () => {
     abortController.abort();
     targetElement.innerHTML = `
-      <div style="margin: 1.5rem 0; padding: 1.5rem; border-radius: 12px; background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%); border: 2px solid #fecaca; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);">
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <span style="font-size: 2rem;">⚠️</span>
+      <div style="margin: 1rem 0; padding: 1.25rem; border-radius: 12px; background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%); border: 2px solid #fecaca; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 1.5rem;">⚠️</span>
           <div>
-            <div style="font-size: 1.1rem; font-weight: 700; color: #991b1b; margin-bottom: 4px;">Generation Cancelled</div>
-            <div style="font-size: 0.9rem; color: #dc2626;">You stopped the AI generation process</div>
+            <div style="font-size: 1rem; font-weight: 700; color: #991b1b; margin-bottom: 2px;">Generation Cancelled</div>
+            <div style="font-size: 0.85rem; color: #dc2626;">You stopped the process</div>
           </div>
         </div>
       </div>
@@ -450,33 +461,33 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
           const isFinalLimitReached = finalRegenCount >= REGENERATE_LIMIT;
           
           targetElement.innerHTML = `
-            <div style="margin: 1.5rem 0; padding: 1.5rem; border-radius: 12px; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); border: 2px solid #e2e8f0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); max-width: 100%; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word;">
-              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; flex-wrap: wrap;">
-                <span style="font-size: 1.5rem;">${subjectInfo.emoji}</span>
+            <div style="${containerStyle}">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.8rem; flex-wrap: wrap;">
+                <span style="font-size: 1.35rem;">${subjectInfo.emoji}</span>
                 <div style="flex: 1; min-width: 0;">
-                  <div style="font-size: 0.75rem; font-weight: 600; color: ${subjectInfo.color}; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px;">${subjectInfo.name}</div>
+                  <div style="font-size: 0.7rem; font-weight: 600; color: ${subjectInfo.color}; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px;">${subjectInfo.name}</div>
                   <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-                    <span style="font-size: 11px; background: linear-gradient(135deg, ${finalBackendCached ? '#dcfce7' : '#eef2ff'} 0%, ${finalBackendCached ? '#d1fae5' : '#e0e7ff'} 100%); color: ${finalBackendCached ? '#15803d' : '#4338ca'}; padding: 4px 10px; border-radius: 12px; font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <span style="font-size: 0.7rem; background: linear-gradient(135deg, ${finalBackendCached ? '#dcfce7' : '#eef2ff'} 0%, ${finalBackendCached ? '#d1fae5' : '#e0e7ff'} 100%); color: ${finalBackendCached ? '#15803d' : '#4338ca'}; padding: 3px 8px; border-radius: 10px; font-weight: 600; box-shadow: 0 1px 2px rgba(0,0,0,0.1);">
                       ${finalBackendCached ? '✓ Server Cached' : '✨ Fresh Answer'}
                     </span>
-                    <span style="font-size: 11px; color: #64748b; font-weight: 500;">
+                    <span style="font-size: 0.7rem; color: #64748b; font-weight: 500;">
                       ⚡ Just now
                     </span>
                   </div>
                 </div>
               </div>
-              <div style="padding: 1rem; background: #ffffff; border-radius: 8px; border-left: 4px solid ${subjectInfo.color};">
+              <div style="${answerContentStyle.replace('#COLOR#', subjectInfo.color)}">
                 ${formatAnswerAsHtml(streamed)}
               </div>
-              <div style="margin-top: 1.25rem; padding-top: 1.25rem; border-top: 2px solid #f1f5f9; display: flex; gap: 0.75rem; flex-wrap: wrap;">
-                <button onclick="copyText('${questionId}')" style="flex: 1; min-width: 100px; padding: 0.6rem 1rem; border-radius: 8px; border: 2px solid #e2e8f0; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); cursor: pointer; font-weight: 600; color: #475569; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.05);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.05)';">📋 Copy</button>
-                <button onclick="downloadText('${questionId}')" style="flex: 1; min-width: 100px; padding: 0.6rem 1rem; border-radius: 8px; border: 2px solid #e2e8f0; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); cursor: pointer; font-weight: 600; color: #475569; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.05);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.05)';">💾 Download</button>
+              <div style="${buttonGroupStyle}">
+                <button onclick="copyText('${questionId}')" style="${buttonBaseStyle}" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.05)';">📋 Copy</button>
+                <button onclick="downloadText('${questionId}')" style="${buttonBaseStyle}" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.05)';">💾 Download</button>
                 <button onclick="regenerateAnswer('${questionId}', \`${questionText.replace(/`/g, '\\`')}\`, this)" 
                         ${isFinalLimitReached ? 'disabled' : ''} 
-                        style="flex: 1; min-width: 120px; padding: 0.6rem 1rem; border-radius: 8px; border: 2px solid ${isFinalLimitReached ? '#e2e8f0' : '#3b82f6'}; background: ${isFinalLimitReached ? '#f1f5f9' : 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)'}; cursor: ${isFinalLimitReached ? 'not-allowed' : 'pointer'}; font-weight: 600; color: ${isFinalLimitReached ? '#94a3b8' : '#ffffff'}; opacity: ${isFinalLimitReached ? '0.6' : '1'}; transition: all 0.2s; box-shadow: ${isFinalLimitReached ? 'none' : '0 2px 4px rgba(59,130,246,0.3)'};"
+                        style="${buttonBaseStyle} border: 2px solid ${isFinalLimitReached ? '#e2e8f0' : '#3b82f6'}; background: ${isFinalLimitReached ? '#f1f5f9' : 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)'}; color: ${isFinalLimitReached ? '#94a3b8' : '#ffffff'}; opacity: ${isFinalLimitReached ? '0.6' : '1'}; flex: 1.5; min-width: 120px;"
                         title="${isFinalLimitReached ? 'Regenerate limit reached (7/7)' : `Regenerations used: ${finalRegenCount}/${REGENERATE_LIMIT}`}"
                         ${!isFinalLimitReached ? `onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(59,130,246,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(59,130,246,0.3)';"` : ''}>
-                  ${isFinalLimitReached ? '🚫 Limit Reached' : `🔄 Regenerate (${finalRegenRemaining} left)`}
+                  ${isFinalLimitReached ? '🚫 Limit Reached' : `🔄 Regenerate (${finalRegenRemaining})`}
                 </button>
               </div>
             </div>
@@ -505,31 +516,31 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
       }
 
       if (meta.done) {
-         finalBackendCached = !!meta.backendCached;
-         setGlobalCache(questionId, streamed, { 
-             subject: subjectInfo.name, 
-             questionText: questionText, 
-             backendCached: finalBackendCached 
-         });
-         
-         getGlobalRegenerateCount(questionId).then(immRegenCount => {
-             const immRegenRemaining = REGENERATE_LIMIT - immRegenCount;
-             const isImmLimitReached = immRegenCount >= REGENERATE_LIMIT;
-             
-             targetElement.innerHTML = `
-                <div style="margin: 1.5rem 0; padding: 1.5rem; border-radius: 12px; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); border: 2px solid #e2e8f0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); max-width: 100%; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word;">
-                  <div style="padding: 1rem; background: #ffffff; border-radius: 8px; border-left: 4px solid ${subjectInfo.color};">
+          finalBackendCached = !!meta.backendCached;
+          setGlobalCache(questionId, streamed, { 
+              subject: subjectInfo.name, 
+              questionText: questionText, 
+              backendCached: finalBackendCached 
+          });
+          
+          getGlobalRegenerateCount(questionId).then(immRegenCount => {
+              const immRegenRemaining = REGENERATE_LIMIT - immRegenCount;
+              const isImmLimitReached = immRegenCount >= REGENERATE_LIMIT;
+              
+              targetElement.innerHTML = `
+                <div style="${containerStyle}">
+                  <div style="${answerContentStyle.replace('#COLOR#', subjectInfo.color)}">
                     ${formatAnswerAsHtml(streamed)}
                   </div>
-                  <div style="margin-top: 1.25rem; padding-top: 1.25rem; border-top: 2px solid #f1f5f9; display: flex; gap: 0.75rem; flex-wrap: wrap;">
-                    <button onclick="copyText('${questionId}')" style="flex: 1; min-width: 100px; padding: 0.6rem 1rem; border-radius: 8px; border: 2px solid #e2e8f0; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); cursor: pointer; font-weight: 600; color: #475569; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.05);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.05)';">📋 Copy</button>
-                    <button onclick="downloadText('${questionId}')" style="flex: 1; min-width: 100px; padding: 0.6rem 1rem; border-radius: 8px; border: 2px solid #e2e8f0; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); cursor: pointer; font-weight: 600; color: #475569; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.05);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.05)';">💾 Download</button>
+                  <div style="${buttonGroupStyle}">
+                    <button onclick="copyText('${questionId}')" style="${buttonBaseStyle}" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.05)';">📋 Copy</button>
+                    <button onclick="downloadText('${questionId}')" style="${buttonBaseStyle}" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.05)';">💾 Download</button>
                     <button onclick="regenerateAnswer('${questionId}', \`${questionText.replace(/`/g, '\\`')}\`, this)" 
                             ${isImmLimitReached ? 'disabled' : ''} 
-                            style="flex: 1; min-width: 120px; padding: 0.6rem 1rem; border-radius: 8px; border: 2px solid ${isImmLimitReached ? '#e2e8f0' : '#3b82f6'}; background: ${isImmLimitReached ? '#f1f5f9' : 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)'}; cursor: ${isImmLimitReached ? 'not-allowed' : 'pointer'}; font-weight: 600; color: ${isImmLimitReached ? '#94a3b8' : '#ffffff'}; opacity: ${isImmLimitReached ? '0.6' : '1'}; transition: all 0.2s; box-shadow: ${isImmLimitReached ? 'none' : '0 2px 4px rgba(59,130,246,0.3)'};"
+                            style="${buttonBaseStyle} border: 2px solid ${isImmLimitReached ? '#e2e8f0' : '#3b82f6'}; background: ${isImmLimitReached ? '#f1f5f9' : 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)'}; color: ${isImmLimitReached ? '#94a3b8' : '#ffffff'}; opacity: ${isImmLimitReached ? '0.6' : '1'}; flex: 1.5; min-width: 120px;"
                             title="${isImmLimitReached ? 'Regenerate limit reached (7/7)' : `Regenerations used: ${immRegenCount}/${REGENERATE_LIMIT}`}"
                             ${!isImmLimitReached ? `onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(59,130,246,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(59,130,246,0.3)';"` : ''}>
-                      ${isImmLimitReached ? '🚫 Limit Reached' : `🔄 Regenerate (${immRegenRemaining} left)`}
+                      ${isImmLimitReached ? '🚫 Limit Reached' : `🔄 Regenerate (${immRegenRemaining})`}
                     </button>
                   </div>
                 </div>
@@ -555,24 +566,24 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
   } catch (err) {
     if (err.name === 'AbortError') {
       targetElement.innerHTML = `
-        <div style="margin: 1.5rem 0; padding: 1.5rem; border-radius: 12px; background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); border: 2px solid #fde68a; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);">
-          <div style="display: flex; align-items: center; gap: 12px;">
-            <span style="font-size: 2rem;">⚠️</span>
+        <div style="margin: 1rem 0; padding: 1.25rem; border-radius: 12px; background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); border: 2px solid #fde68a; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 1.5rem;">⚠️</span>
             <div>
-              <div style="font-size: 1.1rem; font-weight: 700; color: #92400e; margin-bottom: 4px;">Generation Cancelled</div>
-              <div style="font-size: 0.9rem; color: #b45309;">The AI generation was stopped by you</div>
+              <div style="font-size: 1rem; font-weight: 700; color: #92400e; margin-bottom: 2px;">Generation Cancelled</div>
+              <div style="font-size: 0.85rem; color: #b45309;">The AI generation was stopped by you</div>
             </div>
           </div>
         </div>
       `;
     } else {
       targetElement.innerHTML = `
-        <div style="margin: 1.5rem 0; padding: 1.5rem; border-radius: 12px; background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%); border: 2px solid #fecaca; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);">
-          <div style="display: flex; align-items: center; gap: 12px;">
-            <span style="font-size: 2rem;">❌</span>
+        <div style="margin: 1rem 0; padding: 1.25rem; border-radius: 12px; background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%); border: 2px solid #fecaca; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 1.5rem;">❌</span>
             <div>
-              <div style="font-size: 1.1rem; font-weight: 700; color: #991b1b; margin-bottom: 4px;">Error Occurred</div>
-              <div style="font-size: 0.9rem; color: #dc2626;">${err.message}</div>
+              <div style="font-size: 1rem; font-weight: 700; color: #991b1b; margin-bottom: 2px;">Error Occurred</div>
+              <div style="font-size: 0.85rem; color: #dc2626;">${err.message}</div>
             </div>
           </div>
         </div>
