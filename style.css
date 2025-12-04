@@ -154,6 +154,33 @@ body {
   padding: 1.2rem;
 }
 
+.unit-year {
+  font-size: 0.85rem; font-style: italic; color: #7373c5; margin-left: 0.5rem;
+}
+
+ /* Show-less button style (non-invasive, matches current simple UI) */
+.hl-show-less {
+    display: inline-block;
+    margin: 1.2rem auto 0;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    transition: transform .08s ease, box-shadow .08s ease;
+    color: #333;
+}
+.hl-show-less:hover { transform: translateY(-1px); box-shadow: 0 4px 10px rgba(0,0,0,0.06); }
+/* Make sure the button sits nicely inside the details content */
+details > .hl-show-less { display: none; } /* hidden by default; shown when details.open */
+details[open] > .hl-show-less { display: inline-block; }
+/* Make it full-width on narrow screens */
+@media (max-width: 520px) {
+    .hl-show-less { width: calc(100% - 2rem); display: block; text-align:center; }
+}
 /* Footer */
 .footer {
   background-color: #00008B;

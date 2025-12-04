@@ -8,6 +8,20 @@
     <meta name="description" content="AL-304 Artificial Intelligence Syllabus RGPV B.Tech III Semester. New Scheme Based On AICTE Flexible Curricula." />
     
     <link rel="stylesheet" href="../../style.css" />
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
 </head>
 
 <body>
@@ -37,36 +51,731 @@
     </section>
 
     <section class="questions-list">
-        <h3>Syllabus Content</h3>
+        <h3>Syllabus Content & Previous Year Questions</h3>
 
+        <!-- Unit 1 -->
         <div class="question">
-            <p><strong>Unit 1: Fundamentals of AI & Search Techniques</strong></p>
-            <hr>
-            <p>Fundamental of Artificial Intelligence, history, motivation and need of AI, Production systems, Characteristics of production systems, goals and contribution of AI to modern technology, search space, different search techniques: hill Climbing, Best first Search, heuristic search algorithm, A* and AO* search techniques etc.</p>
+            <details>
+                <summary>
+                    <div>
+                        <strong><p>Unit 1: Fundamentals of AI & Search Techniques</p></strong>
+                        <hr>
+                        <p>Fundamental of Artificial Intelligence, history, motivation and need of AI, Production systems, Characteristics of production systems , goals and contribution of AI to modern technology, search space, different search techniques: hill Climbing, Best first Search, heuristic search algorithm, A* and AO* search techniques etc.</p>
+                    </div>
+                </summary>
+                <br>
+                <hr>
+                <strong><p>Previous Years questions appears in RGPV exam.</p></strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) What do you understand by the term "Intelligence"? Explain the goals of AI in modern technology. <span
+                                class="unit-year">(Nov-2022)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>List and explain the goals of Artificial Intelligence (AI). <span
+                                class="unit-year">(June-2023)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>Explain about the contribution of AI in human life. <span
+                                class="unit-year">(Nov-2022)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Write Heuristic search algorithm. Explain it with suitable example. <span
+                                class="unit-year">(Nov-2022)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>State the difference between informed search and uninformed search with suitable example. <span
+                                class="unit-year">(Dec-2023)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>Explore the potential risks and limitations of heuristic search algorithms in AI. How can these risks be mitigated? <span
+                                class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Explain about $A^{*}$ algorithm in detail. <span
+                                class="unit-year">(Nov-2022)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>Discuss $A^{*}$ algorithm in detail? <span
+                                class="unit-year">(June-2023)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>What is the $A^{*}$ search algorithm, and how does it combine elements of other search algorithms? Why is it considered a popular choice for many AI applications? <span
+                                class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Explain the Best First Search algorithm in detail? <span
+                                class="unit-year">(June-2023)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>Compare and contrast hill climbing and best-first search algorithms. What are their strengths and weaknesses? <span
+                                class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Four approaches of AI are Acting Humanly, Thinking humanly, Thinking rationally and Acting rationally. Discuss feasibility of the approaches in current scenario. Which approach is best suitable for rational agent and why? <span
+                                class="unit-year">(Dec-2023)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) Explain how $A^{*}$ search different with $AO^{*}$ search technique. Discuss the advantage and disadvantage of both the techniques? <span
+                                class="unit-year">(Dec-2023)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) For the Blocks World problem given below, use Hill Climbing to show the next 3 best moves. State and use a suitable global heuristic. <span
+                                class="unit-year">(Dec-2023)</span>
+                        </p>
+                        <br>
+                        <img class="ans-img" src="/sem-III-papers/AIML/al-304/ques-diagrams/Q.2-b_dec-2023.png" alt="Blocks World Diagram" style="max-width: 100%; border: 1px solid #ddd; padding: 5px;">
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Describe the difference between Depth First Search (DFS) and Breath First Search (BFS) with suitable example. <span
+                                class="unit-year">(Dec-2023)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) Consider the following graph. The numbers written on edges represent the distance between the nodes. The numbers written on nodes represent the heuristic value. Find the most cost-effective path to reach from start state A to final state J using $A^{*}$ Algorithm. <span
+                                class="unit-year">(Dec-2023)</span>
+                        </p>
+                        <br>
+                        <img class="ans-img" src="/sem-III-papers/AIML/al-304/ques-diagrams/Q.4-b_dec-2023.png" alt="Weighted Graph Diagram" style="max-width: 100%; border: 1px solid #ddd; padding: 5px;">
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) Consider a state space where the start state is number 1 and the successor function for state n returns two states, numbers $2n$ and $2n+1$. <br> i) Draw the portion of the state space for states 1 to 15. <br> ii) Suppose the goal state is 11. List the order in which nodes will be visited for breadth-first search, depth-first search with limit 3. <span
+                                class="unit-year">(Dec-2023)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.11) The heuristic values for each state are shown below. Given these values, draw a diagram in that illustrates the search tree of explored states, using $A^{*}$ search (the path cost is still a unit cost). Indicate the calculated cost at each node in the tree. <span
+                                class="unit-year">(Dec-2023)</span>
+                        </p>
+                        <div style="margin: 1rem 0; overflow-x: auto;">
+                            <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd; font-size: 0.9rem;">
+                                <tr><td style="padding: 8px; border: 1px solid #ddd;">A: 9</td><td style="padding: 8px; border: 1px solid #ddd;">G: 3</td></tr>
+                                <tr><td style="padding: 8px; border: 1px solid #ddd;">B: 4</td><td style="padding: 8px; border: 1px solid #ddd;">H: 5</td></tr>
+                                <tr><td style="padding: 8px; border: 1px solid #ddd;">C: 5</td><td style="padding: 8px; border: 1px solid #ddd;">I: 8</td></tr>
+                                <tr><td style="padding: 8px; border: 1px solid #ddd;">D: 7</td><td style="padding: 8px; border: 1px solid #ddd;">J: 2</td></tr>
+                                <tr><td style="padding: 8px; border: 1px solid #ddd;">E: 3</td><td style="padding: 8px; border: 1px solid #ddd;">K: 0</td></tr>
+                                <tr><td style="padding: 8px; border: 1px solid #ddd;">F: 10</td><td style="padding: 8px; border: 1px solid #ddd;">L: 7</td></tr>
+                            </table>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.12) What are the essential characteristics of production systems and how do they differ from other AI problem-solving approaches? <span
+                                class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.13) How can AI contribute to solving global challenges, such as climate change, healthcare or education? Provide specific examples. <span
+                                class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.14) Differentiate between classical search algorithms and heuristic search algorithms. <span
+                                class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.15) Compare and contrast classical AI systems and modern AI systems in terms of their performance and adaptability. <span
+                                class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
+                <strong><p style="color: #d32f2f;">Expected Sample Questions for Dec-2025 Exam (Based on Syllabus Analysis)</p></strong>
+                <div class="question" style="border-left: 4px solid #d32f2f;">
+                    <strong>
+                        <p>Q.1) What is a State Space Search? Explain how the Water Jug problem can be solved using state space search. <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Explain the concept of 'Branch and Bound' search technique. How does it differ from A*? <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Discuss the AO* Algorithm in detail. Under what conditions is AO* preferred over A*? <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) What are the characteristics of a Good Heuristic function? Explain Admissibility and Monotonicity. <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Explain the architecture of a Production System. Differentiate between Monotonic and Non-Monotonic production systems. <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                </div>
+                 <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
+                    Show less ▲
+                </button>
+            </details>
         </div>
 
+        <!-- Unit 2 -->
         <div class="question">
-            <p><strong>Unit 2: Knowledge Representation</strong></p>
-            <hr>
-            <p>Knowledge Representation, Problems in representing knowledge, knowledge representation using propositional and predicate logic, comparison of propositional and predicate logic, Resolution, refutation, deduction, theorem proving, inferencing, monotonic and non-monotonic reasoning.</p>
+            <details>
+                <summary>
+                    <div>
+                        <strong><p>Unit 2: Knowledge Representation</p></strong>
+                        <hr>
+                        <p>Knowledge Representation, Problems in representing knowledge, knowledge representation using propositional and predicate logic, comparison of propositional and predicate logic, Resolution, refutation, deduction, theorem proving, inferencing, monotonic and non-monotonic reasoning.</p>
+                    </div>
+                </summary>
+                <br>
+                <hr>
+                <strong><p>Previous Years questions appears in RGPV exam.</p></strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) Elucidate various knowledge level representations involved in reasoning process. <span
+                                class="unit-year">(Nov-2022)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Explain resolution in predicate logic. <span
+                                class="unit-year">(Nov-2022)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>Explain about resolution, refutation and deduction. <span
+                                class="unit-year">(Nov-2022)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Explain how does predicate logic help in knowledge representation in AI? <span
+                                class="unit-year">(June-2023)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) What is AI Inference? Explain. <span
+                                class="unit-year">(June-2023)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Explain the various problems in knowledge representation? <span
+                                class="unit-year">(June-2023)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>List and explain some common problems and challenges in representing knowledge in AI systems. <span
+                                class="unit-year">(Dec-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) Write short note on: Refutation in AI. <span
+                                class="unit-year">(June-2023)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) Consider the following facts: <br> i) Steve likes easy courses <br> ii) Science courses are hard <br> iii) All the courses in the CSE department are easy <br> iv) CS3101 is a CSE department course <br> 1) Translate these into predicate logic. <br> 2) Convert them into clausal form. <br> 3) Using resolution prove "What course would Steve like". <span
+                                class="unit-year">(Dec-2023)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Write short notes on: <br> i) Propositional logic <br> ii) First Order Predicate logic <span
+                                class="unit-year">(Dec-2023)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) Write short note on: Importance of knowledge representation. <span
+                                class="unit-year">(Dec-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) How does knowledge representation facilitate the process of deductive reasoning in AI? <span
+                                class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.11) Compare and contrast propositional logic and predicate logic in terms of their expressiveness and applicability in different problem domains. <span
+                                class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.12) Give examples of scenarios where non-monotonic reasoning is essential in AI applications. What distinguishes it from monotonic reasoning? <span
+                                class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
+                <strong><p style="color: #d32f2f;">Expected Sample Questions for Dec-2025 Exam (Based on Syllabus Analysis)</p></strong>
+                <div class="question" style="border-left: 4px solid #d32f2f;">
+                    <strong>
+                        <p>Q.1) Explain the Unification Algorithm with a suitable example. Why is it important in resolution? <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Convert the following English sentence into First Order Predicate Logic (FOPL) and then to CNF (Conjunctive Normal Form): "Everyone who loves all animals is loved by someone." <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Differentiate between Declarative and Procedural Knowledge. <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Explain the concept of Forward and Backward Chaining in the context of Propositional Logic. <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) What is Theorem Proving? Discuss the role of Modus Ponens and Modus Tollens rules in inference. <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                </div>
+                <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
+                    Show less ▲
+                </button>
+            </details>
         </div>
 
+        <!-- Unit 3 -->
         <div class="question">
-            <p><strong>Unit 3: Probabilistic Reasoning</strong></p>
-            <hr>
-            <p>Probabilistic reasoning, Baye's theorem, semantic networks, scripts, schemas, frames, conceptual dependency, forward and backward reasoning.</p>
+            <details>
+                <summary>
+                    <div>
+                        <strong><p>Unit 3: Probabilistic Reasoning</p></strong>
+                        <hr>
+                        <p>Probabilistic reasoning, Baye's theorem, semantic networks, scripts, schemas, frames, conceptual dependency, forward and backward reasoning.</p>
+                    </div>
+                </summary>
+                <br>
+                <hr>
+                <strong><p>Previous Years questions appears in RGPV exam.</p></strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) Differentiate between Forward and Backward reasoning. <span
+                                class="unit-year">(Nov-2022)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>Explain about forward and backward chaining. <span
+                                class="unit-year">(Nov-2022)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>Discuss the usage of backward chaining in Inference Engine? <span
+                                class="unit-year">(June-2023)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>Write a short note on backward reasoning? <span
+                                class="unit-year">(June-2023)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>What are the main differences between forward chaining and backward chaining in expert systems, and when would you prefer to use each approach? <span
+                                class="unit-year">(Dec-2023)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>Evaluate the strengths and weaknesses of different inference methods (e.g., forward chaining, backward chaining) in AI and provide scenarios where each is more appropriate. <span
+                                class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Explain these terms: i) Frames ii) Scripts iii) Conceptual dependency. <span
+                                class="unit-year">(Nov-2022)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>Differentiate between scripts, schemas and frames. How are they applied in knowledge representation? <span
+                                class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Explain Baye's theorem. <span
+                                class="unit-year">(Nov-2022)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>Define Baye's Theorem? Explain the applications of Baye's Theorem. <span
+                                class="unit-year">(June-2023)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>What are the key advantages of using Bayes theorem compared to other probability frameworks? <span
+                                class="unit-year">(Dec-2023)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>Define Bayes' Theorem and explain its significance in probabilistic reasoning. <span
+                                class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Write about the semantic networks used in artificial intelligence. <span
+                                class="unit-year">(Nov-2022)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>What are semantic networks in the context of knowledge representation? Provide an example to illustrate their use. <span
+                                class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Explain the causes of uncertainty in AI? <span
+                                class="unit-year">(June-2023)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) Write short note on: Conceptual Dependency. <span
+                                class="unit-year">(June-2023)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>Compare and contrast conceptual dependency analysis and semantic networks. <span
+                                class="unit-year">(Dec-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) Analyze a real-world problem and suggest how frames can be used to represent the knowledge required to solve it effectively? <span
+                                class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Investigate the role of scripts, schemas and frames in AI chatbots and virtual assistants. Assess their potential for improving user interactions. <span
+                                class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) Evaluate the limitations of frames in knowledge representation and propose enhancements or alternatives to address these limitations. <span
+                                class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
+                <strong><p style="color: #d32f2f;">Expected Sample Questions for Dec-2025 Exam (Based on Syllabus Analysis)</p></strong>
+                <div class="question" style="border-left: 4px solid #d32f2f;">
+                    <strong>
+                        <p>Q.1) What are Bayesian Networks? Explain the structure and application of Bayesian Networks in probabilistic reasoning. <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Create a Frame representation for the concept of a 'University Student'. Include slots for Name, Roll No, Branch, and default values. <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Draw a Semantic Network to represent the following knowledge: "Birds have wings. Penguin is a bird. Penguin cannot fly. Canary is a bird. Canary can fly." <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Explain the Conceptual Dependency (CD) theory by Roger Schank. What are the primitive acts in CD? <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Write a Script for the scenario "Visiting a Doctor". Include Entry Conditions, Roles, Props, Scenes, and Results. <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                </div>
+                <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
+                    Show less ▲
+                </button>
+            </details>
         </div>
 
+        <!-- Unit 4 -->
         <div class="question">
-            <p><strong>Unit 4: Game Playing & NLP</strong></p>
-            <hr>
-            <p>Game playing techniques like minimax procedure, alpha-beta cut-offs etc, planning, Study of the block world problem in robotics, Introduction to understanding, natural language processing (NLP), Components of NLP, application of NLP to design expert systems.</p>
+            <details>
+                <summary>
+                    <div>
+                        <strong><p>Unit 4: Game Playing & NLP</p></strong>
+                        <hr>
+                        <p>Game playing techniques like minimax procedure, alpha-beta cut-offs etc, planning, Study of the block world problem in robotics, Introduction to understanding, natural language processing (NLP), Components of NLP, application of NLP to design expert systems.</p>
+                    </div>
+                </summary>
+                <br>
+                <hr>
+                <strong><p>Previous Years questions appears in RGPV exam.</p></strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) Write about Natural Language Processing. Also explain about applications of NLP to design expert system. <span
+                                class="unit-year">(Nov-2022)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>Give an overview of applications of Natural Language Processing? <span
+                                class="unit-year">(June-2023)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>How would you define Natural Language Processing (NLP) and its significance in today's technological landscape? <span
+                                class="unit-year">(Dec-2023)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Explain the alpha-beta cut-off in game playing techniques. <span
+                                class="unit-year">(Nov-2022)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>What is pruning? Discuss alpha-beta pruning method? <span
+                                class="unit-year">(June-2023)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>Propose a variation of the alpha-beta pruning algorithm that further optimize the search process in game trees and assess its potential advantages. <span
+                                class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Discuss Mini-Max algorithm steps in detail? <span
+                                class="unit-year">(June-2023)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>Explain the minimax procedure in the context of game playing. What is its primary objective, and how does it work in games like chess? <span
+                                class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Consider following tree below: <br> Apply $\alpha-\beta$ pruning and identify the all prune node for the given above tree. <span
+                                class="unit-year">(Dec-2023)</span>
+                        </p>
+                        <br>
+                        
+                        <img class="ans-img" src="/sem-III-papers/AIML/al-304/ques-diagrams/Q.8-a_dec-2023.png" alt="Game Tree Diagram" style="max-width: 100%; border: 1px solid #ddd; padding: 5px;">
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Analyze a complex AI problem, such as natural language understanding and propose a knowledge representation scheme that would effectively address its challenges. <span
+                                class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) What is the "block world" problem in robotics and why is it a significant challenge in the field of artificial intelligence? <span
+                                class="unit-year">(June-2024)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>Investigate recent advancements in robotic systems for solving the block world problem. Discuss the innovations and technologies that have improved performance. <span
+                                class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) Given a simplified game tree for tic-tac-toe, apply the minimax procedure to determine the optimal move for a player at a particular state of the game. <span
+                                class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Evaluate the ethical implications of using NLP in surveillance and monitoring systems. How can these implications be addressed responsibly? <span
+                                class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) Write short note on: Components of NLP. <span
+                                class="unit-year">(Dec-2024)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>Define natural language processing (NLP) and its importance in AI. <span
+                                class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
+                <strong><p style="color: #d32f2f;">Expected Sample Questions for Dec-2025 Exam (Based on Syllabus Analysis)</p></strong>
+                <div class="question" style="border-left: 4px solid #d32f2f;">
+                    <strong>
+                        <p>Q.1) What is 'Planning' in AI? Explain the concept of Goal Stack Planning with an example from the Block World. <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Explain the various stages/components of Natural Language Processing (Morphological, Syntactic, Semantic, Pragmatic). <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Discuss the Block World Problem state space. How can we represent actions like Stack, Unstack, Pickup, and Putdown? <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) What is the 'Horizon Effect' in game playing? How can it be mitigated? <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Explain the difference between Natural Language Understanding (NLU) and Natural Language Generation (NLG). <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                </div>
+                <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
+                    Show less ▲
+                </button>
+            </details>
         </div>
 
+        <!-- Unit 5 -->
         <div class="question">
-            <p><strong>Unit 5: Expert Systems</strong></p>
-            <hr>
-            <p>Expert systems (ES) and its Characteristics, requirements of ES, components and capability of expert systems, Inference Engine Forward & backward Chaining, Expert Systems Limitation, Expert System Development Environment, technology, Benefits of Expert Systems.</p>
+            <details>
+                <summary>
+                    <div>
+                        <strong><p>Unit 5: Expert Systems</p></strong>
+                        <hr>
+                        <p>Expert systems (ES) and its Characteristics, requirements of ES, components and capability of expert systems, Inference Engine Forward & backward Chaining, Expert Systems Limitation, Expert System Development Environment, technology, Benefits of Expert Systems.</p>
+                    </div>
+                </summary>
+                <br>
+                <hr>
+                <strong><p>Previous Years questions appears in RGPV exam.</p></strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) What is Expert System? Write about its characteristics. <span
+                                class="unit-year">(Nov-2022)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Explain about the components and capability of Expert system. <span
+                                class="unit-year">(Nov-2022)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>List and explain the components and capabilities of Expert System? <span
+                                class="unit-year">(June-2023)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Explain any two of the following: d) Benefits of Expert System. <span
+                                class="unit-year">(June-2023)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>Write short notes on: Benefits of Expert Systems. <span
+                                class="unit-year">(Dec-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) What are the key advantage and limitations of expert systems in the field of Artificial Intelligence? <span
+                                class="unit-year">(Dec-2023)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>Analyze the limitations of expert systems, including issues related to knowledge acquisition, knowledge representation. <span
+                                class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) What are the critical factors to consider when designing and developing an effective expert system? <span
+                                class="unit-year">(Dec-2023)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) List and describe the key characteristics that distinguish expert systems from other computer programs. <span
+                                class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) Develop a comprehensive expert system for a complex domain, such as legal advice or financial planning. Explain how you would ensure the system's knowledge is up to date. <span
+                                class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Define what Expert Systems (ES) are and explain their role in artificial intelligence and problem-solving? <span
+                                class="unit-year">(Dec-2024)</span>
+                        </p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
+                <strong><p style="color: #d32f2f;">Expected Sample Questions for Dec-2025 Exam (Based on Syllabus Analysis)</p></strong>
+                <div class="question" style="border-left: 4px solid #d32f2f;">
+                    <strong>
+                        <p>Q.1) What is an Expert System Shell? How does it simplify the development of Expert Systems? <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Explain the process of 'Knowledge Acquisition' in Expert Systems. What are the roles of the Knowledge Engineer and Domain Expert? <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Discuss the architecture of an Expert System with a neat diagram, explaining the function of the Knowledge Base, Inference Engine, and User Interface. <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Compare Human Experts with Expert Systems in terms of cost, availability, and reliability. <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Explain the rule-based architecture of Expert Systems. How are IF-THEN rules used for reasoning? <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                </div>
+                <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
+                    Show less ▲
+                </button>
+            </details>
         </div>
 
     </section>

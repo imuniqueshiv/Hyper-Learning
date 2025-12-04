@@ -4,10 +4,24 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AL-303 - Data Structures Syllabus | Hyper Learning</title>
-    <meta name="description" content="AL-303 Data Structures Syllabus RGPV B.Tech III Semester. New Scheme Based On AICTE Flexible Curricula." />
-    
+    <title>AL-303 - Data Structure Syllabus | Hyper Learning</title>
+    <meta name="description"
+        content="AL-303 Data Structure Syllabus RGPV B.Tech III Semester. New Scheme Based On AICTE Flexible Curricula." />
+
     <link rel="stylesheet" href="../../style.css" />
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 </head>
 
 <body>
@@ -28,7 +42,7 @@
     </header>
 
     <section class="hero">
-        <h2>AL-303 – Data Structures</h2>
+        <h2>AL-303 – Data Structure</h2>
         <p>
             Rajiv Gandhi Proudyogiki Vishwavidyalaya, Bhopal<br>
             <strong>New Scheme Based On AICTE Flexible Curricula</strong><br>
@@ -37,49 +51,804 @@
     </section>
 
     <section class="questions-list">
-        <h3>Syllabus Content</h3>
+        <h3>Syllabus Content & Previous Year Questions</h3>
 
+        <!-- Unit 1 -->
         <div class="question">
-            <p><strong>Unit 1: Introduction to Data Structure</strong></p>
-            <hr>
-            <p>Concepts of Data and Information, Classification of Data structures, Abstract Data Types, Implementation aspects: Memory representation. Data structures operations and its cost estimation. Introduction to linear data structures- Arrays, Linked List: Representation of linked list in memory, different implementation of linked list. Circular linked list, doubly linked list, etc. Application of linked list: polynomial manipulation using linked list, etc.</p>
+            <details>
+                <summary>
+                    <div>
+                        <strong>
+                            <p>Unit 1: Introduction to Data Structures, Arrays & Linked Lists</p>
+                        </strong>
+                        <hr>
+                        <p><strong>Introduction:</strong> Data types, Abstract Data Types (ADT), Algorithms: Analysis,
+                            complexity, time-space trade-off. <br>
+                            <strong>Arrays:</strong> 1D, 2D, Multidimensional arrays, Row/Column major order, Sparse
+                            Matrices. <br>
+                            <strong>Linked Lists:</strong> Singly linked list, Doubly linked list, Circular linked list,
+                            Operations (Insertion, Deletion, Traversal), Polynomial representation.
+                        </p>
+                    </div>
+                </summary>
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) What do you mean by data structure and mention its types? <span
+                                class="unit-year">(Nov-2022)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Mention the types of data. Write all built-in data types in C. <span
+                                class="unit-year">(Nov-2022)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) What do you mean by an algorithm? Write the criteria and characteristics of an
+                            algorithm. <span class="unit-year">(Nov-2022, June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Demonstrate the efficiency of an algorithm. <span class="unit-year">(Nov-2022,
+                                June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) How to measure the complexity of an algorithm, also discuss various types of notation
+                            for this purpose? <span class="unit-year">(Nov-2022)</span>
+                        </p>
+                    </strong>
+                    <hr>
+
+                    <!-- Added June-2023 Qs relevant to Unit 1 -->
+                    <strong>
+                        <p>Q.6) What is Abstract data type? Explain with the help of example. <span
+                                class="unit-year">(June-2023, June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) Differentiate array and linked list. <span class="unit-year">(June-2023,
+                                June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) What is the application of linked list? And also write the algorithm how to add two
+                            polynomials using linked list. <span class="unit-year">(June-2023)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) Write a program in C to insert a node at any specified position in doubly linked list.
+                            <span class="unit-year">(June-2023)</span>
+                        </p>
+                    </strong>
+                    <hr>
+
+                    <!-- Existing array / addressing Qs retained -->
+                    <strong>
+                        <p>Q.7) Determine the addressing formula to find the location of $(i,j)^{th}$ element of an $m
+                            \times n$ matrix stored in column-major order. <span class="unit-year">(Nov-2022)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>Given a 2D array A[-100:100, -5:50]. Find the address of element A [99, 49] considering the
+                            base address 10 and each elements requires 4 bytes for storage. Follow row-major order.
+                            <span class="unit-year">(Dec-2023)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Consider the linear arrays AAA [5:50], BBB[-5:10] and CCC[1:8] <br> i) Find the number
+                            of elements in each array. <br> ii) Suppose base $(AAA)=300$ and $w=4$ words per memory cell
+                            for AAA. Find the address of AAA [15], AAA[35], and AAA[55]. <span
+                                class="unit-year">(Nov-2022)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>Suppose multidimensional arrays A and B are declared as A(-2:2, 2:22) and B(1:8, 5:5, -10:5)
+                            stored in row major order. <br> i) Find the length of each dimension of A and B. <br> ii)
+                            The number of elements in A and B. <br> iii) Assuming Base address (B) $=500,$ $W=2$ Find
+                            the effective indices $E_{1}$ $E_{2}$ $E_{3}$ and address of the element B [3, 3, 3]. <span
+                                class="unit-year">(Dec-2023)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) What is a singly linked list? Write its advantage and application and explain its node
+                            structure. Write the algorithm and program in C to create and traverse a singly linked list.
+                            <span class="unit-year">(Nov-2022)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) Explore all types of operations that can be performed on a linked list. <span
+                                class="unit-year">(Nov-2022, June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.11) Define doubly linked list. Describe an algorithm to insert an element at the beginning
+                            of the doubly linked list. Describe an algorithm to delete an element from the end of doubly
+                            linked list. Also explain the advantages and disadvantages of doubly linked list. <span
+                                class="unit-year">(Dec-2023)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>How doubly linked list is better than a linked list? Justify with examples. <span
+                                class="unit-year">(Nov-2022)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>What are the drawbacks of single linked list? Write and explain the algorithm for search and
+                            modify operations in doubly linked list with example. <span
+                                class="unit-year">(Dec-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.12) Differentiate array and linked list. <span class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.13) What are sparse matrices? Explain the representation of the Sparse matrix. Also,
+                            demonstrate the upper triangle and lower triangular sparse matrices. Suggest a space
+                            efficient representation for sparse matrices and determine the address determination
+                            formulas for it. <span class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.14) Write a note on Compaction, overflow, and Underflow in Array term. <span
+                                class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.15) Explain the insertion operation in linked list. How nodes are inserted after a
+                            specified node? <span class="unit-year">(Dec-2024)</span>
+                        </p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
+                <strong>
+                    <p style="color: #d32f2f;">Expected Sample Questions for Dec-2025 Exam (Based on Syllabus Analysis
+                        )
+                    </p>
+                </strong>
+                <div class="question" style="border-left: 4px solid #d32f2f;">
+                    <strong>
+                        <p>Q.1) What is a Circular Linked List? Write a function to insert a node at the end of a
+                            circular linked list. <span class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Explain polynomial representation using Linked List. Write an algorithm to add two
+                            polynomials. <span class="unit-year">(Predicted — influenced by June-2023)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Discuss Time-Space trade-off in algorithms with a suitable example. <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) What is a Generalized Linked List? Explain with an example. <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Write an algorithm to reverse a Singly Linked List. <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                </div>
+                <button type="button" class="hl-show-less"
+                    onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
+                    Show less ▲
+                </button>
+            </details>
         </div>
 
+        <!-- Unit 2 -->
         <div class="question">
-            <p><strong>Unit 2: Stacks and Queue</strong></p>
-            <hr>
-            <p><strong>Stacks:</strong> Stacks as ADT, Different implementation of stack, multiple stacks. Application of Stack: Conversion of infix to postfix notation using stack, evaluation of postfix expression, Recursion.<br>
-            <strong>Queues:</strong> Queues as ADT, Different implementation of queue, Circular queue, Concept of Dqueue and Priority Queue, Queue simulation, Application of queues.</p>
+            <details>
+                <summary>
+                    <div>
+                        <strong>
+                            <p>Unit 2: Stacks and Queues</p>
+                        </strong>
+                        <hr>
+                        <p><strong>Stack:</strong> Operations (Push, Pop), Applications (Recursion, Polish
+                            Notation/Expression conversion). <br>
+                            <strong>Queue:</strong> Operations (Enqueue, Dequeue), Circular Queue, Priority Queue,
+                            Deque.
+                        </p>
+                    </div>
+                </summary>
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <!-- Added June-2023 Q4 for Unit 2 -->
+                    <strong>
+                        <p>Q.1) Write an algorithm to convert infix expression into postfix form using Stack. Also
+                            evaluate the given postfix form using stack: <br> $2 \ 3 \ 9 \ * \ + \ 2 \ 3 \ \hat{} \ - \
+                            6 \ 2 \ / \ +$ <span class="unit-year">(June-2023, June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Write a program in ‘C’ to implementation of QUEUE. <span
+                                class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) How do you implement a circular queue in C using array? Write routines to implement
+                            operations for it. Differentiate between Linear Queue and Circular Queue. <span
+                                class="unit-year">(Dec-2023)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>What are the limitations of queue? Explain the algorithms for various operations of circular
+                            queue. <span class="unit-year">(Dec-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Explain the array implementation of stack ADT in detail. <span
+                                class="unit-year">(Dec-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Explain an algorithm to check whether the parentheses in an expression are balanced
+                            using a stack. <span class="unit-year">(Dec-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) Write short note on: Dqueue (Double Ended Queue). <span
+                                class="unit-year">(Dec-2024)</span>
+                        </p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
+                <strong>
+                    <p style="color: #d32f2f;">Expected Sample Questions for Dec-2025 Exam (Based on Syllabus Analysis
+                        )
+                    </p>
+                </strong>
+                <div class="question" style="border-left: 4px solid #d32f2f;">
+                    <strong>
+                        <p>Q.1) What is a Priority Queue? Discuss its implementation using arrays and linked lists.
+                            <span class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Explain recursion using Stack with the example of the Tower of Hanoi problem. <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Write an algorithm to evaluate a Postfix expression using a Stack. <span
+                                class="unit-year">(Predicted — influenced by June-2023)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Discuss the concept of multiple stacks in a single array. <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Write the algorithm to reverse a string using a stack. <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                </div>
+                <button type="button" class="hl-show-less"
+                    onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
+                    Show less ▲
+                </button>
+            </details>
         </div>
 
+        <!-- Unit 3 -->
         <div class="question">
-            <p><strong>Unit 3: Tree</strong></p>
-            <hr>
-            <p>Definitions - Height, depth, order, degree etc. Binary Search Tree - Operations, Traversal, Search. AVL Tree, Heap, Applications and comparison of various types of tree; Introduction to forest, multi-way Tree, B tree, B+ tree, B* tree and red-black tree.</p>
+            <details>
+                <summary>
+                    <div>
+                        <strong>
+                            <p>Unit 3: Trees</p>
+                        </strong>
+                        <hr>
+                        <p><strong>Trees:</strong> Binary Trees, Properties, Traversals (Inorder, Preorder, Postorder),
+                            Binary Search Tree (BST), AVL Trees (Rotations), B-Trees, Threaded Binary Trees.</p>
+                    </div>
+                </summary>
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) Construct a Binary tree for the given traversals: <br> Postorder Traversal: K, D, I, E,
+                            A, G, B, F, C, J, H <br> Inorder Traversal: D, K, I, B, A, E, G, H, J, F, C <br> Also, find
+                            the Preorder traversal of the Binary tree so formed. <span
+                                class="unit-year">(Dec-2023)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) How a tree can be stored in the memory? Explain with an example. Explain the advantages
+                            and disadvantages of the array representation of a tree. <span
+                                class="unit-year">(Dec-2023)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Construct an expression tree for the following algebraic expression:
+                            $(3a-b)^{2}(4c+2d)^{3}$ <span class="unit-year">(Dec-2023)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>Construct an expression tree for the expression $(a + b * c) + ((d * e + f) * g)$. Give the
+                            outputs when you apply in order preorder and post order traversals. <span
+                                class="unit-year">(Dec-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Explain the Binary Search Tree with an example. Make a Binary Search Tree for the
+                            following sequence of numbers, show all steps: <br> 45, 32, 90, 34, 68, 72, 15, 24, 30, 66,
+                            11, 50, 10. <br> Also, delete 45, 90 and 11 (successively). <br> Also, write an algorithm to
+                            insert an element into a Binary Search Tree. <span class="unit-year">(Dec-2023)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>How to insert and delete an element into a binary search tree and write down the code for the
+                            insertion. <span class="unit-year">(Dec-2024)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>Create a binary search tree for the following numbers start from an empty binary search tree.
+                            45, 26, 10, 60, 70, 30, 40 Delete keys 10, 60 and 45 one after the other and show the trees
+                            at each step. <span class="unit-year">(Dec-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Define AVL Trees. Explain its rotation operations with example. Construct AVL Tree by
+                            inserting the following data: <br> 14, 17, 11, 7, 53, 4, 13, 12, 8, 60, 19, 16, 20 <span
+                                class="unit-year">(Dec-2023)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>Draw an AVL tree on following inputs, assume that tree is initially empty: <br> 485, 575,
+                            655, 745, 830, 910, 100, 110, 520, 130, 340, 450, 365, 525, 204, 155, 130, 35 <span
+                                class="unit-year">(Nov-2022, June-2024)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>Illustrate with examples the operations of insertion and deletion in an AVL tree. <span
+                                class="unit-year">(Dec-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) Define Huffman tree and describe an algorithm to create a Huffman tree. Construct a
+                            Huffman Tree for data structures with its optimal code. <span
+                                class="unit-year">(Dec-2023)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) Define Extended binary tree with example. <span class="unit-year">(Dec-2023)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) What are the differences between: i) Height and depth ii) Order and degree. <span
+                                class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) Show that the maximum number of nodes in a binary tree of height h is $2^{h+1}-1$. <span
+                                class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) Write short note on: B+ Tree. <span class="unit-year">(Dec-2024)</span>
+                        </p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
+                <strong>
+                    <p style="color: #d32f2f;">Expected Sample Questions for Dec-2025 Exam (Based on Syllabus Analysis
+                        )
+                    </p>
+                </strong>
+                <div class="question" style="border-left: 4px solid #d32f2f;">
+                    <strong>
+                        <p>Q.1) What is a Threaded Binary Tree? Explain how it makes inorder traversal efficient. <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Explain B-Tree insertion and deletion with a suitable example. Differentiate between
+                            B-Tree and B+ Tree. <span class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Write a non-recursive algorithm for Inorder traversal of a binary tree. <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) What is a Full Binary Tree and Complete Binary Tree? Explain with diagrams. <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Discuss the properties of Red-Black Trees. How are they different from AVL Trees? <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                </div>
+                <button type="button" class="hl-show-less"
+                    onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
+                    Show less ▲
+                </button>
+            </details>
         </div>
 
+        <!-- Unit 4 -->
         <div class="question">
-            <p><strong>Unit 4: Graphs</strong></p>
-            <hr>
-            <p>Introduction, Classification of graph: Directed and Undirected graphs, etc, Representation, Graph Traversal: Depth First Search (DFS), Breadth First Search (BFS), Graph algorithm: Minimum Spanning Tree (MST)-Kruskal, Prim’s algorithms. Dijkstra’s shortest path algorithm; Comparison between different graph algorithms. Application of graphs.</p>
+            <details>
+                <summary>
+                    <div>
+                        <strong>
+                            <p>Unit 4: Graphs</p>
+                        </strong>
+                        <hr>
+                        <p><strong>Graphs:</strong> Representation (Adjacency Matrix/List), Traversals (BFS, DFS),
+                            Spanning Trees (Prim's, Kruskal's), Shortest Path Algorithms (Dijkstra, Bellman-Ford,
+                            Floyd-Warshall).</p>
+                    </div>
+                </summary>
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) Design an efficient algorithm for finding the longest directed path from a vertex s to a
+                            vertex of an acyclic weighted digraph G. Specify the graph representation used and any
+                            auxiliary data structures used. Analyze the time complexity of your algorithm. <span
+                                class="unit-year">(Nov-2022)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Reconstruct the proof of correctness of the Bellman-Ford Algorithm. How Bellman-Ford
+                            algorithm able to work with negative weight? <span class="unit-year">(Nov-2022)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) The problem of finding a subset T of the edges of a connected graph G such that all
+                            nodes remain connected when only the edges of T are used, and the sum of weights of edges in
+                            T is as small as possible, still makes sense even if G has edges with negative weights.
+                            However, the solution may no longer be a tree. Adapt either Kruskal's or Prim's algorithm to
+                            work on a graph that may include negative weights. <span class="unit-year">(Nov-2022)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Draw the directed graph that corresponds to the following adjacency matrix. <span
+                                class="unit-year">(Nov-2022, June-2024)</span>
+                        </p>
+
+                        <div style="margin: 1rem 0; overflow-x: auto;">
+                            <table
+                                style="width: 100%; border-collapse: collapse; border: 1px solid #ddd; text-align: center;">
+                                <thead>
+                                    <tr style="background-color: #f9f9f9;">
+                                        <th style="padding: 8px; border: 1px solid #ddd;">Vertices</th>
+                                        <th style="padding: 8px; border: 1px solid #ddd;">V0</th>
+                                        <th style="padding: 8px; border: 1px solid #ddd;">V1</th>
+                                        <th style="padding: 8px; border: 1px solid #ddd;">V2</th>
+                                        <th style="padding: 8px; border: 1px solid #ddd;">V3</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">V0</td>
+                                        <td style="padding: 8px; border: 1px solid #ddd;">0</td>
+                                        <td style="padding: 8px; border: 1px solid #ddd;">1</td>
+                                        <td style="padding: 8px; border: 1px solid #ddd;">1</td>
+                                        <td style="padding: 8px; border: 1px solid #ddd;">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">V1</td>
+                                        <td style="padding: 8px; border: 1px solid #ddd;">0</td>
+                                        <td style="padding: 8px; border: 1px solid #ddd;">0</td>
+                                        <td style="padding: 8px; border: 1px solid #ddd;">1</td>
+                                        <td style="padding: 8px; border: 1px solid #ddd;">1</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">V2</td>
+                                        <td style="padding: 8px; border: 1px solid #ddd;">0</td>
+                                        <td style="padding: 8px; border: 1px solid #ddd;">0</td>
+                                        <td style="padding: 8px; border: 1px solid #ddd;">0</td>
+                                        <td style="padding: 8px; border: 1px solid #ddd;">1</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">V3</td>
+                                        <td style="padding: 8px; border: 1px solid #ddd;">1</td>
+                                        <td style="padding: 8px; border: 1px solid #ddd;">0</td>
+                                        <td style="padding: 8px; border: 1px solid #ddd;">0</td>
+                                        <td style="padding: 8px; border: 1px solid #ddd;">0</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Compare and Contrast the Spanning tree and Minimum Spanning Tree <span
+                                class="unit-year">(Nov-2022, June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) Explain in detail about the graph traversal techniques with suitable example. <span
+                                class="unit-year">(Dec-2023)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>Explain Breadth First Search algorithm with example. <span
+                                class="unit-year">(Dec-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) Consider the following undirected graph. <br> i) Find the adjacency list representation
+                            of the graph. <br> ii) Find a minimum cost spanning tree by Kruskal's algorithm. <span
+                                class="unit-year">(Dec-2023)</span>
+                        </p>
+                        <br>
+                        <img class="ans-img" src="/sem-III-papers/AIML/al-303/ques-diagrams/Q.4-b_dec-2023.png"
+                            alt="Undirected Graph Dec 2023"
+                            style="max-width: 100%; border: 1px solid #ddd; padding: 5px;">
+                    </strong>
+                    <hr>
+
+                    <!-- Added from June-2023: Dijkstra Algorithm question appears in June file as Q6(b) unit 4 -->
+                    <strong>
+                        <p>Q.8) Explain Dijkstra Algorithm with the help of example. <span class="unit-year">(June-2023,
+                                Unit 4)</span>
+                        </p>
+                    </strong>
+                    <hr>
+
+                    <strong>
+                        <p>Q.8) Compare Prim's algorithm with Kruskal's algorithm for finding minimum spanning trees.
+                            <span class="unit-year">(Dec-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) Write short note on: Graph. <span class="unit-year">(Dec-2024)</span>
+                        </p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
+                <strong>
+                    <p style="color: #d32f2f;">Expected Sample Questions for Dec-2025 Exam (Based on Syllabus Analysis
+                        )
+                    </p>
+                </strong>
+                <div class="question" style="border-left: 4px solid #d32f2f;">
+                    <strong>
+                        <p>Q.1) Write Dijkstra's Algorithm to find the shortest path from a single source to all other
+                            vertices. Analyse its complexity. <span class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Explain Floyd-Warshall Algorithm for All-Pairs Shortest Path problem. <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Explain Depth First Search (DFS) with a suitable example. Differentiate between BFS and
+                            DFS. <span class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) What is Topological Sort? Write an algorithm to perform topological sort on a DAG. <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Define Connected Components. Write an algorithm to find the number of connected
+                            components in an undirected graph. <span class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                </div>
+                <button type="button" class="hl-show-less"
+                    onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
+                    Show less ▲
+                </button>
+            </details>
         </div>
 
+        <!-- Unit 5 -->
         <div class="question">
-            <p><strong>Unit 5: Sorting & Searching</strong></p>
-            <hr>
-            <p><strong>Sorting:</strong> Introduction, Sort methods like: Bubble Sort, Quick sort, Selection sort, Heap sort, Insertion sort, Shell sort, Merge sort and Radix sort; comparison of various sorting techniques.<br>
-            <strong>Searching:</strong> Basic Search Techniques: Sequential search, Binary search, Comparison of search methods. Hashing & Indexing.<br>
-            <strong>Case Study:</strong> Application of various data structures in operating system, DBMS etc.</p>
+            <details>
+                <summary>
+                    <div>
+                        <strong>
+                            <p>Unit 5: Sorting, Searching & Hashing</p>
+                        </strong>
+                        <hr>
+                        <p><strong>Sorting:</strong> Bubble, Selection, Insertion, Quick, Merge, Heap, Radix, Stable vs
+                            Unstable sorting. <br>
+                            <strong>Searching:</strong> Linear Search, Binary Search. <br>
+                            <strong>Hashing:</strong> Hash functions, Collision resolution techniques (Chaining, Open
+                            Addressing).
+                        </p>
+                    </div>
+                </summary>
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) Explain heap and radix sort with the algorithm. <span
+                                class="unit-year">(Nov-2022)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>Write the algorithm to create a heap and sort the following elements using heap sort: 12, 8,
+                            10, 6, 4, 10, 6, 11, 9, 8, 14, 1, 2 <span class="unit-year">(Dec-2023)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Define hash function. Discuss various methods used for resolving hash collisions. <span
+                                class="unit-year">(Dec-2023)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>What is HashMap in data structure? How does HashMap handle collisions? Explain with C or
+                            Java. <span class="unit-year">(June-2024)</span>
+                        </p>
+                        <div style="text-align: center; margin: 5px 0; color: #666;">OR</div>
+                        <p>Provide examples of real-world applications where hashing is used and explain any two example
+                            in details. <span class="unit-year">(Dec-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) What do you understand by stable and in-place sorting? <span
+                                class="unit-year">(Dec-2023)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Demonstrate LRU Algorithm. Which data structure uses LRU algorithm. <span
+                                class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+
+                    <!-- Added June-2023 Q7 & Q8 for Unit 5 -->
+                    <strong>
+                        <p>Q.5) Write a Heap sort algorithm. Use Heap sort algorithm to sort the following element:
+                            <br> D A T A S T R U C T U R E S <span class="unit-year">(June-2023, Unit 5)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) Binary search is more efficient than Linear search. Justify your answer. <span
+                                class="unit-year">(June-2023, Unit 5)</span>
+                        </p>
+                    </strong>
+                    <hr>
+
+                    <strong>
+                        <p>Q.5) Explain how to sort the elements by using selection sort and derive time complexity for
+                            the same. <span class="unit-year">(Dec-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) Write a short notes on: Merge Sort. <span class="unit-year">(Dec-2024)</span>
+                        </p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
+                <strong>
+                    <p style="color: #d32f2f;">Expected Sample Questions for Dec-2025 Exam (Based on Syllabus Analysis
+                        )
+                    </p>
+                </strong>
+                <div class="question" style="border-left: 4px solid #d32f2f;">
+                    <strong>
+                        <p>Q.1) Explain Quick Sort algorithm with an example. Derive its best case and worst case time
+                            complexity. <span class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Differentiate between Linear Search and Binary Search. Write a recursive algorithm for
+                            Binary Search. <span class="unit-year">(Predicted — influenced by June-2023)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Explain Shell Sort algorithm. How is it an improvement over Insertion Sort? <span
+                                class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Discuss the different file organization techniques: Sequential, Indexed Sequential, and
+                            Direct Access. <span class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) What is Hashing? Explain Quadratic Probing and Double Hashing as collision resolution
+                            techniques. <span class="unit-year">(Predicted)</span>
+                        </p>
+                    </strong>
+                </div>
+                <button type="button" class="hl-show-less"
+                    onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
+                    Show less ▲
+                </button>
+            </details>
         </div>
 
     </section>
 
     <footer class="footer">
         <p>
-            <div id="footer"></div>&copy; <span id="year"></span> Hyper Learning. Built to help Students.
+        <div id="footer"></div>&copy; <span id="year"></span> Hyper Learning. Built to help Students.
         </p>
         <p class="disclaimer">
-            Disclaimer: Some content may contain errors. Please cross-check and share corrections via our feedback section.
+            Disclaimer: Some content may contain errors. Please cross-check and share corrections via our feedback
+            section.
         </p>
     </footer>
 
