@@ -274,7 +274,7 @@ function formatAnswerAsHtml(str) {
     .replace(/\n/g, '<br>');
 
   if (!formatted.includes('<p>') && !formatted.includes('<h')) {
-    formatted = '<p style="margin-bottom: 1rem; line-height: 1.75; font-size: 1rem; color: #334155; text-align: justify;">' + formatted + '</p>';
+    formatted = '<p style="margin-bottom: 1rem; line-height: 1.75; color: #334155;">' + formatted + '</p>';
   }
 
   return formatted;
@@ -334,12 +334,12 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
   const regenRemaining = REGENERATE_LIMIT - regenCount;
 
   // 1. Define Styles (Old Design colors, New Design sizing)
-  // "overflow-x: auto" fixes the chemistry/math width issue
   const containerStyle = "margin: 1rem 0; padding: 1.25rem; border-radius: 12px; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); border: 2px solid #e2e8f0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); max-width: 100%; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word;";
-  const answerContentStyle = "padding: 1rem; background: #ffffff; border-radius: 8px; border-left: 4px solid #COLOR#; font-size: 0.92rem; line-height: 1.6; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch;";
-  const buttonGroupStyle = "margin-top: 1rem; padding-top: 1rem; border-top: 2px solid #f1f5f9; display: flex; gap: 0.6rem; flex-wrap: wrap;";
   
-  // Smaller button style for mobile (from New Code)
+  // REMOVED border-left (Pink line gone)
+  const answerContentStyle = "padding: 1rem; background: #ffffff; border-radius: 8px; font-size: 0.92rem; line-height: 1.6; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch;";
+  
+  const buttonGroupStyle = "margin-top: 1rem; padding-top: 1rem; border-top: 2px solid #f1f5f9; display: flex; gap: 0.6rem; flex-wrap: wrap;";
   const buttonBaseStyle = "flex: 1; min-width: 90px; padding: 0.6rem 0.8rem; border-radius: 8px; border: 2px solid #e2e8f0; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); cursor: pointer; font-weight: 600; color: #475569; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.05); font-size: 0.85rem;";
 
   // Check global cache first
@@ -366,13 +366,14 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
             </div>
           </div>
 
-          <div style="${answerContentStyle.replace('#COLOR#', subjectInfo.color)}">
+          <div style="${answerContentStyle}">
             ${formatAnswerAsHtml(globalCache.answer)}
           </div>
 
           <div style="${buttonGroupStyle}">
             <button onclick="copyText('${questionId}')" style="${buttonBaseStyle}" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.05)';">📋 Copy</button>
             <button onclick="downloadText('${questionId}')" style="${buttonBaseStyle}" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.05)';">💾 Download</button>
+            <button onclick="hideAnswer(this)" style="${buttonBaseStyle}" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.05)';">🙈 Hide</button>
             <button onclick="regenerateAnswer('${questionId}', \`${questionText.replace(/`/g, '\\`')}\`, this)" 
                     ${isLimitReached ? 'disabled' : ''} 
                     style="${buttonBaseStyle} border: 2px solid ${isLimitReached ? '#e2e8f0' : '#3b82f6'}; background: ${isLimitReached ? '#f1f5f9' : 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)'}; color: ${isLimitReached ? '#94a3b8' : '#ffffff'}; opacity: ${isLimitReached ? '0.6' : '1'}; flex: 1.5; min-width: 120px;"
@@ -401,7 +402,7 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
     }
   }
 
-  // Show loading with beautiful animation (Scaled down for mobile)
+  // Show loading with beautiful animation
   const subjectInfo = getSubjectInfo(questionId);
   const abortController = new AbortController();
   
@@ -476,12 +477,13 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
                   </div>
                 </div>
               </div>
-              <div style="${answerContentStyle.replace('#COLOR#', subjectInfo.color)}">
+              <div style="${answerContentStyle}">
                 ${formatAnswerAsHtml(streamed)}
               </div>
               <div style="${buttonGroupStyle}">
                 <button onclick="copyText('${questionId}')" style="${buttonBaseStyle}" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.05)';">📋 Copy</button>
                 <button onclick="downloadText('${questionId}')" style="${buttonBaseStyle}" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.05)';">💾 Download</button>
+                <button onclick="hideAnswer(this)" style="${buttonBaseStyle}" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.05)';">🙈 Hide</button>
                 <button onclick="regenerateAnswer('${questionId}', \`${questionText.replace(/`/g, '\\`')}\`, this)" 
                         ${isFinalLimitReached ? 'disabled' : ''} 
                         style="${buttonBaseStyle} border: 2px solid ${isFinalLimitReached ? '#e2e8f0' : '#3b82f6'}; background: ${isFinalLimitReached ? '#f1f5f9' : 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)'}; color: ${isFinalLimitReached ? '#94a3b8' : '#ffffff'}; opacity: ${isFinalLimitReached ? '0.6' : '1'}; flex: 1.5; min-width: 120px;"
@@ -529,12 +531,13 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
               
               targetElement.innerHTML = `
                 <div style="${containerStyle}">
-                  <div style="${answerContentStyle.replace('#COLOR#', subjectInfo.color)}">
+                  <div style="${answerContentStyle}">
                     ${formatAnswerAsHtml(streamed)}
                   </div>
                   <div style="${buttonGroupStyle}">
                     <button onclick="copyText('${questionId}')" style="${buttonBaseStyle}" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.05)';">📋 Copy</button>
                     <button onclick="downloadText('${questionId}')" style="${buttonBaseStyle}" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.05)';">💾 Download</button>
+                    <button onclick="hideAnswer(this)" style="${buttonBaseStyle}" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.05)';">🙈 Hide</button>
                     <button onclick="regenerateAnswer('${questionId}', \`${questionText.replace(/`/g, '\\`')}\`, this)" 
                             ${isImmLimitReached ? 'disabled' : ''} 
                             style="${buttonBaseStyle} border: 2px solid ${isImmLimitReached ? '#e2e8f0' : '#3b82f6'}; background: ${isImmLimitReached ? '#f1f5f9' : 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)'}; color: ${isImmLimitReached ? '#94a3b8' : '#ffffff'}; opacity: ${isImmLimitReached ? '0.6' : '1'}; flex: 1.5; min-width: 120px;"
@@ -548,16 +551,16 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
              
              const localCache = loadLocalCache();
              localCache[questionId] = { 
-                answer: streamed, 
-                ts: Date.now(), 
-                backendCached: finalBackendCached,
-                subject: subjectInfo.name,
-                questionText: questionText
+               answer: streamed, 
+               ts: Date.now(), 
+               backendCached: finalBackendCached,
+               subject: subjectInfo.name,
+               questionText: questionText
              };
              saveLocalCache(localCache);
              
              if (window.MathJax && window.MathJax.typesetPromise) {
-                MathJax.typesetPromise([targetElement]).catch(console.warn);
+               MathJax.typesetPromise([targetElement]).catch(console.warn);
              }
          });
       }
@@ -679,6 +682,22 @@ window.downloadText = function(questionId) {
     a.href = URL.createObjectURL(blob);
     a.download = `${questionId}-solution.txt`;
     a.click();
+  }
+};
+
+// ==================== NEW HIDE FUNCTION ====================
+window.hideAnswer = function(button) {
+  const answerContainer = button.closest('.answer-box') || button.closest('.ai-answer-container');
+  if (answerContainer) {
+    // Clear content and hide container
+    answerContainer.innerHTML = '';
+    answerContainer.style.display = 'none';
+    
+    // Find the original trigger button (previous sibling) and show it
+    const triggerBtn = answerContainer.previousElementSibling;
+    if (triggerBtn && triggerBtn.tagName === 'BUTTON') {
+        triggerBtn.style.display = ''; // Revert to original display style (block/inline-block)
+    }
   }
 };
 
