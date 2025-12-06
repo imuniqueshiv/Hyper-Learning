@@ -2,7 +2,7 @@
 const BACKEND_URL = 'https://hyper-learning-backend.vercel.app/api/ask';
 const CACHE_API_URL = 'https://hyper-learning-backend.vercel.app/api/cache';
 const LOCAL_CACHE_KEY = 'rgpv_universal_answers_v1';
-const CACHE_TTL_DAYS = 30;
+const CACHE_TTL_DAYS = 365;
 const REGENERATE_LIMIT = 7;
 
 // Complete subject mapping for all 30+ subjects
@@ -259,7 +259,7 @@ function formatAnswerAsHtml(str) {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;');
 
-  let formatted = escaped
+ let formatted = escaped
     .replace(/^### (.*$)/gim, '<h3 style="font-size: 1.15rem; margin: 1.5rem 0 0.75rem; color: #1e293b; font-weight: 700; padding-left: 12px; border-left: 3px solid #3b82f6;">$1</h3>')
     .replace(/^## (.*$)/gim, '<h2 style="font-size: 1.3rem; margin: 1.75rem 0 0.85rem; color: #0f172a; font-weight: 700; padding: 8px 12px; background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%); border-radius: 6px;">$1</h2>')
     .replace(/^# (.*$)/gim, '<h1 style="font-size: 1.5rem; margin: 2rem 0 1rem; color: #0c4a6e; font-weight: 800; padding: 12px 16px; background: linear-gradient(135deg, #bfdbfe 0%, #ddd6fe 100%); border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">$1</h1>')
@@ -280,6 +280,7 @@ function formatAnswerAsHtml(str) {
   return formatted;
 }
 
+
 function timeAgo(ts) {
   const diff = Date.now() - ts;
   const mins = Math.floor(diff / 60000);
@@ -294,8 +295,18 @@ function timeAgo(ts) {
 // ==================== API Functions ====================
 const controllers = new WeakMap();
 
-async function fetchAnswerStream(question, onChunk, signal) {
-  const url = `${BACKEND_URL}?question=${encodeURIComponent(question)}`;
+// UPDATED: Added forceRefresh parameter to modify the question content itself
+async function fetchAnswerStream(question, onChunk, signal, forceRefresh = false) {
+  // CRITICAL FIX: Backend caches by question text. We MUST modify the text to bust cache.
+  // We append a hidden, unique system note that forces a new hash key in the backend.
+  let finalQuestion = question;
+  if (forceRefresh) {
+      finalQuestion += `\n\n[System: Regenerate fresh answer. ID: ${Date.now()}]`;
+  }
+
+  // Also keep the URL param for good measure
+  const url = `${BACKEND_URL}?question=${encodeURIComponent(finalQuestion)}&_t=${Date.now()}`;
+  
   const resp = await fetch(url, { method: 'GET', signal });
   const ct = resp.headers.get('content-type') || '';
 
@@ -447,6 +458,7 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
     let streamed = '';
     let finalBackendCached = false;
 
+    // Pass forceRefresh option to fetchAnswerStream
     await fetchAnswerStream(fullQuery, (chunk, meta) => {
       if (meta.done && chunk === '') {
         finalBackendCached = !!meta.backendCached;
@@ -564,7 +576,7 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
              }
          });
       }
-    }, abortController.signal);
+    }, abortController.signal, opts.forceRefresh); // Pass the flag here
     
   } catch (err) {
     if (err.name === 'AbortError') {
@@ -722,8 +734,17 @@ window.regenerateAnswer = async function(questionId, questionText, button) {
   delete localCache[questionId];
   saveLocalCache(localCache);
   
-  const container = button.closest('div').parentElement;
-  await displayAnswer(container, questionId, questionText, { forceRefresh: true });
+  // UPDATED: Correct container selection to prevent overlapping
+  const container = button.closest('.answer-box') || button.closest('.ai-answer-container');
+  
+  // Ensure we are not nesting inside an existing answer box
+  if (container) {
+      container.innerHTML = ''; // Clear existing content
+      container.style.display = 'block'; // Ensure it's visible
+      await displayAnswer(container, questionId, questionText, { forceRefresh: true });
+  } else {
+      console.error("Could not find answer container for regeneration");
+  }
 };
 
 // ==================== Initialization ====================
