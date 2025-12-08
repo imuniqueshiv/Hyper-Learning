@@ -267,7 +267,15 @@ function formatAnswerAsHtml(str) {
     .replace(/\*\*(.*?)\*\*/g, '<strong style="color: #0369a1; font-weight: 700;">$1</strong>')
     .replace(/\*(.*?)\*/g, '<em style="color: #6366f1;">$1</em>')
     .replace(/```([^`]+)```/g, '<pre style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.9rem; max-width: 100%; border: 1px solid #cbd5e1; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);"><code style="font-family: \'Fira Code\', \'Consolas\', monospace; color: #1e293b;">$1</code></pre>')
-    .replace(/`([^`]+)`/g, '<code style="background: #fef3c7; color: #92400e; padding: 3px 6px; border-radius: 4px; font-size: 0.9em; font-weight: 600; font-family: \'Fira Code\', monospace;">$1</code>')
+    .replace(/```([\s\S]*?)```/g,
+  (match, code) => {
+    // Optionally strip a language tag like "cpp" on the first line
+    const cleaned = code.replace(/^[a-zA-Z0-9_+\-]+[\t ]*\n/, '');
+    return '<pre style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.9rem; max-width: 100%; border: 1px solid #cbd5e1; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);"><code style="font-family: \'Fira Code\', \'Consolas\', monospace; color: #1e293b;">'
+      + cleaned
+      + '</code></pre>';
+  })
+    // .replace(/`([^`]+)`/g, '<code style="background: #fef3c7; color: #92400e; padding: 3px 6px; border-radius: 4px; font-size: 0.9em; font-weight: 600; font-family: \'Fira Code\', monospace;">$1</code>')
     .replace(/^\* (.*$)/gim, '<li style="margin-bottom: 0.65rem; padding-left: 0.5rem; line-height: 1.7; position: relative;"><span style="position: absolute; left: -1.2rem; color: #3b82f6; font-weight: bold;">•</span>$1</li>')
     .replace(/^(\d+)\. (.*$)/gim, '<li style="margin-bottom: 0.65rem; padding-left: 0.5rem; line-height: 1.7; list-style-position: inside; color: #334155;">$2</li>')
     .replace(/\n\n/g, '</p><p style="margin-bottom: 1rem; line-height: 1.75; font-size: 1rem; color: #334155; text-align: justify;">')
