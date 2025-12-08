@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSIT (CI)/IT-303 - Data Structure Syllabus | Hyper Learning</title>
+    <meta name="description" content="CSIT (CI)/IT-303 Data Structure Syllabus RGPV B.Tech III Semester. New Scheme Based On AICTE Flexible Curricula." />
+    
+    <link rel="stylesheet" href="../../style.css" />
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="../../index.html" class="logo"
+                style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
+                <img src="../../images/HL hd logo.png" alt="Hyper Learning Logo" width="90" height="70" />
+                <span>Hyper Learning</span>
+            </a>
+            <nav class="nav">
+                <a href="../../index.html">Home</a>
+                <a href="../../sem-3.html">Subjects</a>
+                <a href="../../contact.html">Contact</a>
+                <a href="../../queries.html">Queries</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h2>CSIT (CI)/IT-303 – Data Structure</h2>
+        <p>
+            Rajiv Gandhi Proudyogiki Vishwavidyalaya, Bhopal<br>
+            <strong>New Scheme Based On AICTE Flexible Curricula</strong><br>
+            Computer Science & Information Technology | III-Semester
+        </p>
+    </section>
+
+    <section class="questions-list">
+        <h3>Syllabus Content & Previous Year Questions</h3>
+
+        <div class="question">
+            <details>
+                <summary>
+                    <div>
+                        <strong><p>Unit 1: Introduction</p></strong>
+                        <hr>
+                        <p>Data, data type, data object. Types of data structure – primitive & non-primitive , linear & non-linear. Operations on data structures – traversing, searching , inserting , deleting. Complexity analysis – worst case, best case, average case. Time – space trade off , algorithm efficiency, asymptotic notations – big oh , omega , theta.</p>
+                    </div>
+                </summary>
+                <br>
+                <hr>
+                <strong><p>Previous Years questions appears in RGPV exam.</p></strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) What is Data structure? Write a brief note on classification of data structure. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) What do you mean by algorithmic complexity? Explain Time complexity and space complexity in brief. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Define Data Structures. With the aid of a neat diagram describe the classification of data structures. <span class="unit-year">(Dec-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) What is asymptotic analysis? Explain Big-oh notation. Analyse and write the running time complexity of the following function: <span class="unit-year">(Dec-2023)</span>
+                        $$
+                        \begin{aligned}
+                        &A() \{ \\
+                        &\quad \text{int } i, j, k, n; \\
+                        &\quad \text{for}(i=1; i<=n; i++) \\
+                        &\quad \quad \text{for}(j=1; j*j<=n; j++) \\
+                        &\quad \quad \quad \text{for}(k=1; 2*k<=n; k++) \\
+                        &\quad \quad \quad \quad \text{printf("*");} \\
+                        &\}
+                        \end{aligned}
+                        $$
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) How do you find the complexity of an algorithm? What is the relation between the time and space complexities of an algorithm? Justify your answer with an example. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
+                <strong><p style="color: #d32f2f;">Expected Sample Questions for Future Exams</p></strong>
+                <div class="question" style="border-left: 4px solid #d32f2f;">
+                    <strong><p>Q.1) Explain the Time-Space trade-off in data structures with a suitable example. <span class="unit-year">(Predicted)</span></p></strong>
+                    <hr>
+                    <strong><p>Q.2) Define Asymptotic Notations. Differentiate between Big Oh ($O$), Omega ($\Omega$), and Theta ($\Theta$) notations with graphical representation. <span class="unit-year">(Predicted)</span></p></strong>
+                    <hr>
+                    <strong><p>Q.3) Distinguish between Primitive and Non-Primitive data structures with examples. <span class="unit-year">(Predicted)</span></p></strong>
+                    <hr>
+                    <strong><p>Q.4) Define Abstract Data Type (ADT). Explain its importance in data structure design. <span class="unit-year">(Predicted)</span></p></strong>
+                    <hr>
+                    <strong><p>Q.5) What is an Algorithm? Explain the key characteristics of a good algorithm. <span class="unit-year">(Predicted)</span></p></strong>
+                </div>
+                <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
+                    Show less ▲
+                </button>
+            </details>
+        </div>
+
+        <div class="question">
+            <details>
+                <summary>
+                    <div>
+                        <strong><p>Unit 2: Arrays & Structure</p></strong>
+                        <hr>
+                        <p>Introduction , declaration of arrays , operations on arrays – inserting , deleting , merging of two arrays , 1 dimensional & 2 dimensional arrays, row & column major representation , address calculation in array , storing values in arrays , evaluation of polynomial – addition & representation. Searching & sorting – Introduction , sequential search, binary search , Fibonacci search , indexed sequential search, hashed search. Types of sorting with general concepts – bubble, heap , insertion , selection, quick , heap , shell , bucket , radix and merge sort.</p>
+                    </div>
+                </summary>
+                <br>
+                <hr>
+                <strong><p>Previous Years questions appears in RGPV exam.</p></strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) Explain Insertion sort in details. Write an algorithm for it. Discuss the complexity of insertion sort. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) What is max heap? Write an algorithm to perform heap sort. Give example. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Suppose you have an array with the following elements: [22, 7, 2, 9, 8, 15, 13, 3, 11]. What will be the result of sorting this array using the quicksort algorithm with the first element as the pivot? <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) How do you implement binary search recursively? <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) How does the size of the input array affect the time complexity of linear search and binary search? <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) Given an array with both positive and negative numbers, find the two elements such that their sum is closest to zero. Example: 1, 60, 10, 70, -80, 85. Also discuss the complexity. <span class="unit-year">(Dec-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) Consider a two-dimensional array A of order $[20 \times 5]$. The base address is 840, words per memory cell is 8. Find the address of A[15, 3] using row major and column major addressing. <span class="unit-year">(Dec-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Show the steps of quick sort on the following set of elements. 26, 56, 47, 36, 13, 95, 85, 32. Assume the last element as the pivot element. <span class="unit-year">(Dec-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) What is collision? What are the methods to resolves collision? Using the hash function 'key mod 7', insert the following sequence in the hash table: 32, 50, 700, 140, 76, 85, 46, 92, 70, 73 and 101. Use separate chaining. <span class="unit-year">(Dec-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) What are the merits and demerits of array? Given two arrays of integers in ascending order, develop an algorithm to merge these arrays to form a third array sorted in ascending order. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.11) Given a 2D array A[-100, 50:-5, 50]. Find the address of element A[99, 49] considering the base address 10 and each element requires 4 bytes. Follow row major order. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.12) Write an algorithm of Heap sort. Sort the given sequence: 50, 48, 35, 44, 80, 70, 10, 55, 11, 85. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.13) Differentiate between linear search and binary search techniques. Write a C program to search an element in an array using binary search. Also write its time complexity. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
+                <strong><p style="color: #d32f2f;">Expected Sample Questions for Future Exams</p></strong>
+                <div class="question" style="border-left: 4px solid #d32f2f;">
+                    <strong><p>Q.1) Explain Bubble Sort with an example. Derive its worst-case and best-case time complexity. <span class="unit-year">(Predicted)</span></p></strong>
+                    <hr>
+                    <strong><p>Q.2) Discuss the concept of Hashing. Explain the different Hash functions and collision resolution techniques. <span class="unit-year">(Predicted)</span></p></strong>
+                    <hr>
+                    <strong><p>Q.3) Explain how polynomial addition is represented and performed using arrays. <span class="unit-year">(Predicted)</span></p></strong>
+                    <hr>
+                    <strong><p>Q.4) Write the Quick Sort algorithm. Sort the array {40, 20, 10, 80, 60, 50, 7, 30} and show the partition at each step. <span class="unit-year">(Predicted)</span></p></strong>
+                    <hr>
+                    <strong><p>Q.5) Derive the formula for Address Calculation in a 2D Array for both Row Major and Column Major Order. <span class="unit-year">(Predicted)</span></p></strong>
+                </div>
+                <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
+                    Show less ▲
+                </button>
+            </details>
+        </div>
+
+        <div class="question">
+            <details>
+                <summary>
+                    <div>
+                        <strong><p>Unit 3: Stacks & Queues</p></strong>
+                        <hr>
+                        <p>Basic concept of stacks & queues, array representation of stacks, operation on stacks – Push , Pop , Create , getTop , empty , linked representation of stack , multiple stack. Application of stack – Conversion: infix , prefix , postfix and evaluation of arithmetic expression. Linked representation of queue, operations on queue – insertion & deletion. Types of queue with functions – circular , deque , priority queue. Applications of queues – Job scheduling , Josephus problem.</p>
+                    </div>
+                </summary>
+                <br>
+                <hr>
+                <strong><p>Previous Years questions appears in RGPV exam.</p></strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) Evaluate the post fix expression using stack: $8 \quad 3 \quad 4 \quad + \quad - \quad 3 \quad 8 \quad 2 \quad / \quad + \quad * \quad 2 \quad \$ \quad 3 \quad +$. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Suppose you have a queue: [10, 20, 30, 40, 50]. What is the result of dequeuing two elements, enqueueing 60, 70, 80, and dequeuing one more? <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) How can you implement a queue using two stacks, and what are the advantages and disadvantages of this approach? <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Define the properties of circular queue. How will you check whether the circular queue is Full or Empty? <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Write short note on: Application of queue. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) Define Stack. What are the different operations performed on stack. Explain why Stack is a recursive data structure? <span class="unit-year">(Dec-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) Write an algorithm for evaluating a postfix expression and apply it for: $4-5^{*}+77/+$. <span class="unit-year">(Dec-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Explain the importance of queue. Describe why it is a bad idea to implement a linked list version of a queue which uses the head of the list as the rear. <span class="unit-year">(Dec-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) What is the advantage of circular queue over ordinary queue? Write a C program to simulate circular queue (Insert, Delete, Display). <span class="unit-year">(Dec-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) Design a data representation which sequentially maps 'n' data objects into an array a[1, n], $n_1$ are stacks and remaining are queues. <span class="unit-year">(Dec-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.11) Write an algorithm for the evaluation of a postfix expressions. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.12) Convert the following infix expression to prefix and postfix using stack: $((2+3)*4+(5*(6+7)*9))$. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.13) What do you mean by stack? What do you mean by overflow and underflow condition? Write an algorithm/C function for push and pop operations. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
+                <strong><p style="color: #d32f2f;">Expected Sample Questions for Future Exams</p></strong>
+                <div class="question" style="border-left: 4px solid #d32f2f;">
+                    <strong><p>Q.1) What is a Priority Queue? Explain its array representation and utility. <span class="unit-year">(Predicted)</span></p></strong>
+                    <hr>
+                    <strong><p>Q.2) Explain the Tower of Hanoi problem and how it illustrates the application of Recursion/Stack. <span class="unit-year">(Predicted)</span></p></strong>
+                    <hr>
+                    <strong><p>Q.3) Write an algorithm to convert a given Infix expression into a Postfix expression using a Stack. <span class="unit-year">(Predicted)</span></p></strong>
+                    <hr>
+                    <strong><p>Q.4) Differentiate between Linear Queue and Circular Queue. Why is Circular Queue preferred? <span class="unit-year">(Predicted)</span></p></strong>
+                    <hr>
+                    <strong><p>Q.5) Explain Double Ended Queue (Deque). List the different input/output restricted deques. <span class="unit-year">(Predicted)</span></p></strong>
+                </div>
+                <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
+                    Show less ▲
+                </button>
+            </details>
+        </div>
+
+        <div class="question">
+            <details>
+                <summary>
+                    <div>
+                        <strong><p>Unit 4: Linked List</p></strong>
+                        <hr>
+                        <p>Introduction – basic terminology, memory allocation & deallocation for linked list. Linked list variants – head pointer , head node , types linked list – linear & circular linked list. Doubly linked list , creation of doubly list, deletion of node from doubly linked list, insertion of a node from doubly linked list, traversal of doubly linked list. Circular linked list – singly circular linked list , circular linked list with header node , doubly circular linked list. Applications of linked list – polynomial representation & garbage collection.</p>
+                    </div>
+                </summary>
+                <br>
+                <hr>
+                <strong><p>Previous Years questions appears in RGPV exam.</p></strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) Explain and implement a singly linked list with an example? <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Write short note on: Doubly circular linked list. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) What is a link list? Discuss advantages; write various operations with time complexities. <span class="unit-year">(Dec-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Suppose there are two singly linked lists both of which intersect. Give an algorithm for finding the merging point and write the running time complexity. <span class="unit-year">(Dec-2023)</span></p>
+                        <img class="ans-img" src="../../sem-III-papers/CSIT/csit-303/ques-diagrams/CSIT303_Dec2023_Q3b.png" alt="Intersecting Linked List Diagram">
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) What are the advantages of linked list over array? Write an algorithm/C code to insert a node at the end of a singly linked list. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) Write an algorithm/C program that reverses the order of all the elements in a singly linked list. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) Show the addition of given polynomials using linked list: $P=3x^{2}+2x+7$ and $Q=5x^{3}+2x^{2}+x$. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Explain Garbage collection and compaction. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
+                <strong><p style="color: #d32f2f;">Expected Sample Questions for Future Exams</p></strong>
+                <div class="question" style="border-left: 4px solid #d32f2f;">
+                    <strong><p>Q.1) Write an algorithm to reverse a Singly Linked List. <span class="unit-year">(Predicted)</span></p></strong>
+                    <hr>
+                    <strong><p>Q.2) Write an algorithm to delete a node from a Doubly Linked List at a specific position. <span class="unit-year">(Predicted)</span></p></strong>
+                    <hr>
+                    <strong><p>Q.3) Explain the concept of a Circular Linked List with a Header Node. What are its advantages? <span class="unit-year">(Predicted)</span></p></strong>
+                    <hr>
+                    <strong><p>Q.4) Explain how polynomial multiplication can be implemented using Linked Lists. <span class="unit-year">(Predicted)</span></p></strong>
+                    <hr>
+                    <strong><p>Q.5) Discuss Dynamic Memory Allocation. Explain `malloc`, `calloc`, and `free` functions with respect to Linked Lists. <span class="unit-year">(Predicted)</span></p></strong>
+                </div>
+                <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
+                    Show less ▲
+                </button>
+            </details>
+        </div>
+
+        <div class="question">
+            <details>
+                <summary>
+                    <div>
+                        <strong><p>Unit 5: Trees</p></strong>
+                        <hr>
+                        <p>Basic terminology – general tree , representation of general tree, types of trees, binary tree- realization and properties , traversal in binary trees – inorder , preorder , postorder , applications of trees. Graph- Basic Terminologies and representations, Graph search and traversal algorithms.</p>
+                    </div>
+                </summary>
+                <br>
+                <hr>
+                <strong><p>Previous Years questions appears in RGPV exam.</p></strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) Construct a binary tree whose preorder and postorder traversal are given. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Insert the set of elements {30, 40, 24, 58, 48, 26, 11, 13} to construct a binary search tree starting from a null tree. Draw the tree for each step. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Write short note on: BFS and DFS. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) What are L-L, L-R and R-R rotation? Write procedure for adding and deleting a node from the balanced tree. <span class="unit-year">(Dec-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) What is the sequence of nodes visited for the following tree for a preorder, postorder, and breadth first traversal? <span class="unit-year">(Dec-2023)</span></p>
+                        <img class="ans-img" src="../../sem-III-papers/CSIT/csit-303/ques-diagrams/CSIT303_Dec2023_Q8a.png" alt="Tree Traversal Diagram">
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) What is Graph traversal? Discuss the difference between traversing a graph and a tree. Identify Depth-First Traversals for the given graph. <span class="unit-year">(Dec-2023)</span></p>
+                        <img class="ans-img" src="../../sem-III-papers/CSIT/csit-303/ques-diagrams/CSIT303_Dec2023_Q8b.png" alt="Graph Traversal Diagram">
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) What is Tree data structure? What are the different types of tree? <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Show that the maximum number of nodes in a binary tree of height h is $2^{h+1}-1$. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) Explain DFS and BFS algorithm supporting with the example. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) Construct a binary tree for given Sequence (Inorder and Postorder). <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
+                <strong><p style="color: #d32f2f;">Expected Sample Questions for Future Exams</p></strong>
+                <div class="question" style="border-left: 4px solid #d32f2f;">
+                    <strong><p>Q.1) Explain Binary Search Tree (BST). Write an algorithm to search for an element in a BST. <span class="unit-year">(Predicted)</span></p></strong>
+                    <hr>
+                    <strong><p>Q.2) Define Graph. Explain Adjacency Matrix and Adjacency List representation of graphs. <span class="unit-year">(Predicted)</span></p></strong>
+                    <hr>
+                    <strong><p>Q.3) Explain Threaded Binary Tree and its advantages over a normal Binary Tree. <span class="unit-year">(Predicted)</span></p></strong>
+                    <hr>
+                    <strong><p>Q.4) Differentiate between Breadth First Search (BFS) and Depth First Search (DFS) with examples. <span class="unit-year">(Predicted)</span></p></strong>
+                    <hr>
+                    <strong><p>Q.5) Define Binary Tree. Differentiate between Complete Binary Tree and Full Binary Tree with diagrams. <span class="unit-year">(Predicted)</span></p></strong>
+                </div>
+                <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
+                    Show less ▲
+                </button>
+            </details>
+        </div>
+
+    </section>
+
+    <footer class="footer">
+        <p>
+            <div id="footer"></div>&copy; <span id="year"></span> Hyper Learning. Built to help Students.
+        </p>
+        <p class="disclaimer">
+            Disclaimer: Some content may contain errors. Please cross-check and share corrections via our feedback section.
+        </p>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+
+</html>
