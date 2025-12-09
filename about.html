@@ -4,54 +4,316 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About Us | Hyper Learning</title>
+  
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* --- SHARED THEME VARIABLES --- */
+    :root {
+      --card-primary: #4F46E5; 
+      --card-secondary: #1e293b; 
+      --card-bg-color: #f8fafc;
+      --text-gray: #64748b;
+      --card-hover-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    /* --- STICKY FOOTER SETUP --- */
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* --- PAGE WRAPPER --- */
+    .about-wrapper {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--card-bg-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1; /* Pushes footer down */
+      padding: 100px 20px 60px 20px;
+      box-sizing: border-box;
+    }
+
+    /* --- MAIN CARD --- */
+    .about-card {
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+      max-width: 1000px;
+      width: 100%;
+      display: flex;
+      overflow: hidden;
+      flex-direction: row;
+      transition: transform 0.3s ease;
+    }
+
+    /* --- LEFT SIDE (VISUAL) --- */
+    .card-visual {
+      background: linear-gradient(135deg, var(--card-primary), #818cf8);
+      color: white;
+      padding: 50px;
+      flex: 0.8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+
+    /* Subtle pattern overlay for texture */
+    .card-visual::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+      background-size: 20px 20px;
+      opacity: 0.5;
+    }
+
+    .visual-icon {
+      font-size: 4rem;
+      margin-bottom: 25px;
+      background: rgba(255,255,255,0.15);
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      border: 2px solid rgba(255,255,255,0.3);
+      backdrop-filter: blur(5px);
+      z-index: 1;
+    }
+
+    .card-visual h2 { font-size: 2.2rem; margin-bottom: 15px; color: white; z-index: 1; }
+    .card-visual p { opacity: 0.95; font-weight: 300; line-height: 1.6; font-size: 1.1rem; z-index: 1; }
+
+    /* PROFESSIONAL QUOTE BOX (Replaces the inline style) */
+    .visual-quote {
+      margin-top: 30px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px 20px;
+      border-radius: 12px;
+      border-left: 4px solid #ffffff;
+      text-align: left;
+      z-index: 1;
+      width: 80%;
+    }
+    .visual-quote span {
+      font-style: italic;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: white;
+      display: block;
+    }
+
+    /* --- RIGHT SIDE (CONTENT) --- */
+    .card-content {
+      padding: 60px 50px; /* Increased padding for breathable look */
+      flex: 1.2;
+    }
+
+    .card-content h1 { 
+      color: var(--card-secondary); 
+      margin-bottom: 25px; 
+      font-size: 2rem; 
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Small underline accent under title */
+    .card-content h1::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--card-primary);
+      margin-top: 8px;
+      border-radius: 2px;
+    }
+
+    .intro-text { color: var(--text-gray); font-size: 1.05rem; line-height: 1.7; margin-bottom: 35px; }
+    
+    .highlight { 
+      color: var(--card-primary); 
+      font-weight: 600; 
+      background: #eff6ff; 
+      padding: 2px 6px; 
+      border-radius: 4px; 
+    }
+
+    /* Info Grid (Mission/Vision) */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-bottom: 35px;
+    }
+
+    /* ENHANCED CARD STYLE FOR MISSION/VISION */
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 20px;
+      border-radius: 16px;
+      border: 1px solid #f1f5f9;
+      background: #ffffff;
+      transition: all 0.3s ease;
+    }
+
+    /* Hover effect for professionalism */
+    .info-item:hover {
+      background: #fafafa;
+      border-color: #e2e8f0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      transform: translateY(-2px);
+    }
+
+    .info-icon {
+      background: #eff6ff;
+      color: var(--card-primary);
+      min-width: 45px; height: 45px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      margin-top: 2px;
+      transition: background 0.3s ease;
+    }
+    
+    .info-item:hover .info-icon {
+      background: var(--card-primary);
+      color: white;
+    }
+
+    .info-text h3 { margin: 0 0 8px 0; color: var(--card-secondary); font-size: 1.15rem; font-weight: 600; }
+    .info-text p { margin: 0; color: var(--text-gray); font-size: 0.95rem; line-height: 1.5; }
+
+    /* Feature Badges (Bottom) */
+    .features-row {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 30px;
+    }
+
+    .badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #f8fafc;
+      padding: 10px 20px;
+      border-radius: 30px; /* Pill shape */
+      color: var(--card-secondary);
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1px solid #e2e8f0;
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+    
+    .badge i { color: var(--card-primary); }
+
+    .badge:hover {
+      background: white;
+      border-color: var(--card-primary);
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.15);
+      transform: translateY(-2px);
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 768px) {
+      .about-wrapper {
+        align-items: flex-start;
+        padding-top: 120px;
+      }
+      .about-card { flex-direction: column; }
+      .card-visual { padding: 50px 30px; }
+      .visual-quote { width: 100%; box-sizing: border-box; }
+      .card-content { padding: 40px 25px; }
+      .card-visual h2 { font-size: 1.8rem; }
+    }
+  </style>
 </head>
 <body>
-   <!-- Header Placeholder -->
- <header class="header">
-  <div class="container">
-    <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
-      <img src="images/HL hd logo.png" alt="Hyper Learning Logo" width="90" height="70" />
-      <span>Hyper Learning</span>
-    </a>
-    <nav class="nav">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="queries.html">Queries</a>
-    </nav>
-  </div>
-</header>
 
-  <!-- About Section -->
-  <section class="hero">
-    <h2>About Hyper Learning</h2>
-    <p style="max-width: 700px; margin: 0 auto; font-size: 1.1rem;">
-      Hyper Learning is a digital educational platform designed to empower engineering students with high-quality previous year question banks, digital solutions, and smart academic resources — all for free.
-    </p>
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
+        <img src="images/HL hd logo.png" alt="Hyper Learning Logo" width="90" height="70" />
+        <span>Hyper Learning</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="queries.html">Queries</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="about-wrapper">
+    <div class="about-card">
+      
+      <div class="card-visual">
+        <div class="visual-icon">
+          <i class="fa-solid fa-book-open-reader"></i>
+        </div>
+        <h2>Built for Students</h2>
+        <p>Empowering the next generation of engineers with smarter tools and better resources.</p>
+        
+        <div class="visual-quote">
+          <span>"Minimizing distractions, maximizing clarity."</span>
+        </div>
+      </div>
+
+      <div class="card-content">
+        <h1>About Hyper Learning</h1>
+        <p class="intro-text">
+          Hyper Learning is a digital educational platform designed exclusively for engineering students. We provide high-quality <span class="highlight">PYQs</span>, digital solutions, and smart resources—all tailored for the <span class="highlight">RGPV</span> curriculum.
+        </p>
+
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="info-icon"><i class="fa-solid fa-crosshairs"></i></div>
+            <div class="info-text">
+              <h3>Our Mission</h3>
+              <p>To make learning accessible and exam-focused. We help you spend more time mastering concepts and less time searching for resources.</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon"><i class="fa-solid fa-eye"></i></div>
+            <div class="info-text">
+              <h3>Our Vision</h3>
+              <p>To become the trusted digital companion for B.Tech students, expanding into curated notes, video lectures, and AI-driven support.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="features-row">
+          <div class="badge"><i class="fa-solid fa-check-circle"></i> 100% Free</div>
+          <div class="badge"><i class="fa-solid fa-server"></i> RGPV Focused</div>
+          <div class="badge"><i class="fa-solid fa-robot"></i> AI Support</div>
+        </div>
+
+      </div>
+    </div>
   </section>
 
-  <section class="subjects" style="max-width: 850px;">
-    <h3>Our Mission</h3>
-    <p>
-      At Hyper Learning, our mission is simple: to make learning accessible, efficient, and exam-focused. We believe in minimizing distractions and maximizing clarity — so you spend more time mastering concepts than searching for resources.
+  <footer class="footer">
+    <div id="footer"></div>
+    <p>&copy; <span id="year"></span> Hyper Learning. Built to help Students.</p>
+    <p class="disclaimer">
+      Disclaimer: Some content may contain errors. Please cross-check and share corrections via our feedback section.
     </p>
+  </footer>
 
-    <h3>Our Vision</h3>
-    <p>
-      We aim to become a trusted study companion for thousands of B.Tech students, especially those navigating the RGPV curriculum. With a vision to grow into a complete digital education portal, Hyper Learning plans to expand into curated notes, video lectures, quizzes, and subject-wise practice sets.
-    </p>
-
-       </div>
-  </section>
-
-
-<!-- Footer Placeholder -->
-<footer class="footer">
-  <p><div id="footer"></div>&copy; <span id="year"></span> Hyper Learning. Built to help Students.</p>
-  <p class="disclaimer">Disclaimer: Some content may contain errors. Please cross-check and share corrections via our feedback section.</p>
-</footer>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
