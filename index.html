@@ -40,15 +40,31 @@
 
   <link rel="stylesheet" href="style.css">
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Hyper Learning",
-    "alternateName": ["Hyper Learning RGPV", "HL RGPV"],
-    "url": "https://imuniqueshiv.github.io/Hyper-Learning/"
-  }
-  </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "name": "Hyper Learning",
+      "alternateName": ["Hyper Learning RGPV", "HL RGPV"],
+      "url": "https://imuniqueshiv.github.io/Hyper-Learning/"
+    },
+    {
+      "@type": "Organization",
+      "name": "Hyper Learning",
+      "url": "https://imuniqueshiv.github.io/Hyper-Learning/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://imuniqueshiv.github.io/Hyper-Learning/images/android-chrome-192x192.png"
+      },
+      "sameAs": [
+        "https://github.com/imuniqueshiv"
+      ]
+    }
+  ]
+}
+</script>
 </head>
 
 <body>
