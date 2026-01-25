@@ -5,7 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="About Hyper Learning - We provide RGPV B.Tech students with organized PYQs, Syllabus mapping, and AI-driven study resources." />
   <title>About Us | Hyper Learning</title>
-  
+
+  <link rel="canonical" href="https://imuniqueshiv.github.io/Hyper-Learning/about.html" />
+  <link rel="icon" type="image/png" sizes="48x48" href="https://imuniqueshiv.github.io/Hyper-Learning/images/hl-logo.png" />
+  <link rel="apple-touch-icon" href="https://imuniqueshiv.github.io/Hyper-Learning/images/hl-logo.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "AboutPage",
+        "@id": "https://imuniqueshiv.github.io/Hyper-Learning/about.html#webpage",
+        "url": "https://imuniqueshiv.github.io/Hyper-Learning/about.html",
+        "name": "About Hyper Learning - AI-Driven RGPV Study Assistant",
+        "description": "Hyper Learning is a digital companion for RGPV B.Tech students, providing AI-generated exam solutions and curated PYQs.",
+        "mainEntity": {
+          "@type": "EducationalOrganization",
+          "name": "Hyper Learning",
+          "url": "https://imuniqueshiv.github.io/Hyper-Learning/",
+          "knowsAbout": ["RGPV B.Tech Curriculum", "Artificial Intelligence", "Engineering Exam Solutions"],
+          "description": "An AI-powered educational platform helping engineering students minimize distractions and maximize exam clarity."
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Shiv Raj Singh",
+        "jobTitle": "Founder & Lead Developer",
+        "url": "https://github.com/imuniqueshiv",
+        "knowsAbout": ["AI & Machine Learning", "Full-Stack Development", "Engineering Education"],
+        "affiliation": {
+          "@type": "EducationalOrganization",
+          "name": "Hyper Learning"
+        }
+      }
+    ]
+  }
+  </script>
+
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -35,7 +72,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      flex: 1; /* Pushes footer down */
+      flex: 1; 
       padding: 100px 20px 60px 20px;
       box-sizing: border-box;
     }
@@ -67,7 +104,6 @@
       position: relative;
     }
 
-    /* Subtle pattern overlay for texture */
     .card-visual::before {
       content: '';
       position: absolute;
@@ -92,7 +128,6 @@
     .card-visual h2 { font-size: 2.2rem; margin-bottom: 15px; color: white; z-index: 1; }
     .card-visual p { opacity: 0.95; font-weight: 300; line-height: 1.6; font-size: 1.1rem; z-index: 1; }
 
-    /* PROFESSIONAL QUOTE BOX (Replaces the inline style) */
     .visual-quote {
       margin-top: 30px;
       background: rgba(255, 255, 255, 0.1);
@@ -113,7 +148,7 @@
 
     /* --- RIGHT SIDE (CONTENT) --- */
     .card-content {
-      padding: 60px 50px; /* Increased padding for breathable look */
+      padding: 60px 50px; 
       flex: 1.2;
     }
 
@@ -125,7 +160,6 @@
       display: inline-block;
     }
 
-    /* Small underline accent under title */
     .card-content h1::after {
       content: '';
       display: block;
@@ -146,7 +180,6 @@
       border-radius: 4px; 
     }
 
-    /* Info Grid (Mission/Vision) */
     .info-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -154,7 +187,6 @@
       margin-bottom: 35px;
     }
 
-    /* ENHANCED CARD STYLE FOR MISSION/VISION */
     .info-item {
       display: flex;
       align-items: flex-start;
@@ -166,7 +198,6 @@
       transition: all 0.3s ease;
     }
 
-    /* Hover effect for professionalism */
     .info-item:hover {
       background: #fafafa;
       border-color: #e2e8f0;
@@ -193,7 +224,6 @@
     .info-text h3 { margin: 0 0 8px 0; color: var(--card-secondary); font-size: 1.15rem; font-weight: 600; }
     .info-text p { margin: 0; color: var(--text-gray); font-size: 0.95rem; line-height: 1.5; }
 
-    /* Feature Badges (Bottom) */
     .features-row {
       display: flex;
       gap: 15px;
@@ -209,7 +239,7 @@
       gap: 10px;
       background: #f8fafc;
       padding: 10px 20px;
-      border-radius: 30px; /* Pill shape */
+      border-radius: 30px; 
       color: var(--card-secondary);
       font-size: 0.9rem;
       font-weight: 500;
@@ -227,7 +257,6 @@
       transform: translateY(-2px);
     }
 
-    /* --- RESPONSIVE --- */
     @media (max-width: 768px) {
       .about-wrapper {
         align-items: flex-start;
@@ -260,7 +289,6 @@
 
   <section class="about-wrapper">
     <div class="about-card">
-      
       <div class="card-visual">
         <div class="visual-icon">
           <i class="fa-solid fa-book-open-reader"></i>
@@ -302,7 +330,6 @@
           <div class="badge"><i class="fa-solid fa-server"></i> RGPV Focused</div>
           <div class="badge"><i class="fa-solid fa-robot"></i> AI Support</div>
         </div>
-
       </div>
     </div>
   </section>

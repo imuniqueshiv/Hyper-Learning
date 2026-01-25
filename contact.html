@@ -3,27 +3,69 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Contact Hyper Learning Founder or submit your queries regarding RGPV B.Tech notes, question papers, or syllabus." />
   <title>Contact | Hyper Learning – Founder & Developer</title>
 
-  <meta name="description" content="Contact the founder and developer of Hyper Learning, Shiv Raj Singh (B.Tech AI & ML, RGPV). Get in touch for feedback, suggestions or collaboration." />
+  <meta name="description" content="Contact Shiv Raj Singh, the founder and developer of Hyper Learning. Specialized in AI & ML, providing RGPV B.Tech students with unit-wise PYQs and AI solutions." />
   <meta name="author" content="Shiv Raj Singh" />
+  <link rel="canonical" href="https://imuniqueshiv.github.io/Hyper-Learning/contact.html" />
+  
+  <link rel="icon" type="image/png" sizes="48x48" href="https://imuniqueshiv.github.io/Hyper-Learning/images/hl-logo.png" />
+  <link rel="apple-touch-icon" href="https://imuniqueshiv.github.io/Hyper-Learning/images/hl-logo.png" />
 
   <link rel="stylesheet" href="style.css" />
-
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ContactPage",
+        "@id": "https://imuniqueshiv.github.io/Hyper-Learning/contact.html#webpage",
+        "url": "https://imuniqueshiv.github.io/Hyper-Learning/contact.html",
+        "name": "Contact Shiv Raj Singh - Founder of Hyper Learning",
+        "description": "Get in touch with the lead developer of Hyper Learning for RGPV study resources and AI-driven solutions.",
+        "mainEntity": {
+          "@id": "https://imuniqueshiv.github.io/Hyper-Learning/#creator"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://imuniqueshiv.github.io/Hyper-Learning/#creator",
+        "name": "Shiv Raj Singh",
+        "jobTitle": "Founder & Full-Stack Developer",
+        "description": "B.Tech student specializing in AI & Machine Learning, creator of Hyper Learning, and developer of AI-powered educational tools.",
+        "url": "https://imuniqueshiv.github.io/My-Portfolio/",
+        "image": "https://imuniqueshiv.github.io/Hyper-Learning/images/hl-logo.png",
+        "sameAs": [
+          "https://www.linkedin.com/in/shiv-raj-singh-387973299/",
+          "https://github.com/imuniqueshiv"
+        ],
+        "knowsAbout": [
+          "Artificial Intelligence",
+          "Machine Learning",
+          "MERN Stack Development",
+          "Engineering Education"
+        ],
+        "affiliation": {
+          "@type": "EducationalOrganization",
+          "name": "Rajiv Gandhi Proudyogiki Vishwavidyalaya",
+          "alternateName": "RGPV",
+          "url": "https://www.rgpv.ac.in/"
+        }
+      }
+    ]
+  }
+  </script>
+
   <style>
-    /* Section Specific Variables */
     :root {
       --card-primary: #4F46E5; 
       --card-secondary: #1e293b; 
       --card-bg-color: #f8fafc;
     }
 
-    /* FIX 1: Sticky Footer Setup */
-    /* This ensures the footer is always at the bottom, even if content is short */
     html, body {
       height: 100%;
       margin: 0;
@@ -31,20 +73,17 @@
       flex-direction: column;
     }
 
-    /* Wrapper */
     .contact-wrapper {
       font-family: 'Poppins', sans-serif;
       background-color: var(--card-bg-color);
       display: flex;
       justify-content: center;
       align-items: center;
-      /* FIX: flex: 1 pushes the footer down by taking up available space */
       flex: 1; 
       padding: 100px 20px 60px 20px; 
       box-sizing: border-box; 
     }
 
-    /* The Main Card */
     .profile-card {
       background: #ffffff;
       border-radius: 20px;
@@ -57,7 +96,6 @@
       z-index: 1;
     }
 
-    /* Left Side (Visual) */
     .card-visual {
       background: linear-gradient(135deg, var(--card-primary), #818cf8);
       color: white;
@@ -99,7 +137,6 @@
     }
     .social-icon:hover { background: white; color: var(--card-primary); transform: translateY(-3px); }
 
-    /* Right Side (Content) */
     .card-content {
       padding: 50px 40px;
       flex: 1.5;
@@ -110,32 +147,29 @@
     .bio-text { color: #666; margin-bottom: 30px; font-size: 1rem; line-height: 1.6; }
     .highlight { color: var(--card-primary); font-weight: 600; }
 
-    /* Contact Grid */
     .contact-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
 
-    /* ENHANCED BUTTON STYLES */
     .contact-item {
       display: flex;
       align-items: center;
-      padding: 18px 20px; /* Bigger touch area */
+      padding: 18px 20px;
       border: 1px solid #e2e8f0;
       border-radius: 16px;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       text-decoration: none;
       color: var(--card-secondary);
       background: #ffffff;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.02); /* Subtle initial shadow */
     }
 
     .contact-item:hover {
       border-color: var(--card-primary);
-      transform: translateY(-5px); /* Smooth lift effect */
-      box-shadow: 0 12px 20px -5px rgba(79, 70, 229, 0.15); /* Blue glow */
+      transform: translateY(-5px);
+      box-shadow: 0 12px 20px -5px rgba(79, 70, 229, 0.15);
     }
 
     .icon-box {
       width: 45px; height: 45px;
-      background: #eff6ff; /* Light blue tint */
+      background: #eff6ff;
       color: var(--card-primary);
       border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
@@ -144,7 +178,6 @@
       transition: all 0.3s ease;
     }
 
-    /* Icon inverts colors on hover for pop */
     .contact-item:hover .icon-box {
         background: var(--card-primary);
         color: #ffffff;
@@ -153,49 +186,13 @@
     .contact-text h5 { font-size: 0.9rem; color: #64748b; margin: 0 0 2px 0; font-weight: 500; }
     .contact-text span { font-weight: 600; font-size: 1.05rem; color: var(--card-secondary); }
 
-    /* Mobile Responsive */
     @media (max-width: 768px) {
-      .contact-wrapper {
-         align-items: flex-start; 
-         padding-top: 120px; 
-         padding-bottom: 60px;
-      }
-
-      .profile-card { 
-        flex-direction: column; 
-        margin: 0; 
-      }
-      
+      .contact-wrapper { padding-top: 120px; }
+      .profile-card { flex-direction: column; }
       .card-visual { padding: 30px; }
       .card-content { padding: 30px 20px; }
-      .card-content h1 { font-size: 1.6rem; }
     }
   </style>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ContactPage",
-    "name": "Contact | Hyper Learning",
-    "url": "https://imuniqueshiv.github.io/Hyper-Learning/contact.html",
-    "about": {
-      "@type": "WebApplication",
-      "name": "Hyper Learning",
-      "description": "Hyper Learning is a digital exam-help platform for RGPV B.Tech students with PYQs and AI-based support.",
-      "creator": {
-        "@type": "Person",
-        "name": "Shiv Raj Singh",
-        "jobTitle": "Founder & Developer",
-        "url": "https://imuniqueshiv.github.io/My-Portfolio/",
-        "affiliation": {
-          "@type": "CollegeOrUniversity",
-          "name": "Rajiv Gandhi Proudyogiki Vishwavidyalaya (RGPV)"
-        }
-      }
-    },
-    "inLanguage": "en"
-  }
-  </script>
 </head>
 <body>
 
@@ -216,7 +213,6 @@
 
   <section class="contact-wrapper">
     <div class="profile-card">
-      
       <div class="card-visual">
         <div class="avatar-placeholder">
           <i class="fa-solid fa-user-graduate"></i>
@@ -237,29 +233,25 @@
         </div>
       </div>
 
-    <div class="card-content">
+      <div class="card-content">
         <h1>Meet the Developer</h1>
-        
-       <p class="bio-text">
-          <strong>Hyper Learning</strong> was founded by a 
-          <span class="highlight">B.Tech AI/ML</span> student under the 
-          <strong><a style="text-decoration: none;;" href="https://www.rgpv.ac.in/" target="_blank">RGPV</a></strong> curriculum.  
-          The platform was created to help students prepare smarter with unit-wise PYQs, digital solutions, and AI support.
+        <p class="bio-text">
+          <strong>Hyper Learning</strong> was developed by an AI & Machine Learning student focused on solving curriculum-specific challenges for the <strong>RGPV</strong> community. The platform aims to minimize academic friction by providing instant, AI-tailored study materials.
         </p>
 
         <div class="contact-grid">
           <a href="https://imuniqueshiv.github.io/My-Portfolio/" class="contact-item">
             <div class="icon-box"><i class="fa-solid fa-laptop-code"></i></div>
             <div class="contact-text">
-              <h5>See my other projects</h5>
-              <span>View Developer Portfolio</span>
+              <h5>Professional Portfolio</h5>
+              <span>View More Projects</span>
             </div>
           </a>
 
           <a href="mailto:hyperlearning4rgpv@gmail.com" class="contact-item">
             <div class="icon-box"><i class="fa-solid fa-envelope"></i></div>
             <div class="contact-text">
-              <h5>Have a suggestion?</h5>
+              <h5>Suggestions & Feedback</h5>
               <span>Get in Touch</span>
             </div>
           </a>
@@ -269,7 +261,6 @@
   </section>
 
   <footer class="footer">
-    <div id="footer"></div>
     <p>&copy; <span id="year"></span> Hyper Learning. Built to help Students.</p>
     <p class="disclaimer">
       Disclaimer: Some content may contain errors. Please cross-check and share corrections via our feedback section.
@@ -277,5 +268,5 @@
   </footer>
 
   <script src="script.js"></script>
-  </body>
+</body>
 </html>
