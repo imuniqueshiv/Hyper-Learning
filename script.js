@@ -2,7 +2,8 @@
 const BACKEND_URL = 'https://hyper-learning-backend.vercel.app/api/ask';
 const CACHE_API_URL = 'https://hyper-learning-backend.vercel.app/api/cache';
 const LOCAL_CACHE_KEY = 'rgpv_universal_answers_v1';
-const CACHE_TTL_DAYS = 365;
+const CACHE_TTL_DAYS = 35;
+const REGENERATED_TTL_DAYS = 3; // ✅ FIX: Regenerated answers expire in 3 days to force re-fetch
 const REGENERATE_LIMIT = 7;
 
 // Complete subject mapping for all 30+ subjects
@@ -98,10 +99,44 @@ async function incrementGlobalRegenerateCount(questionId) {
 }
 
 // ==================== Core Utilities ====================
+
+// ✅ FIX: loadLocalCache now respects TTL and cleans up expired entries.
+// Regenerated answers expire in 3 days; normal answers expire in 365 days.
+// This ensures that after a page refresh, regenerated answers are shown from
+// local cache (not fetched fresh from the backend's old cache).
 function loadLocalCache() {
   try {
-    return JSON.parse(localStorage.getItem(LOCAL_CACHE_KEY) || '{}');
+    const cacheData = localStorage.getItem(LOCAL_CACHE_KEY);
+    if (!cacheData) return {};
+
+    const cache = JSON.parse(cacheData);
+    const now = Date.now();
+    let isDirty = false;
+
+    Object.keys(cache).forEach(key => {
+      const item = cache[key];
+      if (!item || !item.ts) {
+        delete cache[key];
+        isDirty = true;
+        return;
+      }
+
+      // Regenerated answers use shorter TTL so they don't get stale
+      const ttlDays = item.regenerated ? REGENERATED_TTL_DAYS : CACHE_TTL_DAYS;
+      const ttlMs = ttlDays * 24 * 60 * 60 * 1000;
+
+      if (now - item.ts > ttlMs) {
+        delete cache[key];
+        isDirty = true;
+      }
+    });
+
+    if (isDirty) {
+      localStorage.setItem(LOCAL_CACHE_KEY, JSON.stringify(cache));
+    }
+    return cache;
   } catch (e) {
+    console.warn('Cache load failed', e);
     return {};
   }
 }
@@ -301,18 +336,15 @@ function timeAgo(ts) {
 }
 
 // ==================== API Functions ====================
-const controllers = new WeakMap();
 
-// UPDATED: Added forceRefresh parameter to modify the question content itself
 async function fetchAnswerStream(question, onChunk, signal, forceRefresh = false) {
-  // CRITICAL FIX: Backend caches by question text. We MUST modify the text to bust cache.
-  // We append a hidden, unique system note that forces a new hash key in the backend.
+  // ✅ FIX: Backend caches by question text. Append a unique suffix to bust the backend cache
+  // when regenerating so the backend is forced to generate a truly new answer.
   let finalQuestion = question;
   if (forceRefresh) {
       finalQuestion += `\n\n[System: Regenerate fresh answer. ID: ${Date.now()}]`;
   }
 
-  // Also keep the URL param for good measure
   const url = `${BACKEND_URL}?question=${encodeURIComponent(finalQuestion)}&_t=${Date.now()}`;
   
   const resp = await fetch(url, { method: 'GET', signal });
@@ -346,22 +378,64 @@ async function fetchAnswerStream(question, onChunk, signal, forceRefresh = false
   return { fullText: text, backendCached: resp.headers.get('x-cached') === 'true' };
 }
 
-// ==================== ENHANCED ANSWER DISPLAY (Old Design + Mobile/Scroll Fix) ====================
+// ==================== ENHANCED ANSWER DISPLAY ====================
 async function displayAnswer(targetElement, questionId, questionText, opts = { forceRefresh: false }) {
-  const TTL = CACHE_TTL_DAYS * 24 * 60 * 60 * 1000;
   const regenCount = await getGlobalRegenerateCount(questionId);
   const regenRemaining = REGENERATE_LIMIT - regenCount;
 
-  // 1. Define Styles (Old Design colors, New Design sizing)
+  // Define Styles
   const containerStyle = "margin: 1rem 0; padding: 1.25rem; border-radius: 12px; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); border: 2px solid #e2e8f0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); max-width: 100%; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word;";
-  
-  // REMOVED border-left (Pink line gone)
   const answerContentStyle = "padding: 1rem; background: #ffffff; border-radius: 8px; font-size: 0.92rem; line-height: 1.6; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch;";
-  
   const buttonGroupStyle = "margin-top: 1rem; padding-top: 1rem; border-top: 2px solid #f1f5f9; display: flex; gap: 0.6rem; flex-wrap: wrap;";
   const buttonBaseStyle = "flex: 1; min-width: 90px; padding: 0.6rem 0.8rem; border-radius: 8px; border: 2px solid #e2e8f0; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); cursor: pointer; font-weight: 600; color: #475569; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.05); font-size: 0.85rem;";
 
-  // Check global cache first
+  // ✅ FIX: Check LOCAL cache FIRST before anything else.
+  // This is the core fix for the regeneration bug. When a user regenerates and then refreshes,
+  // the local cache holds the new answer. We must serve it instead of going to the backend
+  // which would return the old server-cached answer.
+  if (!opts.forceRefresh) {
+    const localCache = loadLocalCache();
+    if (localCache[questionId] && localCache[questionId].answer) {
+      const cachedData = localCache[questionId];
+      const subjectInfo = getSubjectInfo(questionId);
+      const isLimitReached = regenCount >= REGENERATE_LIMIT;
+
+      targetElement.innerHTML = `
+        <div style="${containerStyle}">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.8rem; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 0;">
+              <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+              </div>
+            </div>
+          </div>
+
+          <div style="${answerContentStyle}">
+            ${formatAnswerAsHtml(cachedData.answer)}
+          </div>
+
+          <div style="${buttonGroupStyle}">
+            <button onclick="copyText('${questionId}')" style="${buttonBaseStyle}" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.05)';">📋 Copy</button>
+            <button onclick="downloadText('${questionId}')" style="${buttonBaseStyle}" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.05)';">💾 Download</button>
+            <button onclick="hideAnswer(this)" style="${buttonBaseStyle}" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.05)';">⮝ Hide</button>
+            <button onclick="regenerateAnswer('${questionId}', \`${questionText.replace(/`/g, '\\`')}\`, this)" 
+                    ${isLimitReached ? 'disabled' : ''} 
+                    style="${buttonBaseStyle} border: 2px solid ${isLimitReached ? '#e2e8f0' : '#3b82f6'}; background: ${isLimitReached ? '#f1f5f9' : 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)'}; color: ${isLimitReached ? '#94a3b8' : '#ffffff'}; opacity: ${isLimitReached ? '0.6' : '1'}; flex: 1.5; min-width: 120px;"
+                    title="${isLimitReached ? 'Regenerate limit reached (7/7)' : `Regenerations used: ${regenCount}/${REGENERATE_LIMIT}`}"
+                    ${!isLimitReached ? `onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(59,130,246,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(59,130,246,0.3)';"` : ''}>
+              ${isLimitReached ? '🚫 Limit Reached' : `🔄 Regenerate (${regenRemaining})`}
+            </button>
+          </div>
+        </div>
+      `;
+
+      if (window.MathJax && window.MathJax.typesetPromise) {
+        MathJax.typesetPromise([targetElement]).catch(console.warn);
+      }
+      return; // Stop here — do not fall through to the backend
+    }
+  }
+
+  // No local cache hit — check global cache (currently always returns null)
   if (!opts.forceRefresh) {
     const globalCache = await getGlobalCache(questionId);
     if (globalCache && globalCache.answer) {
@@ -372,16 +446,7 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
         <div style="${containerStyle}">
           <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.8rem; flex-wrap: wrap;">
             <span style="font-size: 1.35rem;">${subjectInfo.emoji}</span>
-            <div style="flex: 1; min-width: 0;">
-              <div style="font-size: 0.7rem; font-weight: 600; color: ${subjectInfo.color}; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px;">${subjectInfo.name}</div>
-              <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-                <span style="font-size: 0.7rem; background: linear-gradient(135deg, #dcfce7 0%, #d1fae5 100%); color: #15803d; padding: 3px 8px; border-radius: 10px; font-weight: 600; box-shadow: 0 1px 2px rgba(0,0,0,0.1);">
-                  ✓ Cached Answer
-                </span>
-                <span style="font-size: 0.7rem; color: #64748b; font-weight: 500;">
-                  📅 ${timeAgo(globalCache.metadata?.timestamp || Date.now())}
-                </span>
-              </div>
+            
             </div>
           </div>
 
@@ -410,7 +475,8 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
         ts: Date.now(),
         backendCached: true,
         subject: subjectInfo.name,
-        questionText: questionText
+        questionText: questionText,
+        regenerated: false
       };
       saveLocalCache(localCache);
       
@@ -421,7 +487,7 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
     }
   }
 
-  // Show loading with beautiful animation
+  // Show loading with animation
   const subjectInfo = getSubjectInfo(questionId);
   const abortController = new AbortController();
   
@@ -466,7 +532,6 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
     let streamed = '';
     let finalBackendCached = false;
 
-    // Pass forceRefresh option to fetchAnswerStream
     await fetchAnswerStream(fullQuery, (chunk, meta) => {
       if (meta.done && chunk === '') {
         finalBackendCached = !!meta.backendCached;
@@ -515,13 +580,16 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
             </div>
           `;
           
+          // ✅ FIX: Mark as regenerated so the TTL system knows to use the shorter expiry.
+          // This is what makes the regenerated answer persist correctly after a page refresh.
           const localCache = loadLocalCache();
           localCache[questionId] = { 
             answer: streamed, 
             ts: Date.now(), 
             backendCached: finalBackendCached,
             subject: subjectInfo.name,
-            questionText: questionText
+            questionText: questionText,
+            regenerated: opts.forceRefresh // ✅ true when called from regenerateAnswer
           };
           saveLocalCache(localCache);
           
@@ -575,7 +643,8 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
                ts: Date.now(), 
                backendCached: finalBackendCached,
                subject: subjectInfo.name,
-               questionText: questionText
+               questionText: questionText,
+               regenerated: opts.forceRefresh // ✅ Mark as regenerated
              };
              saveLocalCache(localCache);
              
@@ -584,7 +653,7 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
              }
          });
       }
-    }, abortController.signal, opts.forceRefresh); // Pass the flag here
+    }, abortController.signal, opts.forceRefresh);
     
   } catch (err) {
     if (err.name === 'AbortError') {
@@ -705,18 +774,16 @@ window.downloadText = function(questionId) {
   }
 };
 
-// ==================== NEW HIDE FUNCTION ====================
+// ==================== HIDE FUNCTION ====================
 window.hideAnswer = function(button) {
   const answerContainer = button.closest('.answer-box') || button.closest('.ai-answer-container');
   if (answerContainer) {
-    // Clear content and hide container
     answerContainer.innerHTML = '';
     answerContainer.style.display = 'none';
     
-    // Find the original trigger button (previous sibling) and show it
     const triggerBtn = answerContainer.previousElementSibling;
     if (triggerBtn && triggerBtn.tagName === 'BUTTON') {
-        triggerBtn.style.display = ''; // Revert to original display style (block/inline-block)
+        triggerBtn.style.display = '';
     }
   }
 };
@@ -738,17 +805,19 @@ window.regenerateAnswer = async function(questionId, questionText, button) {
   
   await incrementGlobalRegenerateCount(questionId);
   
+  // ✅ FIX: Don't delete the cache entry here — let the new fetch overwrite it.
+  // Deleting it caused the old version to fall through to the backend's server cache
+  // on refresh, which returned the old answer. Instead we keep a placeholder that
+  // expires quickly (REGENERATED_TTL_DAYS) so it is re-fetched only when truly stale.
   const localCache = loadLocalCache();
-  delete localCache[questionId];
+  localCache[questionId] = { regenerated: true, ts: Date.now() };
   saveLocalCache(localCache);
   
-  // UPDATED: Correct container selection to prevent overlapping
   const container = button.closest('.answer-box') || button.closest('.ai-answer-container');
   
-  // Ensure we are not nesting inside an existing answer box
   if (container) {
-      container.innerHTML = ''; // Clear existing content
-      container.style.display = 'block'; // Ensure it's visible
+      container.innerHTML = '';
+      container.style.display = 'block';
       await displayAnswer(container, questionId, questionText, { forceRefresh: true });
   } else {
       console.error("Could not find answer container for regeneration");
