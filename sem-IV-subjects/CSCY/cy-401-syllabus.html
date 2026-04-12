@@ -8,6 +8,19 @@
     <meta name="description" content="CY-401 Introduction to Linear Algebra Syllabus RGPV B.Tech IV Semester. New Scheme Based On AICTE Flexible Curricula." />
     
     <link rel="stylesheet" href="../../style.css" />
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 </head>
 
 <body>
@@ -37,8 +50,9 @@
     </section>
 
     <section class="questions-list">
-        <h3>Syllabus Content</h3>
+        <h3>Syllabus Content & Previous Year Questions</h3>
 
+        <!-- Unit 1 -->
         <div class="question">
             <details>
                 <summary>
@@ -48,12 +62,103 @@
                         <p>Direct sum of a vector space, Dual Spaces. Annihilator of a subspace, Quotient Spaces. Algebra of Linear transformations.</p>
                     </div>
                 </summary>
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) Define subspace of a vector space. Show that the quotient space of finitely generated space is finitely generated. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) State and prove Rank nullity theorem. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Let $f$ be linear functional on $R^{3}$. Show that $\exists\overline{a}\in R^{3}$ such that $f(\overline{r})=\overline{r}\cdot\overline{a}$. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Prove: Let V be a vector space and W be a subspace of V. Then the map $\eta:V\rightarrow V/W$ defined by $\eta(x)=x+W,x\in V$, is a linear transformation. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Prove that, if $V_{0}$ is a subspace of a vector space V, then there exists a subspace $V_{1}$ of V such that $V=V_{0}+V_{1}$ and $V_{0}\cap V_{1}=\{0\}$. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) Find two linear operators T and U on $R^{2}$ such that $TU=0$ but $UT\ne0.$ <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) Let $U_{1}$, $U_{2}$ and $U_{3}$ be subspaces of a vector space V. Prove that<br>
+                        $U_{1}\cap(U_{2}+(U_{1}\cap U_{3}))=(U_{1}\cap U_{2})+(U_{1}\cap U_{3})$ <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Let V be a vector space. Show that $dim(V)=n\ge1$ if and only if there exist one-dimensional subspaces $U_{1}...U_{n}$ such that $V=U_{1}\oplus...\oplus U_{n}$ <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) Let V be a vector space over a field F and $T:V\rightarrow V$ be a linear transformation. Define the annihilator of a subspace W of V as<br>
+                        $W^{0}=\{f\in V^{*}|f(w)=0 \text{ for all } w\in W\}$,<br>
+                        Where $V*$ is the dual space of V. Prove that $W^{0}$ is a subspace of $V*$ and determine its dimension in terms of the dimension of V and W. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) Given that the set $\{(1,0,0),(0,2,1),(2,0,1)\}$ is a basis of $\Re^{3}$. If $T:\Re^{3}\rightarrow\Re^{3}$ is a linear transformation such that $T(1,0,0)=(0,0,1),$ $T(0,2,1)=(1,2,0)$ and $T(2,0,1)=(1,1,1)$. Find $T(2,-3,4)$. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.11) Suppose V is finite dimensional and U is subspace of V. Show that $U=V$ if and only if $U^{0}=\{0\}$. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.12) Show that the mapping $T:V_{3}(R)\rightarrow V_{3}$ (R) defined as $T(a_{1},a_{2},a_{3})=(3a_{1}-2a_{2}+a_{3},a_{1}-3a_{2}-2a_{3})$ is a linear transformation from $V_{3}$ (R) into $v_{2}$ (R). <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.13) Suppose V is finite dimensional and U is a subspace of V. Then prove that $dim(\frac{V}{M})=dimV-dimU$ . <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.14) Show that $u_{1}+u_{2}+u_{3}$ is not a direct sum if<br>
+                        $u_{1}=\{(x,y,0)\in F^{3}where~x,y\in F\}$<br>
+                        $u_{2}=\{(0,0,z)\in F^{3}wherez\in F\}$<br>
+                        $u_{3}=\{(0,y;y)\in F^{3}where,y\in F\}$ <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.15) Let F be a field of complex numbers and let $T:F^{3}\rightarrow F^{3}$ defined by T(x1   3) = ( -x2 + 2x3.2x1 + x2-x3, $x_{1}-2x_{2})$. Verify that T is linear transformation. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.16) Suppose V is finite dimensional and U is subset to V. Show that $U=\{0\}$ if and only if $U^{0}=V^{1},$ <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.17) Write short notes on: Quotient spaces <span class="unit-year">(Dec-2024, Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.18) Write short notes on: Dual Spaces <span class="unit-year">(June-2024, Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.19) Write short notes on: Annihilator of a subspace <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
                 <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
                     Show less ▲
                 </button>
             </details>
         </div>
 
+        <!-- Unit 2 -->
         <div class="question">
             <details>
                 <summary>
@@ -63,27 +168,189 @@
                         <p>Characteristic values and characteristic polynomials, diagonalizable transformations, annihilating polynomials, Cayley-Hamilton theorem, invariant subspaces and triangular form, simultaneous triangularization and diagonalization, direct sum decompositions, invariant direct sums, primary decomposition theorem.</p>
                     </div>
                 </summary>
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) Define Characteristic polynomials. Show that all eigen values of $A^{*} A$ are real and it is unitary similar to diagonal matrix. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) State and prove Cayley Hamilton theorem. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Let T be a linear transformation on a vector space V of dimension n. Suppose that T has distinct eigen values. Then show that T is diagonalizable. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Find the characteristic polynomial and the minimal polynomial for the matrix:<br>
+                        $B=\begin{bmatrix}2&1&0\\ 0&2&0\\ 0&0&3\end{bmatrix}$ <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) If T be the linear operator on R3 which is represented in the standard basis by the matrix<br>
+                        $A=\begin{bmatrix}5&-6&-6\\ -1&4&2\\ 3&-6&-4\end{bmatrix}$<br>
+                        Prove that T is diagonalizable. Find the diagonalizable matrix P that $PAP^{-1}$ is diagonal. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) Given a $2\times2$ matrix:<br>
+                        $B=\begin{bmatrix}5&2\\ 3&4\end{bmatrix}$<br>
+                        Use the Cayley-Hamilton theorem to calculate $B^{2}-9B+14$ and verify that it results in the zero matrix. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) Let A be the $4\times4$ real matrix<br>
+                        $A=\begin{bmatrix}1&1&0&0\\ -1&-1&0&0\\ -2&-2&2&1\\ 1&1&-1&0\end{bmatrix}$<br>
+                        Show that the characteristic polynomial for A is $x^{2}(x-1)^{2}$ and that is also the minimal polynomial. <span class="unit-year">(June-2024, Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Let W be an invariant subspace for linear operator T. Prove that the minimal Polynomial for the restriction operator $T_{w}$ divides the minimal polynomial for T, without referring to matrices. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) For the matrix A:<br>
+                        $A=\begin{bmatrix}3&1\\ 2&2\end{bmatrix}$<br>
+                        Verify Cayley-Hamilton theorem by finding its characteristic polynomial and substituting the matrix into it. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) Let a, b, c be elements of a field F, and let A be the following $3\times3$ matrix over F, $A=\begin{bmatrix}0&0&c\\ 1&0&b\\ 0&1&a\end{bmatrix},$ prove that the characteristic polynomial for A is $x^{3}-ax^{2}-bx-c$ and that it is also the minimal polynomial for A. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.11) Let $n\times n$ triangular matrix over the field F. Prove that characteristic values of A are the diagonal entries of A. (i.c., the scalars $A_{ii}$). <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.12) Let T be a linear operator on the n - dimensional vector space V and suppose that T has n - distinct characteristic values. Prove that T is diagonalizable. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.13) Write short notes on: Characteristic values and characteristic vectors <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.14) Write short notes on: Algebraic multiplicity and Geometric multiplicity <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.15) Write short notes on: Cayley-Hamilton theorem <span class="unit-year">(June-2024, June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.16) Write short notes on: Annihilating Polynomials <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.17) Write short notes on: Direct sum decomposition <span class="unit-year">(Dec-2024, Nov-2023)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
                 <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
                     Show less ▲
                 </button>
             </details>
         </div>
 
+        <!-- Unit 3 -->
         <div class="question">
             <details>
                 <summary>
                     <div>
                         <strong><p>Unit III</p></strong>
                         <hr>
-                        <p>Adjoint of a linear transformation, Inner product spaces, Eigen values and eigenvectors of a linear transformation. Diagonalization. Invariant subspaces.</p>
+                        <p>Adjoint of a linear transformation, Inner product spaces, Eigen values and eigenvectors of a linear transformation. Diagonalization. Invariant subspaces. Inner product spaces, adjoints, unitary and normal transformations, spectral Theorem, Jordan canonical form.</p>
                     </div>
                 </summary>
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) Define adjoint of Linear Transformation. The linear transformation $T:R^{3}\rightarrow R^{4}$ defined by $T(x,y,z)=(x-2y+z, 2x+y+2z, 3x-y+z)$ then show that T is a linear transformation. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Let W be a subspace of finite dimensional inner product space V and $x\in V$ such that $<x, y>+<y, x>\le<y, y>$ for all $y\in W$ then show that $x\in W^{\perp}?$ <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Show that there is no proper open subspace of an inner product space. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Let D be a symmetric matrix given by:<br>
+                        $D=\begin{bmatrix}5&2&-1\\ 2&3&2\\ -1&2&5\end{bmatrix}$<br>
+                        Find the eigenvalues and eigenvectors of D. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) What are the essential properties of inner product spaces? Provide an example of a vector space that satisfies these properties. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) Show that the set of all continuous functions on the interval [0, 1] equipped with the inner product $\langle f,g\rangle=\int_{0}^{1}f(x)g(x)dx$ forms an inner product space. Justify that this definition meets the properties of an inner product. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) Let V be an inner product space, and let $\alpha$ and $\beta$ be vectors in V. Show that $\alpha=\beta$ if and only if $(\alpha|\gamma)=(\beta|\gamma)$ for every $\gamma$ in V. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Consider a matrix A given by:<br>
+                        $A=\begin{bmatrix}3&1\\ 1&3\end{bmatrix}$<br>
+                        i) Find the eigen values and corresponding eigen vectors of A.<br>
+                        ii) Determine the invariant subspaces corresponding to each distinct eigen value. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) Diagonalize the following matrices<br>
+                        $\begin{bmatrix}1&0&-1\\ 1&2&1\\ 2&2&3\end{bmatrix}.$ <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) Show that $V_{2}$ (R) is an inner product space defined by $(\alpha,\beta)=3a_{1}b_{1}+2a_{2}b_{2}\forall,\alpha=(a_{1},a_{2}),\beta=(b_{1},b_{2})\in V_{2}(R)$ <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.11) Find the eigen values and eigen vectors of<br>
+                        $A=\begin{bmatrix}6&-2&2\\ -2&3&-1\\ 2&-1&3\end{bmatrix}$ <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.12) Explain invariant subspace with suitable examples. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.13) State and prove Gram Schmidt orthogonalization process. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.14) Write short notes on: Invariant subspaces <span class="unit-year">(June-2024, Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.15) Write short notes on: Inner product spaces <span class="unit-year">(June-2024, Nov-2023)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
                 <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
                     Show less ▲
                 </button>
             </details>
         </div>
 
+        <!-- Unit 4 -->
         <div class="question">
             <details>
                 <summary>
@@ -93,12 +360,85 @@
                         <p>Canonical forms, Similarity of linear transformations, Reduction to triangular forms, Nilpotent transformations, Primary decomposition theorem, Jordan blocks and Jordan forms, Invariants of linear transformations.</p>
                     </div>
                 </summary>
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) Define Canonical form of linear transformation. Show that every $m\times n$ matrix is equivalent to unique matrix in one of canonical form. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Define Jordan canonical form. Reduce the matrix<br>
+                        $\begin{bmatrix}1&0&0\\ 1&1&0\\ 0&0&3\end{bmatrix}$<br>
+                        Into Jordan canonical forms. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Consider the matrix A given by:<br>
+                        $A=\begin{bmatrix}5&4&2\\ 0&1&0\\ 0&0&3\end{bmatrix}$<br>
+                        i) Find the Jordan canonical form of the matrix A.<br>
+                        ii) Determine the corresponding Jordan basis. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Let V be the space of $n\times n$ matrices over a field F, and let A be a fixed $n\times n$ matrix over F. Define a linear operator T on V by $T(B)=AB-BA$ Prove that if A is a nilpotent matrix, then T is a nilpotent operator. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Let C be a $5\times5$ matrix with characteristic polynomial $(t-1)(t-2)^{2}(t-3)^{2}.$ Determine the possible Jordan canonical forms of C. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) Consider the matrix A:<br>
+                        $A=\begin{bmatrix}6&1&0\\ 0&6&1\\ 0&0&6\end{bmatrix}$<br>
+                        Find the Jordan canonical form of the matrix A and the corresponding Jordan basis. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) If V is the space of all polynomials of degree less than or equal to n over a field F, prove that the differentiation operator on V is nilpotent. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Consider a $2\times2$ matrix G with characteristic polynomial $(t+1)^{2}(t-2)$ and minimal polynomial $(t+1)(t-2)$. Determine the primary decomposition of $R^{2}$ with respect to G. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) Explain Jordan blocks with suitable examples. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) Show that "Two nilpotent linear transformations are similar if and only if they have same invariants". <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.11) Find Jordon canonical form of the matrix<br>
+                        $A=\begin{bmatrix}1&1&2\\ 1&2&1\\ 0&1&3\end{bmatrix}.$ <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.12) If $T\in A(V)$ has all it's characteristic roots in F, then there exists a basis of V such that matrix representation of T is triangular. Prove it. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.13) Write short notes on: Primary decomposition theorem <span class="unit-year">(June-2024, Nov-2023, Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.14) Write short notes on: Jordan blocks <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
                 <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
                     Show less ▲
                 </button>
             </details>
         </div>
 
+        <!-- Unit 5 -->
         <div class="question">
             <details>
                 <summary>
@@ -108,21 +448,72 @@
                         <p>Hermitian, Self adjoint, Unitary and normal linear transformation, Symmetric bilinear forms, skew symmetric bilinear forms, Group preserving bilinear forms.</p>
                     </div>
                 </summary>
-                <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
-                    Show less ▲
-                </button>
-            </details>
-        </div>
-
-        <div class="question">
-            <details>
-                <summary>
-                    <div>
-                        <strong><p>Unit 3 (Additional block as per source)</p></strong>
-                        <hr>
-                        <p>Inner product spaces, adjoints, unitary and normal transformations, spectral Theorem, Jordan canonical form.</p>
-                    </div>
-                </summary>
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) Show that all eigen values of hermitian matrix are all real. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Show that a bilinear form on V is a product of linear functional iff it is of rank 1. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Let T $:C^{3}\rightarrow C^{3}$ be a linear transformation with the matrix representation:<br>
+                        $\Lambda=\begin{bmatrix}2&-i&0\\ i&4&-3i\\ 0&3i&1\end{bmatrix}$<br>
+                        Determine whether T is Hermitian. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Suppose T: $C^{2}\rightarrow C^{2}$ is a linear transformation with the matrix representation:<br>
+                        $A=\begin{pmatrix}1/\sqrt{2}&-i/\sqrt{2}\\ i/\sqrt{2}&1/\sqrt{2}\end{pmatrix}$<br>
+                        Determine whether T is unitary or not. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Let A, $B\in O(n)$, the orthogonal group of real $n\times n$ matrices. Define the bilinear form as:<br>
+                        $B(A,B)=tr(A^{T}B)$<br>
+                        Verify if B preserves the group structure of $O(n)$. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) Write a detail note on skew symmetric bilinear forms. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) Find all Skew - symmetric bilinear forms on $R^{3}$. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Find all bilinear forms on the space $n\times1$ matrices over R which are invariant under $O(n,R).$ <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) Write short notes on: Symmetric bilinear forms <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) Write short notes on: Group preserving bilinear forms <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.11) Write short notes on: Unitary and normal linear transformation <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.12) Write short notes on: Self adjoint <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.13) Write short notes on: Bilinear forms <span class="unit-year">(June-2024, Nov-2023)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
                 <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
                     Show less ▲
                 </button>

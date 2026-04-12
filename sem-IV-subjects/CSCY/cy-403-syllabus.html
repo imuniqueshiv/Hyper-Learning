@@ -8,6 +8,19 @@
     <meta name="description" content="CY-403 Computer Networks Syllabus RGPV B.Tech IV Semester. New Scheme Based On AICTE Flexible Curricula." />
     
     <link rel="stylesheet" href="../../style.css" />
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 </head>
 
 <body>
@@ -37,77 +50,408 @@
     </section>
 
     <section class="questions-list">
-        <h3>Syllabus Content</h3>
+        <h3>Syllabus Content & Previous Year Questions</h3>
 
+        <!-- Unit 1 -->
         <div class="question">
             <details>
                 <summary>
                     <div>
-                        <strong><p>UNIT 1</p></strong>
+                        <strong><p>Unit I: Introduction to Computer Networks & Physical Layer</p></strong>
                         <hr>
-                        <p>Introduction to computer networks & their uses, Different topologies, ISO-OSI model: Layered Architecture, Peer-to-Peer processes and encapsulation, Function and Services of OSI layers; The Physical layer: Digital Signals, Transmission Impairments and Maximum data rate of a channel, Shennons theorem, Nyquist theorem. Transmission media: Guided and Unguided media, Circuit, Packet and Message switching, virtual Circuit. Introduction to ISDN & its components.</p>
+                        <p>Introduction to Computer Networks, Network architecture, OSI and TCP/IP reference models, Network Topologies, Switching Techniques: Circuit, Packet and Message Switching, Physical Layer: Transmission Media (Guided and Unguided), Data Rate Limits, Nyquist and Shannon's Theorem, ISDN.</p>
                     </div>
                 </summary>
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) Explain the ISO-OSI reference model in detail. Compare it with the TCP/IP model based on layer functionalities and real-world implementation. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) If a noiseless channel has a bandwidth of 3 kHz and each signal level carries 4 bits, calculate the maximum bit rate using the Nyquist formula. What if the number of signal levels in increased? <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Explain the principles and operation of circuit switching, packet switching and message switching. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Write a short note on (any two):<br>
+                        c) Types of transmission media (guided and unguided) <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Describe each of the seven layers of the ISO/OSI model. For each layer explain its function and provide examples of protocols and devices associated with it. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) What is Shannon's Theorem and what does it state about the maximum data rate of a communication channel? Establish a relationship between channel capacity, bandwidth and signal-to-noise ratio (SNR) according to Shannon's Theorem. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) What do you understand by transmission media. Give the difference between Guided and Unguided media. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Write a short note on any two:<br>
+                        a) Circuit, Packet and Message Switching <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) Draw the ISO-OSI architecture and outline the function performed by each layer. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) Compare and contrast guided and unguided media for transmission. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.11) Explain network topological design with necessary diagram and brief the advantages and disadvantages of various topologies. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.12) Write Technical short note on any two:<br>
+                        i) Introduction to ISDN <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.13) Difference between server based and Peer to Peer Networking. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.14) Explain the term Nyquist bit rate and Shannon capacity. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.15) Explain OSI model stating its importance in network architecture. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
                 <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
                     Show less ▲
                 </button>
             </details>
         </div>
 
+        <!-- Unit 2 -->
         <div class="question">
             <details>
                 <summary>
                     <div>
-                        <strong><p>UNIT 2</p></strong>
+                        <strong><p>Unit II: Data Link Layer & Medium Access Control</p></strong>
                         <hr>
-                        <p>The data link layer: Design issues & function, Error detection & correction, Forward error correction Versus Retransmission, Hamming code & CRC codes, Framing: Fixed size and Variable size Frame, Bit stuffing and Byte stuffing. Data link layer protocols: Simplest, Stop and Wait, Sliding window protocols, PPP, SLIP, HDLC. The medium access sublayer: Static and Dynamic Channel Allocation, Protocols: ALOHA Protocol, CSMA (CSMA/CD, CSMA/CA), Collision Free Protocol- Bit Map.</p>
+                        <p>Data Link Layer Design Issues, Error Detection and Correction, Cyclic Redundancy Check (CRC), Hamming Codes, Flow Control Protocols: Stop-and-Wait, Sliding Window. Medium Access Control (MAC) Sublayer: Static vs Dynamic channel allocation, ALOHA, CSMA, CSMA/CD, HDLC, Frame Relay, PPP, SLIP.</p>
                     </div>
                 </summary>
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) Given a data block: 1101011011 and generator polynomial: 10011. Perform CRC computation and provide the final codeword. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Explain the stop-and-wait protocol and sliding window protocol. How does the sender and receiver manage buffers in both cases? <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Discuss static Vs dynamic channel allocation. Compare ALOHA, slotted ALOHA and CSMA protocols. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Write a short note on (any two):<br>
+                        b) PPP, SLIP and HDLC protocols <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Why is error control necessary in data communication? Describe the methods used for error detection and correction in the Data Link Layer. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) Calculate the CRC checksum for a data word represented by the polynomial $D(x)=x^{5}+x^{4}+x^{2}+1$ and a CRC polynomial $C(x)=x^{3}+x+1.$ <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) How does ALOHA handle contention among multiple devices trying to access the shared channel? Give the advantages and limitations of the pure ALOHA protocol. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Write a short note on any two:<br>
+                        b) HDLC <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) List out the functions of the Data Link Layer. One channel with a bit rate of 190 kbps and another with a bit rate of 180 kbps are to be multiplexed using TDM with no synchronization bits.<br>
+                        i) What is the size of a frame in bits?<br>
+                        ii) What is the data rate? <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) Define the relationship between transmission delay and propagation delay, if the efficiency is at least 50% in STOP N WAIT protocol. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.11) Discuss the issues in the data link layer and about its protocol on the basis of layering principle. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.12) Assume we want to send a data from S to R and there are 2 routers in between. What will be the total time taken if total number of packets is 5? Data is like:<br>
+                        $Tp=0$ ms, Data size $=1000$ bytes, $BW=1$ mbps, Header of the packet $=100$ bytes. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.13) Explain CSMA/CD in detail. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.14) Write Technical short note on any two:<br>
+                        ii) HDLC <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.15) Explain MAC along with working of all CSMA protocols. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.16) What is the purpose of Hamming code? Construct Hamming code for the bit sequence 10011101. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.17) Describe Frame Relay Protocol architecture and explain the function of each one. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
                 <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
                     Show less ▲
                 </button>
             </details>
         </div>
 
+        <!-- Unit 3 -->
         <div class="question">
             <details>
                 <summary>
                     <div>
-                        <strong><p>UNIT 3</p></strong>
+                        <strong><p>Unit III: Network Devices & LAN Standards</p></strong>
                         <hr>
-                        <p>IEEE 802 standards for LANs (IEEE 802.3, IEEE 802.4, IEEE 802.5), LAN Devices: HUB, Switches- Learning, Cut-Through and store and forward switches, Bridges: IEEE 802.x to IEEE 802.y, Spanning Tree, Remote Bridge. Internetworking Devices: Routers & gateways. The network layer: Design issues and functions, Internal organization (Virtual Circuit & Datagrams).</p>
+                        <p>IEEE 802 Standards: IEEE 802.3 (Ethernet), IEEE 802.4 (Token Bus), IEEE 802.5 (Token Ring). Network interconnection devices: Hubs, Switches, Bridges, Routers, and Gateways. Remote Bridging, Virtual Circuit vs Datagram Subnets.</p>
                     </div>
                 </summary>
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) Describe IEEE 802.3, IEEE802.4 and IEEE 802.5 LAN standards in terms of access methods, performance and topology. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Compare and contrast the operations of hubs, switches, bridges, routers and gateways. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Explain remote bridging. What challenges arise in implementing remote bridges in large LANs? <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Describe the key features and characteristics of the IEEE 802.3 Ethernet standard. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) What is a network switch and what role does it play in computer networking? How does a switch build and maintain its MAC address table? <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) What are the primary design issues in the Network Layer and also discuss the main functions performed by the Network Layer? <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) Write a short note on any two:<br>
+                        c) Router and Gateways <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Differentiate between Virtual Circuit versus Datagram Subnets. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) Write Technical short note on any two:<br>
+                        iii) HUB <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) Explain the working of IEEE 802.4 standard. Also explain the working of Frame format. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.11) Imagine the length of ring in token ring is 1000 meter if the speed of propagation in a twisted pair cables is 60 percent of the speed of light (300,000,000 meter/ second). How long does it takes for a bit to make a complete trip? <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
                 <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
                     Show less ▲
                 </button>
             </details>
         </div>
 
+        <!-- Unit 4 -->
         <div class="question">
             <details>
                 <summary>
                     <div>
-                        <strong><p>UNIT 4</p></strong>
+                        <strong><p>Unit IV: Network Layer & Routing Protocols</p></strong>
                         <hr>
-                        <p>Routing algorithms: Shortest path routing, Flooding, LSR, Distance Vector Routing, Hierarchical Routing. Introduction to TCP/IP Protocol stack: Protocol Architecture, Classful IP addressing, ARP, RARP, IP Datagrams with options and its delivery, ICMP.</p>
+                        <p>Network Layer Protocols, IP Addressing: Classful IP Addressing, Classless Inter-Domain Routing (CIDR), Subnetting and Subnet Masks. Routing Algorithms: Shortest Path Routing, Distance Vector Routing (DVR), Link State Routing. Internet Control Protocols: ARP, RARP, ICMP, TCP/IP protocol stack.</p>
                     </div>
                 </summary>
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) Describe classful IP addressing. Discuss the limitations that led to the evolution of CIDR and classless addressing. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Discuss the working of link state routing and distance vector routing algorithms with their convergence speed and scalability. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Write a short note on (any two):<br>
+                        a) ARP, RARP and ICMP protocols. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Explain the concept of Shortest Path Routing with suitable example. Also discuss the advantages and limitations of Shortest Path Routing. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Explain the role of each layer in the TCP/IP protocol stack with suitable layered architecture. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) What is ICMP? Describe the role of ICMP messages in network communication. What types of information do ICMP messages convey? Explain. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) Explain Distance Vector Routing (DVR) with working example in detail. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Discuss in detail about ICMP role in network layer. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) Explain any two unicast static and dynamic routing Algorithms. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) Describe subnet mask. Explain different classes of IP address. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.11) Discuss internet services standards for TCP/IP and the process of standardization for RFCS and TCP/IP. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.12) Explain distance vector routing with example. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
                 <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
                     Show less ▲
                 </button>
             </details>
         </div>
 
+        <!-- Unit 5 -->
         <div class="question">
             <details>
                 <summary>
                     <div>
-                        <strong><p>UNIT 5</p></strong>
+                        <strong><p>Unit V: Transport Layer & Application Layer</p></strong>
                         <hr>
-                        <p>Subnet, Supernet, CIDR. Transport Layer: Congestion control, Load Shedding, Jitter control, addressing and multiplexing, Connection establishment and connection release, flow control. Application layer: Introduction to DNS and Email.</p>
+                        <p>Transport Layer Services, Connection establishment and release (Three-way and Four-way handshakes), Connectionless and Connection-oriented communication. Congestion Control Algorithms, Load Shedding, Jitter Control. Application Layer: Domain Name System (DNS), Email Architecture and Formats.</p>
                     </div>
                 </summary>
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) Compare connection establishment and release in TCP using three-way and four-way handshakes. Why is graceful termination important? <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) You are given a network 192.168.10.0/24. Divide it into 4 subnets and determine the range of IP addresses and broadcast address for each subnet. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Describe the working of DNS. How does it resolve domain names to IP addresses using caching and hierarchical servers. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) What is the Domain Name System (DNS) and what role does it play in computer networking? Explain how DNS translates domain names to IP addresses and vice versa. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) What is load shedding and how does it relate to congestion control? Discuss some techniques used for load shedding in the Transport Layer. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) Write a short note on any two:<br>
+                        d) Connection establishment and release <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) The IP network 200.198.160.0 is using subnet mask 255.255.255.224. Design the subnets. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) What is the format of an Email? Explain the architecture of a mailing system. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) Provide few reasons for congestion in a network. What is the purpose of the Domain Name System? <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) Write Technical short note on any two:<br>
+                        iv) Jitter control <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.11) Explain the various congestion control Algorithms. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.12) Explain the addressing using DNS. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.13) What is the principle difference between connectionless and connection oriented communication. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
                 <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
                     Show less ▲
                 </button>
