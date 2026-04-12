@@ -8,6 +8,19 @@
     <meta name="description" content="AL-401 Intro to Discrete Structure & Linear Algebra Syllabus RGPV B.Tech IV Semester. New Scheme Based On AICTE Flexible Curricula." />
     
     <link rel="stylesheet" href="../../style.css" />
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 </head>
 
 <body>
@@ -37,8 +50,9 @@
     </section>
 
     <section class="questions-list">
-        <h3>Syllabus Content</h3>
+        <h3>Syllabus Content & Previous Year Questions</h3>
 
+        <!-- Unit 1 -->
         <div class="question">
             <details>
                 <summary>
@@ -48,12 +62,108 @@
                         <p>Set theory: definition of sets, Venn Diagram, proofs of some general identities on set, Relation: Definition, Types of relation, Composition of relation, Equivalence relation, Partial ordering relation, POSET, Hasse diagram and Lattice.</p>
                     </div>
                 </summary>
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) If $A = \{2, 4, 6, 9\}$ and $B = \{4, 6, 18, 27, 54\}$, $a \in A$, $b \in B$, find the set of ordered pairs such that 'a' is factor of 'b' and $a < b$. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Let R be the relation on the set R of all real numbers defined by a R b if and only if $|a - b| \le 1$ Then prove that R is reflexive, symmetric, but not transitive. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Let $A = \{1, 2, 3, 4, 5, 6\}$ and a Rb if and only if a is multiple of b.<br>
+                        Find:<br>
+                        i) Domain<br>
+                        ii) Range,<br>
+                        iii) Matrix of a relation,<br>
+                        iv) Digraph of the relation R. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) What common relations on Z are the transitive closures of the following relations?<br>
+                        i) a Sb if and only if $a + 1 = b$,<br>
+                        ii) a Rb if and only if $a - b = 2$. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Let $A = \{1, 2, 3, 4, 6, 8, 9, 12, 18, 24\}$ be ordered by divisibility. Draw Hasse diagram. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) Write short note on partially ordered sets and explain with suitable example. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) Write short Note on: Hasse diagram <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Write short Note on: Lattice <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) Let T be the set of positive integers less than 10 and let "R be the relation on T defined by aRb if and only if $|a^2 - b^2|$ is a multiple of 5". Prove that R is reflexive, symmetric, but not transitive. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) Consider a set C = {1, 2, 3, 4, 5, 6, 8, 10, 12, 15} ordered by divisibility. Draw its Hasse diagram. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.11) Consider two sets A and B. Let $A = \{2, 3, 4, 5\}$ and $B = \{4, 5, 6, 7\}$ Using Venn diagrams, prove the following statements:<br>
+                        Prove that $(A \cup B) = A' \cap B'$.<br>
+                        Prove that $(A \cap B)' = A' \cup B'$. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.12) Let A be the set of even numbers between 10 and 20, and B be the set of multiples of 5 between 15 and 35. If $a$ is an even number from set A, and $b$ is a multiple of 5 from set B, find the set of ordered pairs such that '$a$' is a factor of '$b$' and $a$ is less than $b$. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.13) Consider the relation R on the set of integers Z defined by aRb if and only if $a^2 - b^2$ is divisible by 4. Determine the common relations on Z that are the transitive closures of R. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.14) Suppose that the relation R is irreflexive. Is $R^2$ necessarily irreflexive? Give a reason for your answer. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.15) Prove that:<br>
+                        i) $A - (B \cap C) = (A - B) \cup (A - C)$<br>
+                        ii) $A \times (B \cap C) = (A \times B) \cap (A \times C)$ <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.16) With the help of Venn-diagram, prove that<br>
+                        $(A \cup B)' = A' \cap B'$ and $(A \cap B)' = A' \cup B'$ <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.17) Consider the set Z of integers m > 1. We say that $x$ is congruent to $y$ modulo $m$ written as $x \equiv y \pmod m$<br>
+                        If $x - y$ is divisible by $m$. Show that this defines an equivalence relation on Z. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.18) Let $D_m$ denotes the positive divisors of $m$ ordered by divisibility. Draw the Hasse diagrams of the following:<br>
+                        i) $D_{15}$<br>
+                        ii) $D_{24}$ <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
                 <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
                     Show less ▲
                 </button>
             </details>
         </div>
 
+        <!-- Unit 2 -->
         <div class="question">
             <details>
                 <summary>
@@ -63,12 +173,70 @@
                         <p>Definition, Properties, types: Semi Group, Monoid, Groups, Abelian Group, Properties of group, cyclic group, Normal subgroup, Ring and Fields: definition and standard result, Introduction to Recurrence Relation and Generating Functions.</p>
                     </div>
                 </summary>
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) Given the recurrence relation $a_n = a_{n-1} + 4a_{n-2}$ with initial conditions $a_0 = 2$ and $a_1 = 5$, determine the closed-form expression for the sequence. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Show that the set $H = \{e, a, a^2, a^3\}$ is a subgroup of a group G where $G = \{e, a, a^2, a^3, b, ab, a^2b, a^3b\}$. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Let (A, *) be a semigroup. Show that, for a, b, c in A, if $a * c = c * a$ and $b * c = c * b$, then $(a * b) * c = c * (a * b)$. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Write short note on: Recurrence Relation <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Solve the recurrence relation $a_n = a_{n-1} + 6a_{n-2}$ given the initial conditions $a_0 = 3$ and $a_1 = 6$. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) Prove that a subgroup H of a group G is normal if and only if $xHx^{-1} = H, \forall x \in G$. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) Let G = {0, 1, 2, 3, 4, 5} with addition modulo 6. Is G a group? Justify your answer. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Write short note on: Abelian group and cyclic group <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) Consider the set Q of rational numbers and let * be the operation on Q defined by:<br>
+                        $a * b = a + b - ab$<br>
+                        i) Is (Q, *) a semi-group. Is it commutative.<br>
+                        ii) Find the identity element for *.<br>
+                        iii) Do any elements in Q have inverse? What is it? <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) Define Ring with example. Also explain Commutative ring and ring homomorphism. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.11) Solve the following recurrence relations<br>
+                        $a_n = 3a_{n-1} - 3a_{n-2} + a_{n-3}, a_0 = 0, a_3 = 3, a_5 = 10$ <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
                 <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
                     Show less ▲
                 </button>
             </details>
         </div>
 
+        <!-- Unit 3 -->
         <div class="question">
             <details>
                 <summary>
@@ -79,12 +247,128 @@
                         Graph theory: Introduction and basic terminology of graph, types of graph, Path, Cycles, Shortest path in weighted graph, graph colorings.</p>
                     </div>
                 </summary>
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) i) Prove that $p \wedge q \Rightarrow q \vee p$ is a Tautology.<br>
+                        ii) Show that $(p \vee q) \wedge (-p) \wedge (-q)$ is a contradiction <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Prove that in any graph G, even number of vertices is of odd degree. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Let G be a planar graph with 10 vertices, 3 components and 9 edges. Find the number of regions in G <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.4) Find chromatic number of the following graph-</p>
+                            <img class="ans-img" src="../../sem-IV-papers/AIML/al-401/ques-diagrams/Q.7a-june-2023.png" alt="An undirected graph with 6 vertices labeled a, b, c, d, e, f. The exact connectivity and edges between the vertices a, b, c, d, e, f define the graph structure for determining its chromatic number." style="margin-top: 1rem;">
+                            <p style="margin-top: 1rem;"><span class="unit-year">(June-2023)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Write short Note on: Weighted Graph <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) Let G be a simple graph. Show that the relation R on the set of vertices of G such that uRv if and only if there is an edge associated to (u, v) is a symmetric, irreflexive relation on G. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.7) Find a route with the least total airfare that visits each of the cities in this graph, where the weight on an edge is the least price available for a flight between the two cities.</p>
+                            <img class="ans-img" src="../../sem-IV-papers/AIML/al-401/ques-diagrams/Q.4b-june-2024.png" alt="An undirected complete graph with 5 vertices representing cities: Jammu, Chandigarh, Jaipur, Mumbai, and Surat. The edge weights representing flight prices are: Jammu to Chandigarh ($409), Jammu to Jaipur ($389), Jammu to Mumbai ($119), Jammu to Surat ($429), Chandigarh to Jaipur ($109), Chandigarh to Mumbai ($379), Chandigarh to Surat ($319), Jaipur to Mumbai ($239), Jaipur to Surat ($229), and Mumbai to Surat ($309)." style="margin-top: 1rem;">
+                            <p style="margin-top: 1rem;"><span class="unit-year">(June-2024)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.8) The weighted graphs in the figures here show some major roads in New Jersey.<br>
+                            Part (A) shows the distances between cities on these roads; Part (B) shows the tolls.</p>
+                            <img class="ans-img" src="../../sem-IV-papers/AIML/al-401/ques-diagrams/Q.5ab-june-2024.png" alt="Two undirected graphs of major roads in New Jersey with identical vertices and edges but different weights. The vertices are Newark, Woodbridge, Asbury Park, Atlantic City, Cape May, Trenton, and Camden. The edges are: Newark to Woodbridge, Woodbridge to Trenton, Woodbridge to Camden, Woodbridge to Asbury Park, Trenton to Camden, Trenton to Asbury Park, Camden to Asbury Park, Camden to Cape May, Asbury Park to Atlantic City, and Atlantic City to Cape May. In Part (A), the edge weights represent distances: Newark-Woodbridge (20), Woodbridge-Trenton (42), Woodbridge-Camden (40), Woodbridge-Asbury Park (35), Trenton-Camden (30), Trenton-Asbury Park (60), Camden-Asbury Park (55), Camden-Cape May (85), Asbury Park-Atlantic City (75), and Atlantic City-Cape May (45). In Part (B), the edge weights represent tolls: Newark-Woodbridge ($0.60), Woodbridge-Trenton ($1.00), Woodbridge-Camden ($0.00), Woodbridge-Asbury Park ($0.75), Trenton-Camden ($0.70), Trenton-Asbury Park ($0.00), Camden-Asbury Park ($1.25), Camden-Cape May ($0.00), Asbury Park-Atlantic City ($1.25), and Atlantic City-Cape May ($0.75)." style="margin-top: 1rem;">
+                            <p style="margin-top: 1rem;">Find a shortest route in distance between Newark and Camden, and between Newark and Cape May, using these roads. <span class="unit-year">(June-2024)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) Find a least expensive route in terms of total tolls using the roads in the graph between the pairs of cities in part (A). <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) Write short note on: Tautologies and Contradiction <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.11) Construct a niche overlap graph for six species of birds, where the hermit thrush competes with the robin and with the blue jay, the robin also competes with the mockingbird, the mockingbird also competes with the blue jay, and the nuthatch competes with the hairy wood-pecker. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.12) Let $p$ and $q$ be the propositions<br>
+                            $p$ : It is below freezing.<br>
+                            $q$ : It is snowing.<br>
+                            Write these propositions using $p$ and $q$ and logical connectives (including negations).<br>
+                            i) It is below freezing and snowing.<br>
+                            ii) It is below freezing but not snowing.<br>
+                            iii) It is not below freezing and it is not snowing.<br>
+                            iv) It is either snowing or below freezing (or both).<br>
+                            v) If it is below freezing, it is also snowing.<br>
+                            vi) Either it is below freezing or it is snowing, but it is not snowing if it is below freezing.<br>
+                            vii) That it is below freezing is necessary and sufficient for it to be snowing.</p>
+                            <p style="margin-top: 1rem;"><span class="unit-year">(Dec-2024)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.13) Find a route with the least total airfare that visits each of the cities in this graph, where the weight on an edge is the least price available for a flight between the two cities.</p>
+                            <img style="margin-top: 1rem; width: 60%;" class="ans-img" src="../../sem-IV-papers/AIML/al-401/ques-diagrams/Q.5a-dec-2024.png" alt="An undirected graph representing cities and flight prices. The vertices are San Francisco, Los Angeles, Denver, Detroit, and New York. The edges and their weights (flight prices) are: San Francisco to Los Angeles ($69), San Francisco to Denver ($179), San Francisco to Detroit ($359), San Francisco to New York ($329), Los Angeles to Denver ($209), Los Angeles to New York ($349), Denver to Detroit ($229), Denver to New York ($279), and Detroit to New York ($189)." style="margin-top: 1rem;">
+                            <p style="margin-top: 1rem;"><span class="unit-year">(Dec-2024)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.14) Show that<br>
+                        $((p \lor q) \land \sim(\sim p \land (\sim q \lor \sim r))) \lor (\sim p \land \sim q) \lor (\sim p \land \sim r) \equiv \text{T}$<br>
+                        is a tautology by laws of algebra of propositions. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.15) Obtain the conjunctive normal form of<br>
+                        i) $p \land (p \Rightarrow q)$<br>
+                        ii) $\sim p \Rightarrow [r \land (p \Rightarrow q)]$ <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.16) Check for Euler and Hamiltonian graphs:</p>
+                            <img style="margin-top: 1rem; width: 60%;" class="ans-img" src="../../sem-IV-papers/AIML/al-401/ques-diagrams/Q.5b-dec-2023.png" alt="An undirected graph with 5 vertices labeled V1, V2, V3, V4, and V5. The edges connect the following pairs of vertices: V1 is connected to V2 and V3. V2 is connected to V1, V3, V4, and V5. V3 is connected to V1, V2, and V4. V4 is connected to V2, V3, and V5. V5 is connected to V2 and V4." style="margin-top: 1rem;">
+                            <p style="margin-top: 1rem;"><span class="unit-year">(Nov-2023)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.17) What is coloring problem? Hence define coloring of graph. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
                 <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
                     Show less ▲
                 </button>
             </details>
         </div>
 
+        <!-- Unit 4 -->
         <div class="question">
             <details>
                 <summary>
@@ -94,12 +378,73 @@
                         <p>Determinant and Trace, Cholesky Decomposition, Eigen decomposition, Singular Value decomposition(SVD), Gradient of a matrix: Useful identities For computing Gradient.</p>
                     </div>
                 </summary>
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) Solve the equations<br>
+                        $6x + 15y + 55z = 76$,<br>
+                        $15x + 55y + 225z = 295$,<br>
+                        $55x + 225y + 979z = 1259$<br>
+                        Using Cholesky decomposition method. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Find singular value decomposition composition for for $A = \begin{bmatrix} 1 & 0 & 1 \\ -1 & 1 & 0 \end{bmatrix}.$ <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Calculate the gradient of the function $f(X) = Tr(X^T X)$ where X is a matrix. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Write a short note on Cholesky Decomposition. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Given a matrix F with SVD $F = U\Sigma V^T$, where:<br>
+                        $$U = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}, \Sigma = \begin{pmatrix} 2 & 0 \\ 0 & 3 \end{pmatrix}, V = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$$<br>
+                        Find the original matrix F. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) Find the Determinant and trace of the matrix:<br>
+                        $$\begin{pmatrix} 2 & -1 & 0 \\ 3 & 4 & 2 \\ 1 & 0 & -3 \end{pmatrix}$$ <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) Using Cholesky decomposition, Verify that whether the following matrix is positive definite or not. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Write short note on: Eigen decomposition. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) Solve the simultaneous equations:<br>
+                        $25x + 15y - 5z = 35$<br>
+                        $15x + 18y + 0.z = 33$<br>
+                        $-5x + 0.y + 11z = 6$<br>
+                        Using Cholesky Decomposition. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) Find the singular value decomposition of the matrix:<br>
+                        $$A = \begin{bmatrix} -4 & -7 \\ 1 & 4 \end{bmatrix}$$ <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
                 <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
                     Show less ▲
                 </button>
             </details>
         </div>
 
+        <!-- Unit 5 -->
         <div class="question">
             <details>
                 <summary>
@@ -109,6 +454,72 @@
                         <p>Concept and Formulation, Type-I and Type-II Errors, Time Series Analysis, Analysis of Variance (ANOVA).</p>
                     </div>
                 </summary>
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) To test the hypothesis that eating fish makes one smarter, a random sample of 12 persons take a fish oil supplement for one year and then are given an IQ test. Here are the results:<br>
+                        116 &nbsp; 111 &nbsp; 101 &nbsp; 120 &nbsp; 99 &nbsp; 94 &nbsp; 106 &nbsp; 115 &nbsp; 107 &nbsp; 101 &nbsp; 110 &nbsp; 92<br>
+                        Test using the following hypothesis, report the test statistic with the P-value, then summarize your conclusion.<br>
+                        $H_0: \mu = 100$<br>
+                        $H_a: \mu > 100$ <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) What are the critical values for a one-independent sample non directional (two-tailed) z test at a .05 level of significance? <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Define Hypothesis. Write a short note on Null Hypothesis and Alternative Hypothesis. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Suppose the average salary of a principal in a college in the private sector is Rs. 45,000 per month, and a sample of 50 principals has a mean of Rs. 48,326 with a significance level of $\alpha = 0.05$. Can we claim that principals earn Rs. 45,000 per month, given that the standard deviation of the population is Rs. 1,523? <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Write short note on: Time Series Analysis <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) Write a detail note on Analysis of Variance. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) A sample of 100 B.Sc. Student is taken from a medical college with height having standard deviation (S.D.= 10 cm). The mean height of sample of student is found 168.8 cm. Can we accept that the mean height of student is 170 cm. Justify your answer. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Write short note on: Type-I and Type-II Errors. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) What is null hypothesis? What is its significance in statistical variance? <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.10) An agricultural research organization wants to study the effect of four types of fertilizers on the yield of crop. It divided the entire field into 24 plots of land and used fertilizer at random in 6 plots of land. Part of calculations are given below:</p>
+                            <table style="margin-left: 1rem; margin-top: 1rem; border-collapse: collapse; text-align: center; width: 90%; min-width: 500px;" border="1" cellpadding="8">
+                                <tr><th>Source of Variation</th><th>Sum of Squares</th><th>Degree of freedom</th><th>Mean Squares</th><th>Test Statistic</th></tr>
+                                <tr><td>fertilizers</td><td>2940</td><td>3</td><td>-</td><td rowspan="2">5.99</td></tr>
+                                <tr><td>Within groups</td><td>-</td><td>-</td><td>-</td></tr>
+                                <tr><td>Total</td><td>6212</td><td></td><td></td><td></td></tr>
+                            </table>
+                            <p style="margin-top: 1rem;">i) Fill in the blanks in the ANOVA table.<br>
+                            ii) Test at $\alpha = 0.5$, whether the fertilizers differ significantly. <span class="unit-year">(Nov-2023)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.11) A coin was tossed 400 times and the head turned up 216 times. Test the hypothesis that the coin is unbiased. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
                 <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
                     Show less ▲
                 </button>

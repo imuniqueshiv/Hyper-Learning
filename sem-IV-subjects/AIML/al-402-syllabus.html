@@ -5,9 +5,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AL-402 - Analysis & Design of Algorithms (ADA) Syllabus | Hyper Learning</title>
-    <meta name="description" content="AL-402 Analysis & Design of Algorithms (ADA) Syllabus RGPV B.Tech IV Semester. New Scheme Based On AICTE Flexible Curricula." />
-    
+    <meta name="description"
+        content="AL-402 Analysis & Design of Algorithms (ADA) Syllabus RGPV B.Tech IV Semester. New Scheme Based On AICTE Flexible Curricula." />
+
     <link rel="stylesheet" href="../../style.css" />
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 </head>
 
 <body>
@@ -37,78 +51,723 @@
     </section>
 
     <section class="questions-list">
-        <h3>Syllabus Content</h3>
+        <h3>Syllabus Content & Previous Year Questions</h3>
 
+        <!-- Unit 1 -->
         <div class="question">
             <details>
                 <summary>
                     <div>
-                        <strong><p>Unit I</p></strong>
+                        <strong>
+                            <p>Unit I</p>
+                        </strong>
                         <hr>
-                        <p>Definitions of algorithms and complexity, Time and Space Complexity; Time space tradeoff, various bounds on complexity, Asymptotic notation, Recurrences and Recurrences solving techniques, Introduction to divide and conquer technique, example: binary search, merge sort, quick sort, heap sort, strassen’s matrix multiplicationetc, Code tuning techniques: Loop Optimization, Data Transfer Optimization, Logic Optimization, etc.</p>
+                        <p>Definitions of algorithms and complexity, Time and Space Complexity; Time space tradeoff,
+                            various bounds on complexity, Asymptotic notation, Recurrences and Recurrences solving
+                            techniques, Introduction to divide and conquer technique, example: binary search, merge sort,
+                            quick sort, heap sort, strassen’s matrix multiplicationetc, Code tuning techniques: Loop
+                            Optimization, Data Transfer Optimization, Logic Optimization, etc.</p>
                     </div>
                 </summary>
-                <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) Solve the following recurrence relation using recursion tree method:<br>
+                            $T(n)=2T(n/2)+n$<br>
+                            $T(1)=O(1)$ <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Show the following recurrence relation using Master's theorem:<br>
+                            $T(n)=2T(n/2)+n \log n$ <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Find the number of comparisons made by the sequential search for the worst and best case.
+                            <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Apply Quick sort on the array given below:<br>
+                            15, 31, 1, 9, 80, 12, 14, 7, 24 <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Write an algorithm for the implementation of binary search method. <span
+                                class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) Describe the performance analysis of an algorithm in detail. <span
+                                class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) Consider the following recurrence $T(n)=3T(n/3)+n$ obtain asymptotic bound using
+                            substitution method. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Write Divide - And - Conquer recursive Quick sort algorithm and analyze the algorithm for
+                            average time complexity. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) Define Time Complexity. Describe different notations used to represent these complexities.
+                            <span class="unit-year">(June-2024, Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) Write an algorithm for Strassen's matrix multiplication and analyze the complexity of
+                            algorithm. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.11) Show that the average case time complexity of quick sort is O(nlogn). <span
+                                class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.12) Solve the following recurrence relation<br>
+                            $T(n)=7T(n/2)+cn^{2}$ <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.13) Show how quick sort sorts the following sequence of keys 65, 70, 75, 80, 85, 60, 55, 50,
+                            45. Solve the recurrence relation of quick sort using substitution method. <span
+                                class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.14) Explain merge sort algorithm and find the complexity of the algorithm. <span
+                                class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.15) Write brief note on: Logic Optimization. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.16) Write brief note on: Data Transfer Optimization. <span class="unit-year">(June-2024,
+                                Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.17) Discuss Strassen's matrix multiplication as well as classical $O(n^{2})$ one. Determine
+                            when Strassen's method outperforms the classical one. <span
+                                class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.18) Explain partition exchange sort algorithm and trace this algorithm for $n=8$ elements:
+                            24, 12, 35, 23, 45, 34, 20, 48. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.19) Write short notes on: Data Transfer Optimization and Logic Optimization. <span
+                                class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
+                <button type="button" class="hl-show-less"
+                    onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
                     Show less ▲
                 </button>
             </details>
         </div>
 
+        <!-- Unit 2 -->
         <div class="question">
             <details>
                 <summary>
                     <div>
-                        <strong><p>Unit II</p></strong>
+                        <strong>
+                            <p>Unit II</p>
+                        </strong>
                         <hr>
-                        <p>Study of Greedy strategy, examples of greedy method like optimal merge patterns, Huffman coding, minimum spanning trees, knapsack problem, job sequencing with deadlines, single source shortest path algorithm etc. Correctness proof of Greedy algorithms.</p>
+                        <p>Study of Greedy strategy, examples of greedy method like optimal merge patterns, Huffman
+                            coding, minimum spanning trees, knapsack problem, job sequencing with deadlines, single
+                            source shortest path algorithm etc. Correctness proof of Greedy algorithms.</p>
                     </div>
                 </summary>
-                <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) List various problems that can be solved using the Greedy algorithm approach. <span
+                                class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Write Kruskal's algorithm to find MST for a given graph. Also discuss about its time
+                            complexity. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Write Dijkstra's Algorithm for the solution of single source shortest path problem. <span
+                                class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Explain fractional Knapsack problem in detail. <span class="unit-year">(June-2025)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.5) Construct the minimum spanning tree for the given graph using Kruskal's Algorithm:
+                            </p>
+                            <img style="margin-top: 1rem; width: 60%;" class="ans-img"
+                                src="../../sem-IV-papers/AIML/al-402/ques-diagrams/Q.6b-june-2025.png"
+                                
+                                alt="An undirected weighted graph with 7 vertices labeled 1 through 7. The edges and their corresponding weights are as follows: Edge between node 1 and 2 with weight 28; Edge between node 1 and 6 with weight 10; Edge between node 2 and 3 with weight 16; Edge between node 2 and 7 with weight 14; Edge between node 3 and 4 with weight 12; Edge between node 4 and 5 with weight 22; Edge between node 4 and 7 with weight 18; Edge between node 5 and 6 with weight 25; Edge between node 5 and 7 with weight 24.">
+                            <p style="margin-top: 1rem;"><span class="unit-year">(June-2025)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) Apply the Greedy method to solve Knapsack problem for given instance. Where $n=3$,
+                            $m=20$, $(P_{1}, P_{2}, P_{3})=(25,24,15)$ and weight $(w_{1}, w_{2}, w_{3})=(18,15,10)$.
+                            <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.7) Write Kruskal's Algorithm. Generate the MCST for the graph given in Figure 1 by
+                                applying Kruskal's algorithm.</p>
+                            <img style="margin-top: 1rem; width: 60%;" class="ans-img"
+                                src="../../sem-IV-papers/AIML/al-402/ques-diagrams/Q.4a-3a-4b-june-2023-24.png"
+                                alt="An undirected weighted graph with 6 vertices labeled A, B, C, D, E, and F. The edges and their corresponding weights are: Edge A to B with weight 10; Edge A to D with weight 30; Edge A to E with weight 45; Edge B to C with weight 50; Edge B to E with weight 40; Edge B to F with weight 25; Edge C to E with weight 35; Edge C to F with weight 15; Edge D to F with weight 20; and Edge E to F with weight 55.">
+                            <p style="margin-top: 1rem;"><span class="unit-year">(June-2023)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Obtain a set of optimal Huffman codes for the seven messages (M1, ..., M7) with relative
+                            frequencies $(q1,...,q7)=(4,5,7,8,10,22,15).$ Draw the decode tree for this set of codes.
+                            <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) Write short notes on: Correctness proof of Greedy algorithms. <span
+                                class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) Describe in detail job sequencing with deadlines problem. Let $n=4, (P_{1}, P_{2},
+                            P_{3}, P_{4}) = (100, 10, 15, 27)$ and $(d_{1}, d_{2}, d_{3}, d_{4}) = (2, 1, 2, 1)$ find
+                            the optimal solution for the given values. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.11) Write an algorithm for single source shortest path and apply it for the following
+                                graph.</p>
+                            <img style="margin-top: 1rem; width: 60%;" class="ans-img"
+                                src="../../sem-IV-papers/AIML/al-402/ques-diagrams/Q.3b-dec-3a-june-2024.png"
+                                alt="An undirected weighted graph with 6 vertices labeled A, B, C, D, E, and F. The edges and their corresponding weights are: Edge A to B with weight 10; Edge A to D with weight 30; Edge A to E with weight 45; Edge B to C with weight 50; Edge B to E with weight 40; Edge B to F with weight 25; Edge C to E with weight 35; Edge C to F with weight 15; Edge D to F with weight 20; and Edge E to F with weight 55.">
+                            <p style="margin-top: 1rem;"><span class="unit-year">(June-2024)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.12) Discuss the importance of proving both the greedy choice property and the optimal
+                            substructure property for establishing the correctness of a greedy algorithm. <span
+                                class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.13) Write an algorithm to solve Knapsack problem using Greedy technique. Find the optimal
+                            solution to the Knapsack instance $n=7$, $m=15$, $(P_{1}, P_{2}, P_{3}...P_{7}) = (10, 5,
+                            15, 7, 6, 18, 3)$, $(W_{1}, W_{2}, W_{3}...W_{7}) = (2, 3, 5, 7, 1, 4, 1)$. <span
+                                class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.14) Write short notes on: Huffman coding. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.15) Write an algorithm for single source shortest path and apply it for the following
+                                graph.</p>
+                            <img style="margin-top: 1rem; width: 60%;" class="ans-img"
+                                src="../../sem-IV-papers/AIML/al-402/ques-diagrams/Q.2b-dec-2024.png"
+                                alt="An undirected weighted graph with 8 vertices labeled A, B, C, D, E, F, G, and H. The edges and their corresponding weights are as follows: Edge A to B with weight 2; Edge A to G with weight 6; Edge B to C with weight 7; Edge B to E with weight 2; Edge C to D with weight 3; Edge C to F with weight 3; Edge D to H with weight 2; Edge E to F with weight 2; Edge E to G with weight 1; Edge F to H with weight 2; and an edge between G and H with no explicit weight given.">
+                            <p style="margin-top: 1rem;"><span class="unit-year">(Dec-2024)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.16) How the Optimal Merge Pattern algorithm works? Explain with a suitable example. <span
+                                class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.17) Apply Kruskal's algorithm to find the minimum spanning tree of a graph with weighted
+                                edges.</p>
+                            <img style="margin-top: 1rem; width: 60%;" class="ans-img"
+                                src="../../sem-IV-papers/AIML/al-402/ques-diagrams/Q.3b-dec-3a-june-2024.png"
+                                alt="An undirected weighted graph with 9 vertices labeled 0 through 8. The edges and their corresponding weights are as follows: Edge 0 to 1 with weight 4; Edge 0 to 7 with weight 8; Edge 1 to 2 with weight 8; Edge 1 to 7 with weight 11; Edge 2 to 3 with weight 7; Edge 2 to 5 with weight 4; Edge 2 to 8 with weight 2; Edge 3 to 4 with weight 9; Edge 3 to 5 with weight 14; Edge 4 to 5 with weight 10; Edge 5 to 6 with weight 2; Edge 6 to 7 with weight 1; Edge 6 to 8 with weight 6; and Edge 7 to 8 with weight 7.">
+                            <p style="margin-top: 1rem;"><span class="unit-year">(Dec-2024)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.18) Compute the optimal solution for knapsack problem using greedy method $N=5$, $M=10$,
+                            $(p_{1}, p_{2}, p_{3}, p_{4}, p_{5}) = (10, 15, 10, 12, 8)$, $(w_{1}, w_{2}, w_{3}, w_{4},
+                            w_{5}) = (3, 3, 2, 5, 1)$. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.19) Write short notes on: Optimal merge patterns. <span class="unit-year">(Dec-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.20) State the Job-Sequencing with deadlines problem. Find an optimal sequence to the $n=5$
+                            Jobs where profits $(P_{1},P_{2},P_{3},P_{4},P_{5})=(20,15,10,5,1)$ and deadlines
+                            $(d_{1},d_{2},d_{3},d_{4},d_{5})=(2,2,1,3,3).$ <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.21) Explain prim's and Kruskal's algorithm shown in figure with the following example.
+                            </p>
+                            <img style="margin-top: 1rem; width: 60%;" class="ans-img"
+                                src="../../sem-IV-papers/AIML/al-402/ques-diagrams/Q.3b-dec-2023.png"
+                                alt="An undirected weighted graph with 7 vertices labeled 1 through 7. The edges and their corresponding weights are as follows: Edge 1 to 2 with weight 2; Edge 1 to 3 with weight 4; Edge 1 to 4 with weight 1; Edge 2 to 4 with weight 3; Edge 2 to 5 with weight 10; Edge 3 to 4 with weight 2; Edge 3 to 6 with weight 5; Edge 4 to 5 with weight 7; Edge 4 to 6 with weight 8; Edge 4 to 7 with weight 4; Edge 5 to 7 with weight 6; and Edge 6 to 7 with weight 1.">
+                            <p style="margin-top: 1rem;"><span class="unit-year">(Nov-2023)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.22) Differentiate between prim's algorithm and Kruskal's algorithm. <span
+                                class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
+                <button type="button" class="hl-show-less"
+                    onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
                     Show less ▲
                 </button>
             </details>
         </div>
 
+        <!-- Unit 3 -->
         <div class="question">
             <details>
                 <summary>
                     <div>
-                        <strong><p>Unit III</p></strong>
+                        <strong>
+                            <p>Unit III</p>
+                        </strong>
                         <hr>
-                        <p>Concept of dynamic programming, problems based on this approach such as 0/1 knapsack, multistage graph, reliability design, Floyd-Warshall algorithm etc.</p>
+                        <p>Concept of dynamic programming, problems based on this approach such as 0/1 knapsack,
+                            multistage graph, reliability design, Floyd-Warshall algorithm etc.</p>
                     </div>
                 </summary>
-                <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) What is 0/1 Knapsack problem? Is Greedy method effective to solve 0/1 Knapsack problem.
+                            <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Is there anything common between dynamic programming and divide and conquer? What is the
+                            main difference between the two? <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Solve the following 0/1 Knapsack problem using dynamic programming
+                            $P=(11,21,31,33)$, $W=(2,12,23,15),$ $C=42$, $n=4.$ <span
+                                class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.4) Explain Floyd Warshall algorithm problem with the graph given in figure.</p>
+                            <img style="margin-top: 1rem; width: 60%;" class="ans-img"
+                                src="../../sem-IV-papers/AIML/al-402/ques-diagrams/Q.4a-3a-4b-june-2023-24.png"
+                                alt="An undirected weighted graph with 6 vertices labeled A, B, C, D, E, and F. The edges and their corresponding weights are: Edge A to B with weight 10; Edge A to D with weight 30; Edge A to E with weight 45; Edge B to C with weight 50; Edge B to E with weight 40; Edge B to F with weight 25; Edge C to E with weight 35; Edge C to F with weight 15; Edge D to F with weight 20; and Edge E to F with weight 55.">
+                            <p style="margin-top: 1rem;"><span class="unit-year">(June-2023)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.5) Explain Floyd Warshall algorithm problem with the graph given in figure.</p>
+                            <img style="margin-top: 1rem; width: 60%;" class="ans-img"
+                                src="../../sem-IV-papers/AIML/al-402/ques-diagrams/Q.4a-3a-4b-june-2023-24.png"
+                                alt="An undirected weighted graph with 9 vertices labeled 0 through 8. The edges and their corresponding weights are as follows: Edge 0 to 1 with weight 4; Edge 0 to 7 with weight 8; Edge 1 to 2 with weight 8; Edge 1 to 7 with weight 11; Edge 2 to 3 with weight 7; Edge 2 to 5 with weight 4; Edge 2 to 8 with weight 2; Edge 3 to 4 with weight 9; Edge 3 to 5 with weight 14; Edge 4 to 5 with weight 10; Edge 5 to 6 with weight 2; Edge 6 to 7 with weight 1; Edge 6 to 8 with weight 6; and Edge 7 to 8 with weight 7.">
+                            <p style="margin-top: 1rem;"><span class="unit-year">(June-2024)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) What is multistage graph problem? Discuss its solution based on dynamic programming
+                            approach. Also give a suitable algorithm and find its computing time? <span
+                                class="unit-year">(June-2023, Dec-2024, Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) Write short notes on: Reliability design. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Describe how dynamic programming can be used to solve reliability design problems. <span
+                                class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) Design a three stage system with device types $D_{1}$, $D_{2}$ and $D_{3}$. The costs are
+                            \$30, \$15 and \$20 respectively. The Cost of the system is to be no more than \$105. The
+                            reliability of each device is 0.9, 0.8 and 0.5 respectively. <span
+                                class="unit-year">(Dec-2024, Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) A thief enters a house for robbing. Thief can carry a maximum weight of 6kg into his
+                            bag. There are 3 items in the house with weights $(w_{1},w_{2},w_{3})=(2,3,4)$ and profits
+                            $(p_{1},p_{2},p_{3})=(1,2,5)$ what items should thief can take will get the maximum profit?
+                            He either takes or leaves the item. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.11) Solve the following instance of $0/1$ Knapsack problem using Dynamic programming.
+                            $n=3$; $(W_{1}, W_{2}, W_{3}) = (3, 5, 7)$; $(P_{1},P_{2},P_{3})=(3,7,12)$; $M=4.$ <span
+                                class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
+                <button type="button" class="hl-show-less"
+                    onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
                     Show less ▲
                 </button>
             </details>
         </div>
 
+        <!-- Unit 4 -->
         <div class="question">
             <details>
                 <summary>
                     <div>
-                        <strong><p>Unit IV</p></strong>
+                        <strong>
+                            <p>Unit IV</p>
+                        </strong>
                         <hr>
-                        <p>Backtracking concept and its examples like 8 queen’s problem, Hamiltonian cycle, Graph colouring problem etc. Introduction to branch & bound method, examples of branch and bound method like travelling salesman problem etc. Meaning of lower bound theory and its use in solving algebraic problem, introduction to parallel algorithms.</p>
+                        <p>Backtracking concept and its examples like 8 queen’s problem, Hamiltonian cycle, Graph
+                            colouring problem etc. Introduction to branch & bound method, examples of branch and bound
+                            method like travelling salesman problem etc. Meaning of lower bound theory and its use in
+                            solving algebraic problem, introduction to parallel algorithms.</p>
                     </div>
                 </summary>
-                <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) Obtain any two solutions to 4-queens problem. Establish the relationship between them.
+                            <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.2) Solve the following instance of Knapsack problem by using the branch and bound
+                                technique:</p>
+                            <table
+                                style="width: 100%; max-width: 300px; border-collapse: collapse; margin-top: 1rem; margin-bottom: 1rem;"
+                                border="1">
+                                <tr>
+                                    <th style="padding: 8px; text-align: left;">Items</th>
+                                    <th style="padding: 8px; text-align: left;">W</th>
+                                    <th style="padding: 8px; text-align: left;">P</th>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px;">$I_1$</td>
+                                    <td style="padding: 8px;">9</td>
+                                    <td style="padding: 8px;">15</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px;">$I_2$</td>
+                                    <td style="padding: 8px;">6</td>
+                                    <td style="padding: 8px;">6</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px;">$I_3$</td>
+                                    <td style="padding: 8px;">7</td>
+                                    <td style="padding: 8px;">5</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px;">$I_4$</td>
+                                    <td style="padding: 8px;">2</td>
+                                    <td style="padding: 8px;">1</td>
+                                </tr>
+                            </table>
+                            <p>$W=16$ <span class="unit-year">(June-2025)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Find a solution to the 8-Queens problem using backtracking strategy. Draw the solution
+                            space using necessary bounding function. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.4) Solve the traveling salesperson problem using branch and bound technique.</p>
+                            <table
+                                style="width: 100%; max-width: 300px; border-collapse: collapse; margin-top: 1rem; margin-bottom: 1rem;"
+                                border="1">
+                                <tr>
+                                    <th style="padding: 8px; text-align: left;"></th>
+                                    <th style="padding: 8px; text-align: left;">A</th>
+                                    <th style="padding: 8px; text-align: left;">B</th>
+                                    <th style="padding: 8px; text-align: left;">C</th>
+                                </tr>
+                                <tr>
+                                    <th style="padding: 8px; text-align: left;">A</th>
+                                    <td style="padding: 8px;">0</td>
+                                    <td style="padding: 8px;">3</td>
+                                    <td style="padding: 8px;">4</td>
+                                </tr>
+                                <tr>
+                                    <th style="padding: 8px; text-align: left;">B</th>
+                                    <td style="padding: 8px;">6</td>
+                                    <td style="padding: 8px;">0</td>
+                                    <td style="padding: 8px;">4</td>
+                                </tr>
+                                <tr>
+                                    <th style="padding: 8px; text-align: left;">C</th>
+                                    <td style="padding: 8px;">3</td>
+                                    <td style="padding: 8px;">5</td>
+                                    <td style="padding: 8px;">0</td>
+                                </tr>
+                            </table>
+                            <p><span class="unit-year">(June-2023)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) What is Backtracking? Discuss any one problem solved by backtracking. Also give its
+                            advantages and disadvantages. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) Write short notes on: Graph coloring problem. <span class="unit-year">(June-2023)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) Describe graph coloring problem and write an algorithm for m-coloring problem. <span
+                                class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Explain the 4-queen problem using backtracking algorithm. <span
+                                class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) Explain the method of reduction to solve travelling sales person problem using branch and
+                            bound. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) Briefly explain the Hamiltonian cycle using backtracking with a example. <span
+                                class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.11) Solve the following instance of travelling sales person problem using Branch Bound.
+                            </p>
+                            <table
+                                style="width: 100%; max-width: 400px; border-collapse: collapse; margin-top: 1rem; margin-bottom: 1rem;"
+                                border="1">
+                                <tr>
+                                    <td style="padding: 8px; text-align: center;">$\infty$</td>
+                                    <td style="padding: 8px; text-align: center;">20</td>
+                                    <td style="padding: 8px; text-align: center;">30</td>
+                                    <td style="padding: 8px; text-align: center;">10</td>
+                                    <td style="padding: 8px; text-align: center;">11</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px; text-align: center;">15</td>
+                                    <td style="padding: 8px; text-align: center;">$\infty$</td>
+                                    <td style="padding: 8px; text-align: center;">16</td>
+                                    <td style="padding: 8px; text-align: center;">4</td>
+                                    <td style="padding: 8px; text-align: center;">2</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px; text-align: center;">3</td>
+                                    <td style="padding: 8px; text-align: center;">5</td>
+                                    <td style="padding: 8px; text-align: center;">$\infty$</td>
+                                    <td style="padding: 8px; text-align: center;">2</td>
+                                    <td style="padding: 8px; text-align: center;">4</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px; text-align: center;">19</td>
+                                    <td style="padding: 8px; text-align: center;">6</td>
+                                    <td style="padding: 8px; text-align: center;">18</td>
+                                    <td style="padding: 8px; text-align: center;">$\infty$</td>
+                                    <td style="padding: 8px; text-align: center;">3</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px; text-align: center;">16</td>
+                                    <td style="padding: 8px; text-align: center;">4</td>
+                                    <td style="padding: 8px; text-align: center;">7</td>
+                                    <td style="padding: 8px; text-align: center;">16</td>
+                                    <td style="padding: 8px; text-align: center;">$\infty$</td>
+                                </tr>
+                            </table>
+                            <p><span class="unit-year">(Dec-2024)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.12) Write short notes on: 8 queen's problem using backtracking. <span
+                                class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.13) Write an algorithm to determine the Hamiltonian cycle in a given graph using
+                            backtracking. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.14) Solve the following instance of travelling sales person problem using Least Cost
+                                Branch Bound.</p>
+                            <img style="margin-top: 1rem; width: 60%;" class="ans-img"
+                                src="../../sem-IV-papers/AIML/al-402/ques-diagrams/Q.6a-dec-2023.png"
+                                alt="An undirected weighted graph with 5 vertices labeled 1 through 5. The edges and their corresponding weights are as follows: Edge 1 to 2 with weight 2; Edge 1 to 4 with weight 5; Edge 2 to 3 with weight 14; Edge 2 to 4 with weight 5; Edge 2 to 5 with weight 4; Edge 3 to 5 with weight 34; and Edge 4 to 5 with weight 58.">
+                            <p style="margin-top: 1rem;"><span class="unit-year">(Nov-2023)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.15) Construct state space tree for solving four queen's problem using backtracking. <span
+                                class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
+                <button type="button" class="hl-show-less"
+                    onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
                     Show less ▲
                 </button>
             </details>
         </div>
 
+        <!-- Unit 5 -->
         <div class="question">
             <details>
                 <summary>
                     <div>
-                        <strong><p>Unit V</p></strong>
+                        <strong>
+                            <p>Unit V</p>
+                        </strong>
                         <hr>
-                        <p>Advanced tree and graph algorithms, NP-hard and NP-complete problems, Approximations Algorithms, Data Stream Algorithms, Introduction to design and complexity of Parallel Algorithms.</p>
+                        <p>Advanced tree and graph algorithms, NP-hard and NP-complete problems, Approximations
+                            Algorithms, Data Stream Algorithms, Introduction to design and complexity of Parallel
+                            Algorithms.</p>
                     </div>
                 </summary>
-                <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) Explain the class NP-complete with example. <span class="unit-year">(June-2025)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) There are 8, 15, 13 and 14 number of nodes in 4 different trees. Which of them could have
+                            formed a Full Binary Tree? <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Compare and contrast NP-Hard and NP-Complete classes. <span
+                                class="unit-year">(June-2023, June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Create a B-tree for the following list of elements L= {86, 50, 40, 3, 94, 10, 70, 90,
+                            110, 113, 116} given minimization factor $t=3,$ minimum degree $=2$ and maximum degree = 5.
+                            <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Write short notes on: Design and complexity of Parallel Algorithms. <span
+                                class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) What are B-trees? How are they created? Explain with a suitable example. <span
+                                class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) Write short notes on: Data Stream Algorithms. <span class="unit-year">(June-2024)</span>
+                        </p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Write short notes on: Approximations Algorithms. <span class="unit-year">(June-2024,
+                                Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) Explain the P, NP-Hard and NP-complete classes? Give the relation between them. <span
+                                class="unit-year">(Dec-2024, Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) Explain the purpose of design and complexity of parallel algorithms in detail. <span
+                                class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.11) Show the inorder, preorder and postorder for the following tree</p>
+                            <img style="margin-top: 1rem; width: 60%;" class="ans-img"
+                                src="../../sem-IV-papers/AIML/al-402/ques-diagrams/Q.7b-dec-2023.png"
+                                alt="A binary tree with root node A. Node A has a left child B and a right child G. Node B has a left child C and a right child F. Node C has a left child D and a right child E.">
+                            <p style="margin-top: 1rem;"><span class="unit-year">(Nov-2023)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.12) Write short notes on: Parallel algorithms. <span class="unit-year">(Nov-2023)</span>
+                        </p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
+                <button type="button" class="hl-show-less"
+                    onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
                     Show less ▲
                 </button>
             </details>
@@ -118,10 +777,11 @@
 
     <footer class="footer">
         <p>
-            <div id="footer"></div>&copy; <span id="year"></span> Hyper Learning. Built to help Students.
+        <div id="footer"></div>&copy; <span id="year"></span> Hyper Learning. Built to help Students.
         </p>
         <p class="disclaimer">
-            Disclaimer: Some content may contain errors. Please cross-check and share corrections via our feedback section.
+            Disclaimer: Some content may contain errors. Please cross-check and share corrections via our feedback
+            section.
         </p>
     </footer>
 
