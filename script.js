@@ -6,7 +6,7 @@ const CACHE_TTL_DAYS = 35;
 const REGENERATED_TTL_DAYS = 3; // ✅ FIX: Regenerated answers expire in 3 days to force re-fetch
 const REGENERATE_LIMIT = 7;
 
-// Complete subject mapping for all 30+ subjects
+// Complete subject mapping for all 30+ subjects (Kept for UI Colors & Emojis ONLY)
 const SUBJECT_MAP = {
   // --- 1st Year Subjects ---
   'BT-101': { name: 'Engineering Chemistry', type: 'CHEMISTRY', emoji: '⚗️', color: '#00008B' },
@@ -101,9 +101,6 @@ async function incrementGlobalRegenerateCount(questionId) {
 // ==================== Core Utilities ====================
 
 // ✅ FIX: loadLocalCache now respects TTL and cleans up expired entries.
-// Regenerated answers expire in 3 days; normal answers expire in 365 days.
-// This ensures that after a page refresh, regenerated answers are shown from
-// local cache (not fetched fresh from the backend's old cache).
 function loadLocalCache() {
   try {
     const cacheData = localStorage.getItem(LOCAL_CACHE_KEY);
@@ -254,38 +251,7 @@ function extractQuestionText(questionContainer, partIndex = 0) {
     return fullText.trim();
 }
 
-// ==================== UPDATED PROMPTS ====================
-function createSubjectPrompt(subjectInfo, questionText) {
-  const intro = `You are an expert tutor for RGPV B.Tech students in ${subjectInfo.name}. `;
-
-  const typeInstructions = {
-    'MATH': 'Provide detailed step-by-step mathematical solutions. Use LaTeX for equations ($...$ or $$...$$). For Probability/Statistics, explain the logic clearly. For Discrete Structures, use proper set theory/logic notation: ',
-    
-    'ENGLISH': 'Provide comprehensive answers with proper grammar, communication theories, and professional writing formats (letters/reports): ',
-    
-    'GRAPHICS': 'Explain engineering drawing principles (Projections, Isometric, Scales). If an image description is provided [Image Context: ...], use it to describe the geometry construction: ',
-    
-    'COMPUTER': 'Provide detailed technical explanations. For coding (DS/OOPM/ML), use C++, Java, or Python with comments. For theoretical subjects (SE, DBMS, COA), use algorithms, schemas, and architectural diagrams descriptions: ',
-    
-    'PHYSICS': 'Provide physics derivations, formulas, and conceptual explanations with standard units: ',
-    
-    'CHEMISTRY': 'Provide chemical reactions, equations, and molecular explanations: ',
-    
-    'ELECTRICAL': 'Provide circuit analysis, boolean algebra (for Digital Systems), and signal processing explanations: ',
-    
-    'MECHANICAL': 'Provide engineering mechanics solutions, thermodynamics principles, and practical applications: ',
-    
-    'CIVIL': 'Provide structural analysis and mechanics solutions. If an image description is provided [Image Context: ...], use it to solve the problem (e.g. Moment of Inertia): ',
-    
-    'GENERAL': 'Provide detailed engineering explanations with clear examples: '
-  };
-  
-  const instructions = typeInstructions[subjectInfo.type] || typeInstructions['GENERAL'];
-  
-  return intro + instructions + questionText;
-}
-
-// ==================== ENHANCED HTML FORMATTING (Student-Friendly) ====================
+// ==================== ENHANCED HTML FORMATTING ====================
 function formatAnswerAsHtml(str) {
   if (!str) return '';
   
@@ -301,16 +267,13 @@ function formatAnswerAsHtml(str) {
     .replace(/\*\*\*(.*?)\*\*\*/g, '<strong style="color: #7c3aed; background: #f3e8ff; padding: 2px 6px; border-radius: 4px;"><em>$1</em></strong>')
     .replace(/\*\*(.*?)\*\*/g, '<strong style="color: #0369a1; font-weight: 700;">$1</strong>')
     .replace(/\*(.*?)\*/g, '<em style="color: #6366f1;">$1</em>')
-    .replace(/```([^`]+)```/g, '<pre style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.9rem; max-width: 100%; border: 1px solid #cbd5e1; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);"><code style="font-family: \'Fira Code\', \'Consolas\', monospace; color: #1e293b;">$1</code></pre>')
     .replace(/```([\s\S]*?)```/g,
   (match, code) => {
-    // Optionally strip a language tag like "cpp" on the first line
     const cleaned = code.replace(/^[a-zA-Z0-9_+\-]+[\t ]*\n/, '');
     return '<pre style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.9rem; max-width: 100%; border: 1px solid #cbd5e1; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);"><code style="font-family: \'Fira Code\', \'Consolas\', monospace; color: #1e293b;">'
       + cleaned
       + '</code></pre>';
   })
-    // .replace(/`([^`]+)`/g, '<code style="background: #fef3c7; color: #92400e; padding: 3px 6px; border-radius: 4px; font-size: 0.9em; font-weight: 600; font-family: \'Fira Code\', monospace;">$1</code>')
     .replace(/^\* (.*$)/gim, '<li style="margin-bottom: 0.65rem; padding-left: 0.5rem; line-height: 1.7; position: relative;"><span style="position: absolute; left: -1.2rem; color: #3b82f6; font-weight: bold;">•</span>$1</li>')
     .replace(/^(\d+)\. (.*$)/gim, '<li style="margin-bottom: 0.65rem; padding-left: 0.5rem; line-height: 1.7; list-style-position: inside; color: #334155;">$2</li>')
     .replace(/\n\n/g, '</p><p style="margin-bottom: 1rem; line-height: 1.75; font-size: 1rem; color: #334155; text-align: justify;">')
@@ -322,7 +285,6 @@ function formatAnswerAsHtml(str) {
 
   return formatted;
 }
-
 
 function timeAgo(ts) {
   const diff = Date.now() - ts;
@@ -337,15 +299,15 @@ function timeAgo(ts) {
 
 // ==================== API Functions ====================
 
-async function fetchAnswerStream(question, onChunk, signal, forceRefresh = false) {
-  // ✅ FIX: Backend caches by question text. Append a unique suffix to bust the backend cache
-  // when regenerating so the backend is forced to generate a truly new answer.
+// ✅ FIX: Added subjectType to parameters. We no longer send the giant prompt in the URL.
+async function fetchAnswerStream(question, subjectType, onChunk, signal, forceRefresh = false) {
   let finalQuestion = question;
   if (forceRefresh) {
       finalQuestion += `\n\n[System: Regenerate fresh answer. ID: ${Date.now()}]`;
   }
 
-  const url = `${BACKEND_URL}?question=${encodeURIComponent(finalQuestion)}&_t=${Date.now()}`;
+  // ✅ FIX: Send question and subject separately to keep URL short and secure.
+  const url = `${BACKEND_URL}?question=${encodeURIComponent(finalQuestion)}&subject=${encodeURIComponent(subjectType)}&_t=${Date.now()}`;
   
   const resp = await fetch(url, { method: 'GET', signal });
   const ct = resp.headers.get('content-type') || '';
@@ -389,10 +351,6 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
   const buttonGroupStyle = "margin-top: 1rem; padding-top: 1rem; border-top: 2px solid #f1f5f9; display: flex; gap: 0.6rem; flex-wrap: wrap;";
   const buttonBaseStyle = "flex: 1; min-width: 90px; padding: 0.6rem 0.8rem; border-radius: 8px; border: 2px solid #e2e8f0; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); cursor: pointer; font-weight: 600; color: #475569; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.05); font-size: 0.85rem;";
 
-  // ✅ FIX: Check LOCAL cache FIRST before anything else.
-  // This is the core fix for the regeneration bug. When a user regenerates and then refreshes,
-  // the local cache holds the new answer. We must serve it instead of going to the backend
-  // which would return the old server-cached answer.
   if (!opts.forceRefresh) {
     const localCache = loadLocalCache();
     if (localCache[questionId] && localCache[questionId].answer) {
@@ -431,11 +389,10 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
       if (window.MathJax && window.MathJax.typesetPromise) {
         MathJax.typesetPromise([targetElement]).catch(console.warn);
       }
-      return; // Stop here — do not fall through to the backend
+      return; 
     }
   }
 
-  // No local cache hit — check global cache (currently always returns null)
   if (!opts.forceRefresh) {
     const globalCache = await getGlobalCache(questionId);
     if (globalCache && globalCache.answer) {
@@ -528,11 +485,11 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
   const streamingDiv = document.getElementById(`streaming-${questionId}`);
 
   try {
-    const fullQuery = createSubjectPrompt(subjectInfo, questionText);
     let streamed = '';
     let finalBackendCached = false;
 
-    await fetchAnswerStream(fullQuery, (chunk, meta) => {
+    // ✅ FIX: We only send the question text and subjectInfo.type to fetchAnswerStream.
+    await fetchAnswerStream(questionText, subjectInfo.type, (chunk, meta) => {
       if (meta.done && chunk === '') {
         finalBackendCached = !!meta.backendCached;
         
@@ -580,8 +537,6 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
             </div>
           `;
           
-          // ✅ FIX: Mark as regenerated so the TTL system knows to use the shorter expiry.
-          // This is what makes the regenerated answer persist correctly after a page refresh.
           const localCache = loadLocalCache();
           localCache[questionId] = { 
             answer: streamed, 
@@ -589,7 +544,7 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
             backendCached: finalBackendCached,
             subject: subjectInfo.name,
             questionText: questionText,
-            regenerated: opts.forceRefresh // ✅ true when called from regenerateAnswer
+            regenerated: opts.forceRefresh 
           };
           saveLocalCache(localCache);
           
@@ -644,7 +599,7 @@ async function displayAnswer(targetElement, questionId, questionText, opts = { f
                backendCached: finalBackendCached,
                subject: subjectInfo.name,
                questionText: questionText,
-               regenerated: opts.forceRefresh // ✅ Mark as regenerated
+               regenerated: opts.forceRefresh
              };
              saveLocalCache(localCache);
              
@@ -805,10 +760,6 @@ window.regenerateAnswer = async function(questionId, questionText, button) {
   
   await incrementGlobalRegenerateCount(questionId);
   
-  // ✅ FIX: Don't delete the cache entry here — let the new fetch overwrite it.
-  // Deleting it caused the old version to fall through to the backend's server cache
-  // on refresh, which returned the old answer. Instead we keep a placeholder that
-  // expires quickly (REGENERATED_TTL_DAYS) so it is re-fetched only when truly stale.
   const localCache = loadLocalCache();
   localCache[questionId] = { regenerated: true, ts: Date.now() };
   saveLocalCache(localCache);
