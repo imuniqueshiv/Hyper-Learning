@@ -8,6 +8,19 @@
     <meta name="description" content="CS-405 Operating Systems Syllabus RGPV B.Tech IV Semester. New Scheme Based On AICTE Flexible Curricula." />
     
     <link rel="stylesheet" href="../../style.css" />
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 </head>
 
 <body>
@@ -37,8 +50,9 @@
     </section>
 
     <section class="questions-list">
-        <h3>Syllabus Content</h3>
+        <h3>Syllabus Content & Previous Year Questions</h3>
 
+        <!-- Module 1 -->
         <div class="question">
             <details>
                 <summary>
@@ -48,12 +62,59 @@
                         <p>Function, Evolution, Different Types, Desirable Characteristics and features of an O/S, Operating Systems Services: Types of Services, Different ways of providing these Services – Utility Programs, System Calls.</p>
                     </div>
                 </summary>
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) Explain the different types of services in Operating system and its features. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Define the Utility programs with example. Explain system call. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Define an operating system. What are the goals of an operating system? Explain. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) What is meant by system call? How it can be used. How does an application program use these call during execution? <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) In a multiprogramming and time sharing environment several users share system simultaneously. This situation can result in various security problems.<br>
+                        i) What are two such problems?<br>
+                        ii) Can we ensure the same degree of security in a time shared machine as we have in a dedicated machine? Explain your answer? <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) Explain the evolution of operating system in detail. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) List the functions of OS. How operating system perform management task in a system? <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Write short notes on: Time Sharing <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) Write short notes on: System Calls <span class="unit-year">(June-2024, Dec-2024, June-2025)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
                 <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
                     Show less ▲
                 </button>
             </details>
         </div>
 
+        <!-- Module 2 -->
         <div class="question">
             <details>
                 <summary>
@@ -63,12 +124,82 @@
                         <p>File Concept, User’s and System Programmer’s view of File System, Disk Organization, Tape Organization, Different Modules of a File System, Disk Space Allocation Methods – Contiguous, Linked, Indexed. Directory Structures, File Protection, System Calls for File Management, Disk Scheduling Algorithms.</p>
                     </div>
                 </summary>
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) Disk request come to a disk driver for cylinders in the order 10, 22, 20, 2, 40, 6 and 38 at a time when the disk drive is reading from cylinder 20. The seek time is 6 ms/cylinder. The total seek time if the disk arm scheduling algorithm is First-Come-First-Served (FCFS), and SCAN. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) How many types of disk allocation methods describe Indexed method with merits and demerits. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Suppose that a disk drive has 200 cylinders, numbered 0 to 199. The work queue is: 23, 89, 132, 42, 187. Determine the total distance for the following disk scheduling algorithms:<br>
+                        i) Scan<br>
+                        ii) Look <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) List the advantages and disadvantages of Magnetic Tape memory. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Explain in detail about various ways of free space management. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) What is a file? Briefly explain different directory structures. What kind of directory structure is used in UNIX? <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) Why do some systems keep track of the type of file, while others leave it to the user or simply do not implement multiple file types? Which system is better? <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Consider a file system on a disk that has both logical and physical block sizes of 512 bytes. Assume that the information about each file is already in memory. For each of three allocation strategy (continuous, linked and indexed), how is the logical to physical address mapping accomplished in this system? (for indexed allocation assume that a file is always less than 512 blocks long). <span class="unit-year">(June-2024, June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) Define the term "Directory". Explain any two schemes of logical directory structures. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) What is a File? Write different file attributes and operations? <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.11) Give an example of an application in which data in a file should be accessed in following order.<br>
+                        i) Sequentially<br>
+                        ii) Randomly <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.12) Suppose that a disk drive has 5000 cylinders numbered 0 to 4999. The drive is currently serving a request at cylinder 143 and the previous request was at cylinder 125. The queue of pending request in FIFO order is -<br>
+                        86, 1470, 913, 1774, 948, 1509, 1022, 1750, 750, 750, 750, 750, 750, 130.<br>
+                        Starting from current head position, what is the total distance that the disk arm moves to satisfy all pending request for each of following.<br>
+                        i) SSTF<br>
+                        ii) SCAN<br>
+                        iii) LOOK <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.13) Write short notes on the following: Contiguous and Linked Disk Allocation Method <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
                 <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
                     Show less ▲
                 </button>
             </details>
         </div>
 
+        <!-- Module 3 -->
         <div class="question">
             <details>
                 <summary>
@@ -79,12 +210,181 @@
                         <strong>Memory Management:</strong> Different Memory Management Techniques – Partitioning, Swapping, Segmentation, Paging, Paged Segmentation, Comparison of these techniques, Techniques for supporting the execution of large programs: Overlay, Dynamic Linking and Loading, Virtual Memory – Concept, Implementation by Demand Paging etc.</p>
                     </div>
                 </summary>
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) What is Process ? Explain the process states diagram. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.2) Consider the set of processes with arrival time (in milliseconds), CPU burst time (in milliseconds) , and priority (0 is the highest priority) shown below. None of the processes have I/O burst time.</p>
+                            <table style="margin-left: 1rem; border-collapse: collapse; text-align: center; width: 80%; min-width: 400px;" border="1" cellpadding="8">
+                                <tr><th>Process</th><th>Arrival time</th><th>CPU Burst time</th><th>Priority</th></tr>
+                                <tr><td>P1</td><td>0</td><td>11</td><td>2</td></tr>
+                                <tr><td>P2</td><td>5</td><td>28</td><td>0</td></tr>
+                                <tr><td>P3</td><td>12</td><td>2</td><td>3</td></tr>
+                                <tr><td>P4</td><td>2</td><td>10</td><td>1</td></tr>
+                                <tr><td>P5</td><td>9</td><td>16</td><td>4</td></tr>
+                            </table>
+                            <p style="margin-left: 1rem; margin-top: 1rem;">Solve the problem using preemptive priority scheduling algorithm. Draw the Gantt chart for it. and calculate Average waiting time, Turn around time. <span class="unit-year">(Nov-2022)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) What are the different criteria for evaluating the CPU scheduling algorithm? <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Consider a system with byte-addressable memory, 32 bit logical addresses, 4 kilobyte page size and page table entries of 4 bytes each. The size of the page table in the system in megabytes. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Describe fixed and variable partitioned contiguous memory allocation scheme along with their merits and demerits. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) Describe the differences among short term, medium term and long term scheduling. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) Define Process States. Draw the diagram of PCB. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) What is the difference between threads and process. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) Explain paging and segmentation. How are they helpful in removing fragmentation? <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) What are the five major activities of an operating system in regards to process management? <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.11) What resources are used when a thread is created? How do they differ from those when a process is created? <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.12) Consider the following segment table:</p>
+                            <table style="margin-left: 1rem; border-collapse: collapse; text-align: center; width: 50%; min-width: 250px;" border="1" cellpadding="8">
+                                <tr><th>Segment</th><th>Base</th><th>Length</th></tr>
+                                <tr><td>0</td><td>219</td><td>600</td></tr>
+                                <tr><td>1</td><td>2300</td><td>14</td></tr>
+                                <tr><td>2</td><td>90</td><td>100</td></tr>
+                                <tr><td>3</td><td>1327</td><td>580</td></tr>
+                                <tr><td>4</td><td>1952</td><td>96</td></tr>
+                            </table>
+                            <p style="margin-top: 1rem;">What are the physical addresses for the following logical address?<br>
+                            i) 0430<br>
+                            ii) 110<br>
+                            iii) 2500<br>
+                            iv) 3400 <span class="unit-year">(June-2024, June-2025)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.13) Can a system detect that some of its processes are starving? If your answer "Yes" explain how it can? If your answer no, explain how the system can deal with the starvation problem. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.14) What are the benefits of mapping objects into virtual memory? Explain in detail. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.15) What is Overlay? How to dynamic linking and loading perform in memory management? <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.16) Explain the need for the Process Control Block (PCB) fields. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.17) Given the following table:</p>
+                            <table style="margin-left: 1rem; border-collapse: collapse; text-align: center; width: 50%; min-width: 250px;" border="1" cellpadding="8">
+                                <tr><th></th><th>Burst Time</th><th>Priority</th><th>Arrival Time</th></tr>
+                                <tr><td>A:</td><td>6</td><td>4</td><td>0</td></tr>
+                                <tr><td>B:</td><td>10</td><td>1</td><td>2</td></tr>
+                                <tr><td>C:</td><td>2</td><td>2</td><td>1</td></tr>
+                                <tr><td>D:</td><td>3</td><td>3</td><td>3</td></tr>
+                            </table>
+                            <p style="margin-left: 1rem; margin-top: 1rem;">Answer the following questions:<br>
+                            i) Give the scheduling sequence of these processes according to FCFS, Round Robin (Time Quantum=3), pre-emptive SJF. (a larger no. implies a higher priority).<br>
+                            ii) Compute the turnaround time for each process for each of scheduling algorithms in part (i).<br>
+                            iii) Compute the waiting time for each process for each of scheduling algorithms in part (i). <span class="unit-year">(Dec-2024)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.18) How multilevel feedback queue scheduling differs from multilevel queue scheduling. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.19) The following is the sequence of page requests: 1, 2, 3, 5, 4, 1, 2, 5, 3, 2, 4, 3. Assume that there are three frames. Now, how many page faults will occur if an Optimal Page Replacement algorithm is used to replace pages? <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.20) When do page-faults occur? Describe the action taken by the O.S when page-fault occurs. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.21) How process is differing from program? Describe process transition diagram in detail. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.22) What are the five major activities of an operating system in regards to memory management? <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.23) Consider a variant of the RR algorithm where the entries in the ready queue are pointers to the PCB<br>
+                        i) What would be the effect of putting two pointers to the same process in the ready queue.<br>
+                        ii) What would be the major advantages and drawback of this scheme. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.24) How many page faults occur for an optimal page replacement strategy for the following reference string for four page frames.<br>
+                        1 2 3 4 5 3 4 1 6 7 8 7 8 9 7 8 9 5 4 5 4 2 <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.25) Write short notes on following: Paged Segmentation. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.26) Write short notes on following: Paging <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.27) Write short notes on the following: (Any two)<br>
+                        a) Thrashing<br>
+                        b) LRU algorithm<br>
+                        c) Process Control Block<br>
+                        e) Optimal Page Replacement algorithm<br>
+                        f) Interrupts<br>
+                        Multilevel Feedback Queue Scheduling <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.28) Write short notes on following: Demand paging <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
                 <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
                     Show less ▲
                 </button>
             </details>
         </div>
 
+        <!-- Module 4 -->
         <div class="question">
             <details>
                 <summary>
@@ -95,12 +395,101 @@
                         <strong>Concurrent Processes:</strong> Real and Virtual Concurrency, Mutual Exclusion, Synchronization, Inter-Process Communication, Critical Section Problem, Solution to Critical Section Problem: Semaphores – Binary and Counting Semaphores, WAIT & SIGNAL Operations and their implementation. Deadlocks: Deadlock Problems, Characterization, Prevention, Avoidance, Recovery.</p>
                     </div>
                 </summary>
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <div>
+                            <p>Q.1) Consider the resource allocation graph in the figure</p>
+                            <img class="ans-img" src="ques-diagrams/Q.3-a_nov-2022.png" alt="Resource Allocation Graph containing three processes (P1, P2, P3) represented as circles, and three resources (R1, R2, R3) represented as rectangles. Resource R1 has 1 instance (1 dot), R2 has 2 instances (2 dots), and R3 has 1 instance (1 dot). The directed edges are as follows: A request edge from P1 to R1; an assignment edge from R1 to P2; an assignment edge from one instance of R2 to P1; an assignment edge from the other instance of R2 to P2; a request edge from P2 to R3; an assignment edge from R3 to P3; and a request edge from P3 to R2.">
+                            <p style="margin-top: 1rem;">Find if the system is in a deadlock state otherwise find a safe sequence. <span class="unit-year">(Nov-2022)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Difference between Deadlock and Starvation. Explain the necessary Condition for Deadlock. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Explain the types of Semaphores in process synchronization. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Explain the deadlock recovery in brief. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Explain the I/O buffering and Interrupt driven operation in short. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) What do you mean by deadlock prevention? A computer has six tape drive with a processes competing for them. Each process need two tape drives for which values of n the system is deadlock free. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) Explain mutual exclusion with suitable example. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Discuss Reader-Writers solution using Monitors. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) What is the meaning of the term busy waiting? What another kind of waiting are there in an operating system? Can busy waiting be avoided altogether? Explain your answer. <span class="unit-year">(June-2024, June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) Why Semaphore is important in OS? Explain Binary and counting semaphores with suitable example. <span class="unit-year">(June-2024, June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.11) What is Resource Allocation Graph? Explain the occurrence and avoidance of deadlock graphically among 3 processes and 3 resources. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.12) Suppose a process P wants to wait for two messages, one from mailbox A and one from mailbox B. What sequence of send and receive should it execute. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.13) Why might a system use interrupt driven I/O to manage a single serial port but polling I/O to manage a front end processor, such as a terminal concentrator. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.14) Explain concurrency controls? What are the differences between real and virtual concurrency? <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.15) Explain the concept of buffering and spooling. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.16) Define a semaphore for dining philosopher's problem. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.17) Write short notes on: Concurrent Programming <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.18) Write short notes on following: Synchronization <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.19) Write short notes on following: Deadlock prevention and avoidance <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
                 <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
                     Show less ▲
                 </button>
             </details>
         </div>
 
+        <!-- Module 5 -->
         <div class="question">
             <details>
                 <summary>
@@ -110,6 +499,68 @@
                         <p>Introduction to Network, Distributed and Multiprocessor Operating Systems. Case Studies: Unix/Linux, WINDOWS and other Contemporary Operating Systems.</p>
                     </div>
                 </summary>
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) Explain file system used in Linux and Windows. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) What are the advantages and disadvantages of making the computer network transparent to the user? <span class="unit-year">(June-2024, June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) To build robust distributed systems, you must know what kinds of failures can occur. List three possible types of failures in a distributed system. <span class="unit-year">(June-2024, June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) What are the benefits of a DFS when compared to a file system in a centralized system? <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) What aspects of a distributed system would you select for a system running on a totally reliable network. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) Describe a method for process migration across different architecture running.<br>
+                        i) The same operating system<br>
+                        ii) Different operating system <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) Discuss the design issues of distributed operating system. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Write short notes on following: Distributed operating system. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) Write short notes on following: Multiprocessor operating system. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) Write short notes on following: Network Operating system. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.11) Write short notes on: Virus <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.12) Write short notes on: Remote Procedure Call (RPC) <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.13) Write short notes on following: Kernel architecture in Unix <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
                 <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
                     Show less ▲
                 </button>

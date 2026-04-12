@@ -8,6 +8,19 @@
     <meta name="description" content="BT-401 Mathematics-III Syllabus RGPV B.Tech IV Semester. New Scheme Based On AICTE Flexible Curricula." />
     
     <link rel="stylesheet" href="../../style.css" />
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 </head>
 
 <body>
@@ -37,77 +50,608 @@
     </section>
 
     <section class="questions-list">
-        <h3>Syllabus Content</h3>
+        <h3>Syllabus Content & Previous Year Questions</h3>
 
+        <!-- Module 1 -->
         <div class="question">
             <details>
                 <summary>
                     <div>
-                        <strong><p>Module 1: Numerical Methods – 1: (8 hours):</p></strong>
+                        <strong><p>Module 1: Numerical Methods – 1 (8 hours)</p></strong>
                         <hr>
                         <p>Solution of polynomial and transcendental equations – Bisection method, Newton-Raphson method and Regula-Falsi method. Finite differences, Relation between operators, Interpolation using Newton’s forward and backward difference formulae. Interpolation with unequal intervals: Newton’s divided difference and Lagrange’s formulae.</p>
                     </div>
                 </summary>
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) Find the real root of equation $f(x) = x^3 - x - 10$ by using Newton Raphson method correct up to 4 decimal places. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.2) Find solution $y(301)$ using Newton Divided difference interpolation formula</p>
+                            <table style="margin-left: 1rem; margin-top: 1rem; border-collapse: collapse; text-align: center; width: 80%; min-width: 400px;" border="1" cellpadding="8">
+                                <tr><th>$x$</th><td>300</td><td>304</td><td>305</td><td>307</td></tr>
+                                <tr><th>$f(x)$</th><td>2.4771</td><td>2.4829</td><td>2.4843</td><td>2.4871</td></tr>
+                            </table>
+                            <p style="margin-top: 1rem;"><span class="unit-year">(June-2025)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.3) Find Solution using Lagrange's Interpolation formula.</p>
+                            <table style="margin-left: 1rem; margin-top: 1rem; border-collapse: collapse; text-align: center; width: 60%; min-width: 300px;" border="1" cellpadding="8">
+                                <tr><th>$x$</th><td>2</td><td>2.5</td><td>3</td></tr>
+                                <tr><th>$f(x)$</th><td>0.69315</td><td>0.91629</td><td>1.09861</td></tr>
+                            </table>
+                            <p style="margin-top: 1rem;"><span class="unit-year">(June-2025)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Using Newton-Raphson method find the real root of the equation $3x = \cos x + 1$ correct to five decimal places. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.5) Find $f(g)$ from the following table</p>
+                            <table style="margin-left: 1rem; margin-top: 1rem; border-collapse: collapse; text-align: center; width: 80%; min-width: 400px;" border="1" cellpadding="8">
+                                <tr><th>$x$</th><td>0</td><td>1</td><td>4</td><td>5</td><td>7</td></tr>
+                                <tr><th>$f(x)$</th><td>8</td><td>11</td><td>68</td><td>123</td><td>163</td></tr>
+                            </table>
+                            <p style="margin-top: 1rem;"><span class="unit-year">(Dec-2024)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) Show that Newton Raphson method is quadratic convergent. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.7) Drive Newton forward interpolation formula and use it to estimate the value of $f(1.25)$ from the following table</p>
+                            <table style="margin-left: 1rem; margin-top: 1rem; border-collapse: collapse; text-align: center; width: 80%; min-width: 400px;" border="1" cellpadding="8">
+                                <tr><th>$x$</th><td>1.0</td><td>1.5</td><td>2.0</td><td>2.5</td></tr>
+                                <tr><th>$f(x)$</th><td>4.00</td><td>18.25</td><td>44.00</td><td>84.25</td></tr>
+                            </table>
+                            <p style="margin-top: 1rem;"><span class="unit-year">(Dec-2024)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) If the equation $f(x)$ is given as $x^3 - x^2 + 4x - 4 = 0$. Considering the initial approximation at $x = 2$ then find the value of next approximation correct upto 2 decimal places. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) What is the rate of convergence of Newton Raphson method? <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) Find<br>i) $\Delta e^{ax}$<br>ii) $\Delta^2 e^x$<br>iii) $\Delta \log x$ <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.11) Prove that $f(4) = f(3) + \Delta f(2) + \Delta^2 f(1) + \Delta^3 f(1)$ taking '1' as the interval of differencing. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.12) Find $f(0.18)$ from the following table using Newton's Forward interpolation formula.</p>
+                            <table style="margin-left: 1rem; margin-top: 1rem; border-collapse: collapse; text-align: center; width: 80%; min-width: 400px;" border="1" cellpadding="8">
+                                <tr><th>$x$</th><td>0</td><td>0.1</td><td>0.2</td><td>0.3</td><td>0.4</td></tr>
+                                <tr><th>$f(x)$</th><td>1</td><td>1.052</td><td>1.2214</td><td>1.3499</td><td>1.4918</td></tr>
+                            </table>
+                            <p style="margin-top: 1rem;"><span class="unit-year">(June-2024)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.13) Find the value of $f(5)$ from the following table.</p>
+                            <table style="margin-left: 1rem; margin-top: 1rem; border-collapse: collapse; text-align: center; width: 80%; min-width: 400px;" border="1" cellpadding="8">
+                                <tr><th>$X$</th><td>1</td><td>2</td><td>3</td><td>4</td><td>7</td></tr>
+                                <tr><th>$F(x)$</th><td>2</td><td>4</td><td>8</td><td>16</td><td>128</td></tr>
+                            </table>
+                            <p style="margin-top: 1rem;"><span class="unit-year">(June-2024)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.14) Find the real root of the equation $x \log_{10} x - 1.2 = 0$ correct to five places of decimal by Regula Falsi Method. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.15) Evaluate $\sqrt{12}$ to four decimal places by Newton Raphson Method. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.16) What is the rate of convergence of bisection method? <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.17) Prove that<br>i) $\Delta = \frac{1}{2} \delta^2 + \delta \sqrt{1 + \left(\frac{\delta^2}{4}\right)}$<br>ii) $\Delta + \nabla = \frac{\Delta}{\nabla} - \frac{\nabla}{\Delta}$ <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.18) Construct a backward difference table for $y = \log x$ given that</p>
+                            <table style="margin-left: 1rem; margin-top: 1rem; border-collapse: collapse; text-align: center; width: 80%; min-width: 400px;" border="1" cellpadding="8">
+                                <tr><th>$x$</th><td>10</td><td>20</td><td>30</td><td>40</td><td>50</td></tr>
+                                <tr><th>$y$</th><td>1</td><td>1.3010</td><td>1.4771</td><td>1.6021</td><td>1.6990</td></tr>
+                            </table>
+                            <p style="margin-top: 1rem;">And find values of $\nabla^3 \log 40$ and $\nabla^4 \log 50$ <span class="unit-year">(Nov-2023)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.19) Using following table, by Lagrange's Method find $f(x)$ as a polynomial in $x$:</p>
+                            <table style="margin-left: 1rem; margin-top: 1rem; border-collapse: collapse; text-align: center; width: 80%; min-width: 400px;" border="1" cellpadding="8">
+                                <tr><th>$x$</th><td>-1</td><td>0</td><td>3</td><td>6</td><td>7</td></tr>
+                                <tr><th>$f(x)$</th><td>3</td><td>-6</td><td>39</td><td>822</td><td>1611</td></tr>
+                            </table>
+                            <p style="margin-top: 1rem;"><span class="unit-year">(Nov-2023)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.20) Using Newton's divided difference formula, calculate the value of $f(6)$ from the following data:</p>
+                            <table style="margin-left: 1rem; margin-top: 1rem; border-collapse: collapse; text-align: center; width: 60%; min-width: 300px;" border="1" cellpadding="8">
+                                <tr><th>$x$</th><td>1</td><td>2</td><td>7</td><td>8</td></tr>
+                                <tr><th>$f(x)$</th><td>1</td><td>5</td><td>5</td><td>4</td></tr>
+                            </table>
+                            <p style="margin-top: 1rem;"><span class="unit-year">(Nov-2023)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.21) Find missing values in the following table:</p>
+                            <table style="margin-left: 1rem; margin-top: 1rem; border-collapse: collapse; text-align: center; width: 80%; min-width: 400px;" border="1" cellpadding="8">
+                                <tr><th>$x$</th><td>0</td><td>5</td><td>10</td><td>15</td><td>20</td><td>25</td></tr>
+                                <tr><th>$y$</th><td>6</td><td>10</td><td>-</td><td>17</td><td>-</td><td>31</td></tr>
+                            </table>
+                            <p style="margin-top: 1rem;"><span class="unit-year">(Nov-2023, June-2024)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.22) Using Lagrange's interpolation formula to fit a polynomial to the data:</p>
+                            <table style="margin-left: 1rem; margin-top: 1rem; border-collapse: collapse; text-align: center; width: 60%; min-width: 300px;" border="1" cellpadding="8">
+                                <tr><th>$x$</th><td>-1</td><td>0</td><td>2</td><td>3</td></tr>
+                                <tr><th>$f(x)$</th><td>-8</td><td>3</td><td>1</td><td>12</td></tr>
+                            </table>
+                            <p style="margin-top: 1rem;"><span class="unit-year">(Nov-2023)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.23) Using Regula-Falsi method, find the real root of $x \log_{10} x = 1.2$, correct to four decimal places. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.24) Find the real root of the equation $x^3 - 3x - 5 = 0$ correct to four places of decimals by Newton Raphson method. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.25) Evaluate<br>$\Delta^6 (ax - 1)(bx^2 - 1)(cx^3 - 1); h=1$ <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.26) Using Newton's divided difference formula, find $f(8)$ and $f(15)$ from the following table.</p>
+                            <table style="margin-left: 1rem; margin-top: 1rem; border-collapse: collapse; text-align: center; width: 80%; min-width: 400px;" border="1" cellpadding="8">
+                                <tr><th>x</th><td>4</td><td>5</td><td>7</td><td>10</td><td>11</td><td>13</td></tr>
+                                <tr><th>F(x)</th><td>48</td><td>100</td><td>294</td><td>900</td><td>1210</td><td>2028</td></tr>
+                            </table>
+                            <p style="margin-top: 1rem;"><span class="unit-year">(June-2023)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.27) Find the real root of the equation $xe^x - 3 = 0$ correct to three decimal places by Regula Falsi method. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.28) Use Newton's formula for interpolation to find the net premium at the age 25 from the table given below:</p>
+                            <table style="margin-left: 1rem; margin-top: 1rem; border-collapse: collapse; text-align: center; width: 80%; min-width: 400px;" border="1" cellpadding="8">
+                                <tr><th>Age</th><td>20</td><td>24</td><td>28</td><td>32</td></tr>
+                                <tr><th>Net Premium</th><td>0.01427</td><td>0.01581</td><td>0.01772</td><td>0.01996</td></tr>
+                            </table>
+                            <p style="margin-top: 1rem;"><span class="unit-year">(Nov-2022)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.29) Using Newton-Raphson's method find the real root of $x^4 - x - 10 = 0$. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.30) Prove that<br>$$ \Delta^n 0^{n+1} = \frac{n(n+1)}{2} \Delta^n 0^n $$ <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.31) Given that $\log x$ for $x = 310, 320, 330, 340, 350$ and $360$ are according to following table. Find the value of $\log 3375$.</p>
+                            <table style="margin-left: 1rem; margin-top: 1rem; border-collapse: collapse; text-align: center; width: 90%; min-width: 500px;" border="1" cellpadding="8">
+                                <tr><th>$x$</th><td>310</td><td>320</td><td>330</td><td>340</td><td>350</td><td>360</td></tr>
+                                <tr><th>$\log x$</th><td>2.4913617</td><td>2.5051500</td><td>2.5185139</td><td>2.5314789</td><td>2.5440680</td><td>2.5563025</td></tr>
+                            </table>
+                            <p style="margin-top: 1rem;"><span class="unit-year">(Nov-2022)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.32) Prove that<br>$$ \Delta^n \sin(ax + b) = \left( 2 \sin \frac{ah}{2} \right)^n \sin \left[ ax + b + n \left( \frac{ah + \pi}{2} \right) \right] $$ <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
                 <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
                     Show less ▲
                 </button>
             </details>
         </div>
 
+        <!-- Module 2 -->
         <div class="question">
             <details>
                 <summary>
                     <div>
-                        <strong><p>Module 2: Numerical Methods – 2: (6 hours):</p></strong>
+                        <strong><p>Module 2: Numerical Methods – 2 (6 hours)</p></strong>
                         <hr>
                         <p>Numerical Differentiation, Numerical integration: Trapezoidal rule and Simpson’s 1/3rd and 3/8 rules. Solution of Simultaneous Linear Algebraic Equations by Gauss’s Elimination, Gauss’s Jordan, Crout’s methods, Jacobi’s, Gauss-Seidal, and Relaxation method.</p>
                     </div>
                 </summary>
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <div>
+                            <p>Q.1) Evaluate the following using Simpson's 3/8 rule.</p>
+                            <table style="margin-left: 1rem; margin-top: 1rem; border-collapse: collapse; text-align: center; width: 80%; min-width: 400px;" border="1" cellpadding="8">
+                                <tr><th>$x$</th><td>4</td><td>4.2</td><td>4.4</td><td>4.6</td><td>4.8</td><td>5.0</td><td>5.2</td></tr>
+                                <tr><th>$f(x)$</th><td>1.3863</td><td>1.4351</td><td>1.4816</td><td>1.5261</td><td>1.5686</td><td>1.6094</td><td>1.6487</td></tr>
+                            </table>
+                            <p style="margin-top: 1rem;"><span class="unit-year">(June-2025)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Solve the given set of equations by using Gauss elimination method:<br>$x + y + z = 4$<br>$x + 4y + 3z = 8$<br>$x + 6y + 2z = 6$ <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Apply the Simpson's $\frac{3}{8}$ rule to evaluate the following integral for six digit $\int_{1.0}^{1.30} \sqrt{x} \cdot dx$. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Solve the following system of equation using Gauss-Seidel method.<br>$27x + 6y - z = 85$<br>$6x + 15y + 2z = 72$<br>$x + y + 54z = 110$ <span class="unit-year">(Dec-2024, June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.5) Find $\frac{dy}{dx}$ at $x = 1.5$ from the following table</p>
+                            <table style="margin-left: 1rem; margin-top: 1rem; border-collapse: collapse; text-align: center; width: 80%; min-width: 400px;" border="1" cellpadding="8">
+                                <tr><th>$x$</th><td>1.5</td><td>2.0</td><td>2.5</td><td>3.0</td><td>3.5</td><td>4.0</td></tr>
+                                <tr><th>$f(x)$</th><td>3.375</td><td>7.0</td><td>13.625</td><td>24.0</td><td>38.87</td><td>59.0</td></tr>
+                            </table>
+                            <p style="margin-top: 1rem;"><span class="unit-year">(Dec-2024)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) Solve the system of equations<br>$3x + y - z = 3$<br>$2x - 8y + z = -5$<br>$x - 2y + 9z = 8$<br>Using Gauss elimination method. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) Using Simpson's 3/8 rule to solve the integral $\int_4^{5.2} \log_e x dx$ <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Apply Gauss Elimination method to solve the following equations:<br>$2x - y + 3z = 9$<br>$x + y + z = 6$<br>$x - y + z = 2$ <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.9) Find $f'(1.1)$ and $f''(1.1)$ from the following table:</p>
+                            <table style="margin-left: 1rem; margin-top: 1rem; border-collapse: collapse; text-align: center; width: 80%; min-width: 400px;" border="1" cellpadding="8">
+                                <tr><th>$x$</th><td>1.0</td><td>1.2</td><td>1.4</td><td>1.6</td><td>1.8</td><td>2.0</td></tr>
+                                <tr><th>$f(x)$</th><td>0.0</td><td>0.1280</td><td>0.5540</td><td>1.2960</td><td>2.4320</td><td>4.0</td></tr>
+                            </table>
+                            <p style="margin-top: 1rem;"><span class="unit-year">(Nov-2023)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) Find $\int_0^6 \frac{e^x}{1+x} dx$ approximately using simpson's $\frac{3}{8}$th rule on integration. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.11) Use Simpson's 1/3 and 3/8 rule to evaluate the following.<br>$\int_0^1 \frac{dx}{1+x^2}$<br>Hence obtain the approximate value of $\pi$ in each case. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.12) Compute the value of the following integral by trapezoidal Rule.<br>$\int_{0.2}^{1.4} (\sin x - \log_e x + e^x) dx$ <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.13) Use Simpson's rule to find approximate value of the following integral.<br>$\int_1^2 \frac{dx}{x}$ <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.14) Solve the simultaneous linear equations using Crout's method.<br>$x_1 + x_2 + x_3 = 1$<br>$3x_1 + x_2 - 3x_3 = 5$<br>$x_1 - 2x_2 - 5x_3 = 10$ <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.15) Evaluate $\int_0^1 \log x \cos x \, dx$ by (i) Trapezoidal rule (ii) Simpson 3/8 rule. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
                 <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
                     Show less ▲
                 </button>
             </details>
         </div>
 
+        <!-- Module 3 -->
         <div class="question">
             <details>
                 <summary>
                     <div>
-                        <strong><p>Module 3: Numerical Methods – 3: (10 hours):</p></strong>
+                        <strong><p>Module 3: Numerical Methods – 3 (10 hours)</p></strong>
                         <hr>
-                        <p>Ordinary differential equations: Taylor’s series, Euler and modified Euler’s methods. RungeKutta method of fourth order for solving first and second order equations. Milne’s and Adam’s predicator-corrector methods. Partial differential equations: Finite difference solution two dimensional Laplace equation and Poission equation, Implicit and explicit methods for one dimensional heat equation (Bender-Schmidt and CrankNicholson methods), Finite difference explicit method for wave equation.</p>
+                        <p>Ordinary differential equations: Taylor’s series, Euler and modified Euler’s methods. RungeKutta method of fourth order for solving first and second order equations. Milne’s and Adam’s predicator-corrector methods. Partial differential equations: Finite difference solution two dimensional Laplace equation and Poission equation, Implicit and explicit methods for one dimensional heat equation (BenderSchmidt and Crank-Nicholson methods), Finite difference explicit method for wave equation.</p>
                     </div>
                 </summary>
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) Using modified Euler's method, find an approximate value of $Y$, when $x = 0.3$, Given that $\frac{dy}{dx} = x + y$ and $y = 1$, when $x = 0$. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Consider an ordinary differential equation $\frac{dy}{dx} = x^2 + y^2, y(1) = 1.2$. Find $y(1.05)$ using the fourth order Runge-Kutta method. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Using Milne's method find $y(4.4.)$ given $5xy + y^2 - 2 = 0$<br>Given $y(4) = 1, y(4.1) = 1.0049, y(4.2) = 1.0097$ and $y(4.3) = 1.0143$. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Using Runge-Kutta method of fourth order solve<br>$\frac{dy}{dx} = \frac{y^2 - x^2}{y^2 + x^2}, y(0) = 1$ at $x = 0.4$ in step of $0.2$ <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Find $y(2.2)$ using Euler's method for $\frac{dy}{dx} = -xy^2$ where $y(2) = 1$. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) Use Runge-Kutta method to approximate $y$, when $x = 0.1$ and $x = 0.2$, given that $x = 0$ when $y = 1$ and $\frac{dy}{dx} = x + y$. <span class="unit-year">(June-2024, Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) Use Milne's method to solve $\frac{dy}{dx} = x + y$ with initial condition $y(0) = 1$, from $x = 0.20$ to $x = 0.30$. <span class="unit-year">(June-2024, Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Solve the equation $\frac{dy}{dx} = 1 - y$ with initial condition $y(0) = 0$ using Euler's modified method and tabulate the solution at $x = 0.1, 0.2, 0.3$. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) Solve $\frac{dy}{dx} = x + y^2$ by using Runge-Kutta method of fourth order to find an approximate value of $y$ for $x = 0.2$, given that $y = 1$ when $x = 0$. (Take $h = 0.1$) <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) Use Euler's method compute the solution of<br>$\frac{dy}{dx} = y^2 - x^2$ with $y(0) = 1$ at $x = 0.1$. <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.11) Use Euler's Modified method to solve the equation<br>$\frac{dy}{dx} = x + y$, $y(0) = 1$, $h = 0.2$ compute $y(1)$ <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.12) Find $y(0.1)$ for differential equation $\frac{dy}{dx} = x^2 y - 1, y(0) = 1$ using Taylor's series method. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.13) Solve $xy'' + y' + xy = 0$, where $y(0) = 1, y'(0) = 0$, for $x = 0$ to $x = 1.5$. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
                 <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
                     Show less ▲
                 </button>
             </details>
         </div>
 
+        <!-- Module 4 -->
         <div class="question">
             <details>
                 <summary>
                     <div>
-                        <strong><p>Module 4: Transform Calculus: (8 hours):</p></strong>
+                        <strong><p>Module 4: Transform Calculus (8 hours)</p></strong>
                         <hr>
                         <p>Laplace Transform, Properties of Laplace Transform, Laplace transform of periodic functions. Finding inverse Laplace transform by different methods, convolution theorem. Evaluation of integrals by Laplace transform, solving ODEs by Laplace Transform method, Fourier transforms.</p>
                     </div>
                 </summary>
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) Find the inverse Laplace transform of the following functions.<br>$$F(s) = \frac{1}{(s+1)(s^2+1)}$$ <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) Suppose that the function $y(t)$ satisfies the DE $y'' - 2y' - y = 1$, with initial values, $y(0) = -1, y'(0) = 1$. Find the laplace transform of $y(t)$. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) Find the Laplace transform of the following function<br>i) $L(t^2 e^{-t} \cosh 2t)$<br>ii) $L(e^{3t} \sin^2 4t)$ <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Find the Inverse Laplace transform of $\frac{1}{p^3 (p^2 + a^2)}$. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Using Laplace transform solve the differential equation<br>$\frac{d^3y}{dt^3} + 2 \frac{d^2y}{dt^2} - \frac{dy}{dt} - 2y = 0$<br>Where $y = 1, \frac{dy}{dt} = 2, \frac{d^2y}{dt^2} = 2$ at $t = 0$. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.6) Evaluate $\int_0^\infty \frac{e^{-t} \cdot \sin t}{t} dt$ <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) Find Fourier sine transform of $\frac{1}{x}$. <span class="unit-year">(Dec-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) Find the inverse Laplace transform of $\frac{2s+1}{s(s-1)}$. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) State convolution theorem and hence evaluate $L^{-1} \left[ \frac{s}{(s^2+1)(s^2+4)} \right]$. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) Evaluate<br>$L^{-1} \left[ \frac{s+7}{s^2 + 4s + 8} \right]$ <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.11) Find the inverse Laplace transform of $\frac{s+4}{s(s-1)(s^2+4)}$. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.12) Prove that if $L\{f(t)\} = F(s)$ then $L \left\{ \frac{1}{t} f(t) \right\} = \int_s^\infty F(s) ds$ hence, evaluate $\frac{e^{at} - \cos bt}{t}$. <span class="unit-year">(Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.13) Use Laplace transform to solve the Initial Value Problem.<br>$y' + 2y = 26 \sin 3t, y(0) = 3$ <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.14) Evaluate<br>$L(t \cos at)$ <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.15) Evaluate<br>$L^{-1} \left[ \frac{1}{(1+s)^3} \right]$ <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.16) Evaluate<br>$L \{ t^2 e^{-3t} \}$ <span class="unit-year">(June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.17) Find Laplace transform of<br>$$f(t) = \begin{cases} \sin t & 0 < t < 2\pi \\ 0 & 2\pi < t \end{cases}$$ <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.18) Find the Fourier series for periodic extension of<br>$$f(t) = \begin{cases} \sin t, & 0 \le t \le \pi \\ 0, & \pi \le t \le 2\pi \end{cases}$$ <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
                 <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
                     Show less ▲
                 </button>
             </details>
         </div>
 
+        <!-- Module 5 -->
         <div class="question">
             <details>
                 <summary>
                     <div>
-                        <strong><p>Module 5: Concept of Probability: (8 hours):</p></strong>
+                        <strong><p>Module 5: Concept of Probability (8 hours)</p></strong>
                         <hr>
                         <p>Probability Mass function, Probability Density Function, Discrete Distribution: Binomial, Poisson’s, Continuous Distribution: Normal Distribution, Exponential Distribution.</p>
                     </div>
                 </summary>
+                <br>
+                <hr>
+                <strong>
+                    <p>Previous Years questions appears in RGPV exam.</p>
+                </strong>
+                <div class="question">
+                    <strong>
+                        <p>Q.1) A device is used to measure the speed of cars on a highway. The speed is normally distributed with a 90 km/hr mean and a standard deviation of 10. What is the probability that the car picked was travelling at more than 100 km/hr? <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.2) The mean and the standard deviation of a binomial distribution are 100 and 5. Find the binomial distribution. <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.3) In a normal distribution, 10.03% of the items are under 25 kg. weight and 89.97% of the items are under 70 kg. weight. What are the mean and standard deviation of the distribution? <span class="unit-year">(June-2025)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.4) Find mean of Poisson distribution. <span class="unit-year">(June-2025, June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.5) Write short note on Exponential distribution. <span class="unit-year">(June-2025, June-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <div>
+                            <p>Q.6) Fit a Poisson distribution to the following.</p>
+                            <table style="margin-left: 1rem; margin-top: 1rem; border-collapse: collapse; text-align: center; width: 80%; min-width: 400px;" border="1" cellpadding="8">
+                                <tr><th>$x$</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+                                <tr><th>$f(x)$</th><td>46</td><td>38</td><td>22</td><td>9</td><td>1</td></tr>
+                            </table>
+                            <p style="margin-top: 1rem;"><span class="unit-year">(Dec-2024, Nov-2023)</span></p>
+                        </div>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.7) Calculate the mean and standard deviation of Binomial Distribution. <span class="unit-year">(Dec-2024, Nov-2023)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.8) A binomial variable X satisfies the relation $9P(X = 4) = P(X = 2)$ when $n = 6$. Find the value of the parameter $p$ and $P(X = 1)$. <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.9) A large number of measurement is normally distributed with a mean 65.5" and S.D. of 6.2". Find the percentage of measurements that fall between 54.8" and 68.8". <span class="unit-year">(June-2024)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.10) If 'm' balls are distributed among 'a' men and 'b' women show that the probability that the number of balls received by men is odd, shall be<br>$$ \frac{1}{2} \left[ \frac{(b+a)^m - (b-a)^m}{(b+a)^m} \right] $$ <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.11) Two independent random variable X and Y are both normally distributed with means 1 and 2 and standard deviations 3 and 4 respectively. If Z = X - Y, write the probability density function of Z. Also state the median, s.d. and mean of the distribution of Z. Find P[Z + 1 $\le$ 0]. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                    <hr>
+                    <strong>
+                        <p>Q.12) Prove that for normal distribution, the Quartile Deviation (QD), Mean Deviation (MD) and Standard Deviation (SD) follows QD : MD : SD :: 10 : 12 : 15. <span class="unit-year">(Nov-2022)</span></p>
+                    </strong>
+                </div>
+                <br>
+                <hr>
                 <button type="button" class="hl-show-less" onclick="this.closest('details').open=false; this.closest('details').querySelector('summary').focus();">
                     Show less ▲
                 </button>
