@@ -748,3 +748,9 @@ details[open] > .hl-show-less { display: inline-block; }
         .vision-title { font-size: 1.8rem; }
         .stats-container { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
     }
+.scroll-x {
+            overflow-x: auto;
+            max-width: 100%;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 8px; /* Adds a bit of space so the scrollbar doesn't clip content */
+        }
