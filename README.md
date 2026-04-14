@@ -10,7 +10,7 @@
 
 ## 📖 About The Project
 
-**Hyper Learning** is an open-source e-learning platform designed to simplify exam preparation for RGPV students. It provides a structured archive of question papers across multiple branches (AIML, CSE, CSIT) and integrates **AI-powered solutions** to help students understand complex topics quickly.
+**Hyper Learning** is an open-source e-learning platform designed to simplify exam preparation for RGPV students. It provides a structured archive of question papers across multiple branches (AIML, CSE, CSIT, CSCY) and integrates **AI-powered solutions** to help students understand complex topics quickly.
 
 ### ✨ Key Features
 * **📚 Digital Archive:** Organized collection of RGPV PYQs (Previous Year Questions).
