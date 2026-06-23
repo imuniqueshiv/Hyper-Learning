@@ -14,7 +14,7 @@
 
 ### ✨ Key Features
 * **📚 Digital Archive:** Organized collection of RGPV PYQs (Previous Year Questions).
-* **🤖 AI Integration:** "Generate Answer" feature powered by Google Gemini (Backend).
+* **🤖 AI Integration:** Get intelligent, instant solutions powered by Google Gemini. (Backend).
 * **⚡ Fast & Responsive:** Modern, lightweight UI optimized for mobile and desktop.
 * **🎓 Student Centric:** tailored specifically for the B.Tech curriculum.
 
