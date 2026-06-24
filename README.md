@@ -62,7 +62,7 @@ Contributions are what make the open-source community such an amazing place to l
 You can contribute by:
 * Adding missing Question Papers (HTML format).
 * Fixing typos or UI bugs.
-* Improving the CSS/Design.
+* Improving the CSS/Design and animations.
 
 ### Steps to Contribute:
 
